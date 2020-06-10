@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
+		361D9B5424918C4800351CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5324918C4800351CFD /* SceneDelegate.swift */; };
+		361D9B5624918C4800351CFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5524918C4800351CFD /* ViewController.swift */; };
+		361D9B5924918C4800351CFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5724918C4800351CFD /* Main.storyboard */; };
+		361D9B5B24918C4B00351CFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5A24918C4B00351CFD /* Assets.xcassets */; };
+		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
+		361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B6824918C4B00351CFD /* CraicTests.swift */; };
+		361D9B7424918C4B00351CFD /* CraicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B7324918C4B00351CFD /* CraicUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		361D9B6524918C4B00351CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 361D9B4624918C4800351CFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 361D9B4D24918C4800351CFD;
+			remoteInfo = Craic;
+		};
+		361D9B7024918C4B00351CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 361D9B4624918C4800351CFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 361D9B4D24918C4800351CFD;
+			remoteInfo = Craic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		361D9B5324918C4800351CFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		361D9B5524918C4800351CFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		361D9B5824918C4800351CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		361D9B5A24918C4B00351CFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		361D9B5D24918C4B00351CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		361D9B5F24918C4B00351CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361D9B6424918C4B00351CFD /* CraicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		361D9B6824918C4B00351CFD /* CraicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraicTests.swift; sourceTree = "<group>"; };
+		361D9B6A24918C4B00351CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361D9B6F24918C4B00351CFD /* CraicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		361D9B7324918C4B00351CFD /* CraicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraicUITests.swift; sourceTree = "<group>"; };
+		361D9B7524918C4B00351CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		361D9B4B24918C4800351CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6124918C4B00351CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6C24918C4B00351CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		361D9B4524918C4800351CFD = {
+			isa = PBXGroup;
+			children = (
+				361D9B5024918C4800351CFD /* Craic */,
+				361D9B6724918C4B00351CFD /* CraicTests */,
+				361D9B7224918C4B00351CFD /* CraicUITests */,
+				361D9B4F24918C4800351CFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		361D9B4F24918C4800351CFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				361D9B4E24918C4800351CFD /* Craic.app */,
+				361D9B6424918C4B00351CFD /* CraicTests.xctest */,
+				361D9B6F24918C4B00351CFD /* CraicUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		361D9B5024918C4800351CFD /* Craic */ = {
+			isa = PBXGroup;
+			children = (
+				361D9B5124918C4800351CFD /* AppDelegate.swift */,
+				361D9B5324918C4800351CFD /* SceneDelegate.swift */,
+				361D9B5524918C4800351CFD /* ViewController.swift */,
+				361D9B5724918C4800351CFD /* Main.storyboard */,
+				361D9B5A24918C4B00351CFD /* Assets.xcassets */,
+				361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */,
+				361D9B5F24918C4B00351CFD /* Info.plist */,
+			);
+			path = Craic;
+			sourceTree = "<group>";
+		};
+		361D9B6724918C4B00351CFD /* CraicTests */ = {
+			isa = PBXGroup;
+			children = (
+				361D9B6824918C4B00351CFD /* CraicTests.swift */,
+				361D9B6A24918C4B00351CFD /* Info.plist */,
+			);
+			path = CraicTests;
+			sourceTree = "<group>";
+		};
+		361D9B7224918C4B00351CFD /* CraicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				361D9B7324918C4B00351CFD /* CraicUITests.swift */,
+				361D9B7524918C4B00351CFD /* Info.plist */,
+			);
+			path = CraicUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		361D9B4D24918C4800351CFD /* Craic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 361D9B7824918C4B00351CFD /* Build configuration list for PBXNativeTarget "Craic" */;
+			buildPhases = (
+				361D9B4A24918C4800351CFD /* Sources */,
+				361D9B4B24918C4800351CFD /* Frameworks */,
+				361D9B4C24918C4800351CFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Craic;
+			productName = Craic;
+			productReference = 361D9B4E24918C4800351CFD /* Craic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		361D9B6324918C4B00351CFD /* CraicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 361D9B7B24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicTests" */;
+			buildPhases = (
+				361D9B6024918C4B00351CFD /* Sources */,
+				361D9B6124918C4B00351CFD /* Frameworks */,
+				361D9B6224918C4B00351CFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				361D9B6624918C4B00351CFD /* PBXTargetDependency */,
+			);
+			name = CraicTests;
+			productName = CraicTests;
+			productReference = 361D9B6424918C4B00351CFD /* CraicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		361D9B6E24918C4B00351CFD /* CraicUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 361D9B7E24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicUITests" */;
+			buildPhases = (
+				361D9B6B24918C4B00351CFD /* Sources */,
+				361D9B6C24918C4B00351CFD /* Frameworks */,
+				361D9B6D24918C4B00351CFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				361D9B7124918C4B00351CFD /* PBXTargetDependency */,
+			);
+			name = CraicUITests;
+			productName = CraicUITests;
+			productReference = 361D9B6F24918C4B00351CFD /* CraicUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		361D9B4624918C4800351CFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Denis Fortuna";
+				TargetAttributes = {
+					361D9B4D24918C4800351CFD = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					361D9B6324918C4B00351CFD = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 361D9B4D24918C4800351CFD;
+					};
+					361D9B6E24918C4B00351CFD = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 361D9B4D24918C4800351CFD;
+					};
+				};
+			};
+			buildConfigurationList = 361D9B4924918C4800351CFD /* Build configuration list for PBXProject "Craic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 361D9B4524918C4800351CFD;
+			productRefGroup = 361D9B4F24918C4800351CFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				361D9B4D24918C4800351CFD /* Craic */,
+				361D9B6324918C4B00351CFD /* CraicTests */,
+				361D9B6E24918C4B00351CFD /* CraicUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		361D9B4C24918C4800351CFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */,
+				361D9B5B24918C4B00351CFD /* Assets.xcassets in Resources */,
+				361D9B5924918C4800351CFD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6224918C4B00351CFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6D24918C4B00351CFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		361D9B4A24918C4800351CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361D9B5624918C4800351CFD /* ViewController.swift in Sources */,
+				361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */,
+				361D9B5424918C4800351CFD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6024918C4B00351CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361D9B6B24918C4B00351CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361D9B7424918C4B00351CFD /* CraicUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		361D9B6624918C4B00351CFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 361D9B4D24918C4800351CFD /* Craic */;
+			targetProxy = 361D9B6524918C4B00351CFD /* PBXContainerItemProxy */;
+		};
+		361D9B7124918C4B00351CFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 361D9B4D24918C4800351CFD /* Craic */;
+			targetProxy = 361D9B7024918C4B00351CFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		361D9B5724918C4800351CFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				361D9B5824918C4800351CFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				361D9B5D24918C4B00351CFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		361D9B7624918C4B00351CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		361D9B7724918C4B00351CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		361D9B7924918C4B00351CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = Craic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.Craic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		361D9B7A24918C4B00351CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = Craic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.Craic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		361D9B7C24918C4B00351CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = CraicTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.CraicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Craic.app/Craic";
+			};
+			name = Debug;
+		};
+		361D9B7D24918C4B00351CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = CraicTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.CraicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Craic.app/Craic";
+			};
+			name = Release;
+		};
+		361D9B7F24918C4B00351CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = CraicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.CraicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Craic;
+			};
+			name = Debug;
+		};
+		361D9B8024918C4B00351CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47SHVH7P47;
+				INFOPLIST_FILE = CraicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = None.CraicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Craic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		361D9B4924918C4800351CFD /* Build configuration list for PBXProject "Craic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				361D9B7624918C4B00351CFD /* Debug */,
+				361D9B7724918C4B00351CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		361D9B7824918C4B00351CFD /* Build configuration list for PBXNativeTarget "Craic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				361D9B7924918C4B00351CFD /* Debug */,
+				361D9B7A24918C4B00351CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		361D9B7B24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				361D9B7C24918C4B00351CFD /* Debug */,
+				361D9B7D24918C4B00351CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		361D9B7E24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				361D9B7F24918C4B00351CFD /* Debug */,
+				361D9B8024918C4B00351CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 361D9B4624918C4800351CFD /* Project object */;
+}
