@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4ABD354FD1D65E450F13C2 /* Pods_Craic_CraicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */; };
 		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
 		361D9B5424918C4800351CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5324918C4800351CFD /* SceneDelegate.swift */; };
 		361D9B5624918C4800351CFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5524918C4800351CFD /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
 		361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B6824918C4B00351CFD /* CraicTests.swift */; };
 		361D9B7424918C4B00351CFD /* CraicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B7324918C4B00351CFD /* CraicUITests.swift */; };
+		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
+		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F73A6FC5545B775DDB52874 /* Pods-CraicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraicTests.debug.xcconfig"; path = "Target Support Files/Pods-CraicTests/Pods-CraicTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Craic_CraicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		361D9B5324918C4800351CFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		361D9B6F24918C4B00351CFD /* CraicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B7324918C4B00351CFD /* CraicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraicUITests.swift; sourceTree = "<group>"; };
 		361D9B7524918C4B00351CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
+		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
+		73919EEDA444A6D796F0F772 /* Pods-CraicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraicTests.release.xcconfig"; path = "Target Support Files/Pods-CraicTests/Pods-CraicTests.release.xcconfig"; sourceTree = "<group>"; };
+		8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Craic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A08809429B70329CD5B75782 /* Pods-Craic-CraicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic-CraicUITests.debug.xcconfig"; path = "Target Support Files/Pods-Craic-CraicUITests/Pods-Craic-CraicUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2F67545C410BBECEF00ABFE /* Pods-Craic-CraicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic-CraicUITests.release.xcconfig"; path = "Target Support Files/Pods-Craic-CraicUITests/Pods-Craic-CraicUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C4ABD354FD1D65E450F13C2 /* Pods_Craic_CraicUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				361D9B6724918C4B00351CFD /* CraicTests */,
 				361D9B7224918C4B00351CFD /* CraicUITests */,
 				361D9B4F24918C4800351CFD /* Products */,
+				43CD7B85C9E45F13AE74EE70 /* Pods */,
+				96B4796257DC6C190FA76D79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +116,9 @@
 		361D9B5024918C4800351CFD /* Craic */ = {
 			isa = PBXGroup;
 			children = (
-				361D9B5124918C4800351CFD /* AppDelegate.swift */,
-				361D9B5324918C4800351CFD /* SceneDelegate.swift */,
+				361D9B842491966C00351CFD /* Supporting Files */,
 				361D9B5524918C4800351CFD /* ViewController.swift */,
 				361D9B5724918C4800351CFD /* Main.storyboard */,
-				361D9B5A24918C4B00351CFD /* Assets.xcassets */,
-				361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */,
-				361D9B5F24918C4B00351CFD /* Info.plist */,
 			);
 			path = Craic;
 			sourceTree = "<group>";
@@ -128,6 +141,42 @@
 			path = CraicUITests;
 			sourceTree = "<group>";
 		};
+		361D9B842491966C00351CFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				361D9B5124918C4800351CFD /* AppDelegate.swift */,
+				361D9B5324918C4800351CFD /* SceneDelegate.swift */,
+				361D9B5A24918C4B00351CFD /* Assets.xcassets */,
+				361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */,
+				361D9B5F24918C4B00351CFD /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43CD7B85C9E45F13AE74EE70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */,
+				541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */,
+				A08809429B70329CD5B75782 /* Pods-Craic-CraicUITests.debug.xcconfig */,
+				A2F67545C410BBECEF00ABFE /* Pods-Craic-CraicUITests.release.xcconfig */,
+				0F73A6FC5545B775DDB52874 /* Pods-CraicTests.debug.xcconfig */,
+				73919EEDA444A6D796F0F772 /* Pods-CraicTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		96B4796257DC6C190FA76D79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */,
+				29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */,
+				5905C35F06595E011901554F /* Pods_CraicTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 361D9B7824918C4B00351CFD /* Build configuration list for PBXNativeTarget "Craic" */;
 			buildPhases = (
+				AF8EE661B9D0107858E78E98 /* [CP] Check Pods Manifest.lock */,
 				361D9B4A24918C4800351CFD /* Sources */,
 				361D9B4B24918C4800351CFD /* Frameworks */,
 				361D9B4C24918C4800351CFD /* Resources */,
+				A778FBF1B68C521AA51D892B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +203,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 361D9B7B24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicTests" */;
 			buildPhases = (
+				AF041C8502D7B7B23BE45677 /* [CP] Check Pods Manifest.lock */,
 				361D9B6024918C4B00351CFD /* Sources */,
 				361D9B6124918C4B00351CFD /* Frameworks */,
 				361D9B6224918C4B00351CFD /* Resources */,
@@ -170,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 361D9B7E24918C4B00351CFD /* Build configuration list for PBXNativeTarget "CraicUITests" */;
 			buildPhases = (
+				31EE39B6B67DE640DB1ECF7D /* [CP] Check Pods Manifest.lock */,
 				361D9B6B24918C4B00351CFD /* Sources */,
 				361D9B6C24918C4B00351CFD /* Frameworks */,
 				361D9B6D24918C4B00351CFD /* Resources */,
+				CE006440B80B79F054084AC2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +307,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31EE39B6B67DE640DB1ECF7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Craic-CraicUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A778FBF1B68C521AA51D892B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Craic/Pods-Craic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Craic/Pods-Craic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Craic/Pods-Craic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF041C8502D7B7B23BE45677 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CraicTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF8EE661B9D0107858E78E98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Craic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE006440B80B79F054084AC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Craic-CraicUITests/Pods-Craic-CraicUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Craic-CraicUITests/Pods-Craic-CraicUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Craic-CraicUITests/Pods-Craic-CraicUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		361D9B4A24918C4800351CFD /* Sources */ = {
@@ -432,11 +589,12 @@
 		};
 		361D9B7924918C4B00351CFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = Craic/Info.plist;
+				INFOPLIST_FILE = "Craic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,11 +608,12 @@
 		};
 		361D9B7A24918C4B00351CFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = Craic/Info.plist;
+				INFOPLIST_FILE = "Craic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,12 +627,13 @@
 		};
 		361D9B7C24918C4B00351CFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F73A6FC5545B775DDB52874 /* Pods-CraicTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = CraicTests/Info.plist;
+				INFOPLIST_FILE = "CraicTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,12 +650,13 @@
 		};
 		361D9B7D24918C4B00351CFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73919EEDA444A6D796F0F772 /* Pods-CraicTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = CraicTests/Info.plist;
+				INFOPLIST_FILE = "CraicTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,11 +673,12 @@
 		};
 		361D9B7F24918C4B00351CFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A08809429B70329CD5B75782 /* Pods-Craic-CraicUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = CraicUITests/Info.plist;
+				INFOPLIST_FILE = "CraicUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,11 +694,12 @@
 		};
 		361D9B8024918C4B00351CFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2F67545C410BBECEF00ABFE /* Pods-Craic-CraicUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
-				INFOPLIST_FILE = CraicUITests/Info.plist;
+				INFOPLIST_FILE = "CraicUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
