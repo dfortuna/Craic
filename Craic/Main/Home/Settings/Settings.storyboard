@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LBD-BE-oZw">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings Table View Controller-->
+        <scene sceneID="6WQ-bV-EKd">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsTableViewController" id="xni-Nb-q8H" customClass="SettingsTableViewController" customModule="Project4" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MvJ-2P-a08">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoffTableViewCell" rowHeight="57" id="imX-rt-hD8" customClass="LogoffTableViewCell" customModule="Project4" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="57"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="imX-rt-hD8" id="h3j-HO-Kob">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wya-QG-yLp">
+                                            <rect key="frame" x="184.5" y="8" width="45" height="41"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Mw4-ZE-ALM"/>
+                                            </constraints>
+                                            <state key="normal" title="Logoff"/>
+                                            <connections>
+                                                <action selector="logoffButton:" destination="imX-rt-hD8" eventType="touchUpInside" id="RZW-SD-Czu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wya-QG-yLp" firstAttribute="top" secondItem="h3j-HO-Kob" secondAttribute="top" constant="8" id="91H-wa-m1b"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wya-QG-yLp" secondAttribute="bottom" constant="8" id="Jgj-qv-7xX"/>
+                                        <constraint firstItem="Wya-QG-yLp" firstAttribute="centerY" secondItem="h3j-HO-Kob" secondAttribute="centerY" id="n7f-6r-gdF"/>
+                                        <constraint firstItem="Wya-QG-yLp" firstAttribute="centerX" secondItem="h3j-HO-Kob" secondAttribute="centerX" id="zTU-Cl-6an"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="xni-Nb-q8H" id="erU-nu-4CY"/>
+                            <outlet property="delegate" destination="xni-Nb-q8H" id="7BZ-1b-CDB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="uyC-t5-bmd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iT-3W-TOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217.3913043478262" y="-502.90178571428567"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="sRq-5c-XiJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LBD-BE-oZw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings1" id="fsW-wk-Cf2"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pFg-yR-zUG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xni-Nb-q8H" kind="relationship" relationship="rootViewController" id="imS-Uy-Jbf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xs9-4V-wH0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307.24637681159425" y="-502.90178571428567"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings1" width="24" height="24"/>
+        <namedColor name="BackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

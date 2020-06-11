@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Friends View Controller-->
+        <scene sceneID="8ns-Vk-eze">
+            <objects>
+                <viewController storyboardIdentifier="FriendsViewController" id="YBZ-QT-k0R" customClass="FriendsViewController" customModule="Project4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yol-TV-Yz5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-Bx-Gf5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" name="LightBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yGl-BV-d8H">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="noF-bo-Duo" customClass="UserCollectionViewCell" customModule="Project4" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eJ2-sn-YTN">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="YBZ-QT-k0R" id="1aC-wh-X0M"/>
+                                    <outlet property="delegate" destination="YBZ-QT-k0R" id="cWq-hr-kVg"/>
+                                </connections>
+                            </collectionView>
+                            <activityIndicatorView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="lid-Up-5oy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lid-Up-5oy" firstAttribute="top" secondItem="cgw-Bx-Gf5" secondAttribute="top" id="53C-Od-kfp"/>
+                            <constraint firstItem="Tjl-TH-HS5" firstAttribute="trailing" secondItem="cgw-Bx-Gf5" secondAttribute="trailing" id="LQj-ly-oLe"/>
+                            <constraint firstItem="cgw-Bx-Gf5" firstAttribute="top" secondItem="Tjl-TH-HS5" secondAttribute="top" id="NRv-FM-8kL"/>
+                            <constraint firstItem="Tjl-TH-HS5" firstAttribute="bottom" secondItem="cgw-Bx-Gf5" secondAttribute="bottom" id="Wjw-7k-qu3"/>
+                            <constraint firstItem="lid-Up-5oy" firstAttribute="trailing" secondItem="cgw-Bx-Gf5" secondAttribute="trailing" id="Ykg-y9-AvC"/>
+                            <constraint firstItem="lid-Up-5oy" firstAttribute="leading" secondItem="cgw-Bx-Gf5" secondAttribute="leading" id="kdz-Dc-BFL"/>
+                            <constraint firstItem="cgw-Bx-Gf5" firstAttribute="leading" secondItem="Tjl-TH-HS5" secondAttribute="leading" id="mU7-di-uS5"/>
+                            <constraint firstItem="lid-Up-5oy" firstAttribute="bottom" secondItem="cgw-Bx-Gf5" secondAttribute="bottom" id="ymh-3G-ZxN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tjl-TH-HS5"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="lid-Up-5oy" id="B56-Ev-x53"/>
+                        <outlet property="friendsCollectionView" destination="cgw-Bx-Gf5" id="sTh-qa-wFC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UsG-AF-tTi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1363" y="-93"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="LightBackgroundColor">
+            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
