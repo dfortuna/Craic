@@ -47,7 +47,9 @@ class FirebaseService {
         }
     }
     
-    func fetchWithListener<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference, returning objectType: T.Type, callback: @escaping (Result<[T], FirebaseError>) -> ()) {
+    func fetchWithListener<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference,
+                                                returning objectType: T.Type,
+                                                callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
         let listener = collectionPath(ofReference: collectionReference).addSnapshotListener { (querySnapshot, error) in
             

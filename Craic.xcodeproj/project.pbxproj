@@ -183,15 +183,6 @@
 		36244AC62491D0F8003EA526 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A562491D0F4003EA526 /* Friend.swift */; };
 		36244AC72491D0F8003EA526 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A562491D0F4003EA526 /* Friend.swift */; };
 		36244AC82491D0F8003EA526 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A562491D0F4003EA526 /* Friend.swift */; };
-		36244AC92491D0F8003EA526 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A582491D0F4003EA526 /* EventCell.swift */; };
-		36244ACA2491D0F8003EA526 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A582491D0F4003EA526 /* EventCell.swift */; };
-		36244ACB2491D0F8003EA526 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A582491D0F4003EA526 /* EventCell.swift */; };
-		36244ACC2491D0F8003EA526 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A592491D0F4003EA526 /* UserCell.swift */; };
-		36244ACD2491D0F8003EA526 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A592491D0F4003EA526 /* UserCell.swift */; };
-		36244ACE2491D0F8003EA526 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A592491D0F4003EA526 /* UserCell.swift */; };
-		36244ACF2491D0F8003EA526 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5A2491D0F4003EA526 /* VenueCell.swift */; };
-		36244AD02491D0F8003EA526 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5A2491D0F4003EA526 /* VenueCell.swift */; };
-		36244AD12491D0F8003EA526 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5A2491D0F4003EA526 /* VenueCell.swift */; };
 		36244AD22491D0F8003EA526 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5B2491D0F4003EA526 /* Event.swift */; };
 		36244AD32491D0F8003EA526 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5B2491D0F4003EA526 /* Event.swift */; };
 		36244AD42491D0F8003EA526 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A5B2491D0F4003EA526 /* Event.swift */; };
@@ -359,9 +350,6 @@
 		36244A532491D0F3003EA526 /* EventProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventProfileViewController.swift; sourceTree = "<group>"; };
 		36244A552491D0F4003EA526 /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		36244A562491D0F4003EA526 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		36244A582491D0F4003EA526 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		36244A592491D0F4003EA526 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		36244A5A2491D0F4003EA526 /* VenueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
 		36244A5B2491D0F4003EA526 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		36244A5C2491D0F4003EA526 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		36244A5D2491D0F4003EA526 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -384,7 +372,7 @@
 		36244A812491D0F8003EA526 /* AttendEventProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttendEventProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		36244A822491D0F8003EA526 /* FavoriteVenueProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FavoriteVenueProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		36244A832491D0F8003EA526 /* FollowUserProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FollowUserProtocol+Extensions.swift"; sourceTree = "<group>"; };
-		36244B322491D319003EA526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36244B322491D319003EA526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/denisfortuna/Desktop/Projects/Craic/Craic/Supporting Files/Assets.xcassets"; sourceTree = "<absolute>"; };
 		36244B3B249204A9003EA526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36244B402492097D003EA526 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		36244B4624927D18003EA526 /* GenericListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListUIView.swift; sourceTree = "<group>"; };
@@ -733,7 +721,6 @@
 			children = (
 				36244A552491D0F4003EA526 /* Metadata.swift */,
 				36244A562491D0F4003EA526 /* Friend.swift */,
-				36244A572491D0F4003EA526 /* Cells */,
 				36244A5B2491D0F4003EA526 /* Event.swift */,
 				36244A5C2491D0F4003EA526 /* Venue.swift */,
 				36244A5D2491D0F4003EA526 /* Message.swift */,
@@ -744,16 +731,6 @@
 				36244A622491D0F4003EA526 /* Feed.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		36244A572491D0F4003EA526 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				36244A582491D0F4003EA526 /* EventCell.swift */,
-				36244A592491D0F4003EA526 /* UserCell.swift */,
-				36244A5A2491D0F4003EA526 /* VenueCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		36244A632491D0F5003EA526 /* Common */ = {
@@ -1148,7 +1125,6 @@
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
 				36244AE12491D0F8003EA526 /* MessageType.swift in Sources */,
 				36244AE72491D0F8003EA526 /* Feed.swift in Sources */,
-				36244ACC2491D0F8003EA526 /* UserCell.swift in Sources */,
 				36244AF32491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
 				36244B4724927D18003EA526 /* GenericListUIView.swift in Sources */,
 				36244A872491D0F8003EA526 /* FacebookService.swift in Sources */,
@@ -1162,7 +1138,6 @@
 				362449EA2491D087003EA526 /* SearchFiltersViewController.swift in Sources */,
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
-				36244AC92491D0F8003EA526 /* EventCell.swift in Sources */,
 				361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */,
 				36244AAE2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
 				362449FC2491D087003EA526 /* FeedViewController.swift in Sources */,
@@ -1192,7 +1167,6 @@
 				362449E72491D087003EA526 /* EventCategoryTableViewCell.swift in Sources */,
 				362449CF2491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244AC62491D0F8003EA526 /* Friend.swift in Sources */,
-				36244ACF2491D0F8003EA526 /* VenueCell.swift in Sources */,
 				36244A8A2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				36244A262491D087003EA526 /* MenuViewController.swift in Sources */,
 				36244B232491D0F8003EA526 /* UINavigationController+Extension.swift in Sources */,
@@ -1211,7 +1185,6 @@
 				36244AFA2491D0F8003EA526 /* UserCollectionViewCell.swift in Sources */,
 				36244A092491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
 				36244AE22491D0F8003EA526 /* MessageType.swift in Sources */,
-				36244AD02491D0F8003EA526 /* VenueCell.swift in Sources */,
 				36244A852491D0F8003EA526 /* FacebookError.swift in Sources */,
 				36244AD92491D0F8003EA526 /* Message.swift in Sources */,
 				36244AF42491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
@@ -1254,13 +1227,11 @@
 				36244A1E2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				36244B2D2491D0F9003EA526 /* FavoriteVenueProtocol+Extensions.swift in Sources */,
 				36244A032491D087003EA526 /* MessageDetailViewController.swift in Sources */,
-				36244ACD2491D0F8003EA526 /* UserCell.swift in Sources */,
 				362449FD2491D087003EA526 /* FeedViewController.swift in Sources */,
 				36244AA02491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AD62491D0F8003EA526 /* Venue.swift in Sources */,
 				36244AAF2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
 				36244ADC2491D0F8003EA526 /* User.swift in Sources */,
-				36244ACA2491D0F8003EA526 /* EventCell.swift in Sources */,
 				36244AD32491D0F8003EA526 /* Event.swift in Sources */,
 				36244A9A2491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
 				36244AB82491D0F8003EA526 /* VenueProfileViewController.swift in Sources */,
@@ -1284,7 +1255,6 @@
 				36244AFB2491D0F8003EA526 /* UserCollectionViewCell.swift in Sources */,
 				36244A0A2491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
 				36244AE32491D0F8003EA526 /* MessageType.swift in Sources */,
-				36244AD12491D0F8003EA526 /* VenueCell.swift in Sources */,
 				36244A862491D0F8003EA526 /* FacebookError.swift in Sources */,
 				36244ADA2491D0F8003EA526 /* Message.swift in Sources */,
 				36244AF52491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
@@ -1327,13 +1297,11 @@
 				36244A1F2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				36244B2E2491D0F9003EA526 /* FavoriteVenueProtocol+Extensions.swift in Sources */,
 				36244A042491D087003EA526 /* MessageDetailViewController.swift in Sources */,
-				36244ACE2491D0F8003EA526 /* UserCell.swift in Sources */,
 				362449FE2491D087003EA526 /* FeedViewController.swift in Sources */,
 				36244AA12491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AD72491D0F8003EA526 /* Venue.swift in Sources */,
 				36244AB02491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
 				36244ADD2491D0F8003EA526 /* User.swift in Sources */,
-				36244ACB2491D0F8003EA526 /* EventCell.swift in Sources */,
 				36244AD42491D0F8003EA526 /* Event.swift in Sources */,
 				36244A9B2491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
 				36244AB92491D0F8003EA526 /* VenueProfileViewController.swift in Sources */,
@@ -1502,6 +1470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
 				INFOPLIST_FILE = "Craic/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1521,6 +1490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47SHVH7P47;
 				INFOPLIST_FILE = "Craic/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

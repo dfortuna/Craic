@@ -17,6 +17,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addLoginButton()
+    }
+    func addLoginButton() {
+//        var button = facebookService.getLogginButton()
+////        button.bounds = CGRect(x: 0, y: 0, width: 200, height: 60)
+//        button.center = self.view.center
+//        view.addSubview(button)
+        var button = UIButton()
+        self.view.addSubview(button)
+        button.center = view.center
+        button.bounds = CGRect(x: 0, y: 0, width: 150, height: 60)
     }
     
     @IBAction func loginButton(_ sender: UIButton) {

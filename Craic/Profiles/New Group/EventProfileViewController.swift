@@ -61,7 +61,7 @@ extension EventProfileViewController: UITableViewDelegate, UITableViewDataSource
         let cellId = cellIds[indexPath.row]
         switch cellId {
         case "eventProfilePictures":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EventProfilePicturesTableViewCell", for: indexPath) as? EventProfilePicturesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "  ", for: indexPath) as? EventProfilePicturesTableViewCell
             cell?.formatUI(image: event.images)
             return cell!
         default:

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="h0V-Ad-X63">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jk9-r4-JrY" customClass="LoginViewController" customModule="theCraic3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jk9-r4-JrY" customClass="LoginViewController" customModule="Craic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fJt-j6-UZe"/>
                         <viewControllerLayoutGuide type="bottom" id="459-gv-KZe"/>
@@ -28,7 +26,7 @@
                                     <constraint firstAttribute="height" constant="50" id="A6k-Su-zkw"/>
                                     <constraint firstAttribute="width" constant="250" id="liL-Gb-DpQ"/>
                                 </constraints>
-                                <state key="normal" image="loginButtonImage">
+                                <state key="normal" image="facebookLoginButton">
                                     <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -57,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loginButtonImage" width="185" height="22"/>
+        <image name="facebookLoginButton" width="185" height="22"/>
     </resources>
 </document>

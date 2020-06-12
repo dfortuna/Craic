@@ -22,6 +22,10 @@ class FacebookService: NSObject {
     let readPermissions = ["user_friends", "email", "user_gender"]
     let parametersForGraphRequest = ["fields": "id, name, first_name, last_name, email, gender, picture.type(large), friends"]
     
+    func getLogginButton() -> FBLoginButton {
+        return FBLoginButton()
+    }
+    
     func login(fromViewController viewController: UIViewController!, callback: @escaping (Result<String, FacebookError>) -> ()) {
         LoginManager().logIn(permissions: readPermissions, from: viewController) { (result, error) in
             if error != nil {
