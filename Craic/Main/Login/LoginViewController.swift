@@ -56,7 +56,8 @@ class LoginViewController: UIViewController {
         facebookService.graphRequest { (result) in
             switch result {
             case .failure(let error):
-                print(error)  //TODO: Alert for access denied
+                print(error)  //TODO! - Alert ???????????
+                Alert.facebokConnectionError.call(onViewController: self)
             case .success(let fbUser):
                 self.formatFacebookUser(fbUser: fbUser)
             }
@@ -105,7 +106,8 @@ class LoginViewController: UIViewController {
         firestore.create(for: user, in: .user) { (result) in
             switch result {
             case .failure(let error):
-                print(error) //TODO - check this
+                print(error) //TODO! - Alert???????????
+                Alert.unableToReachServer.call(onViewController: self)
             case .success( _):
                 self.userSettings.setLoggedUser(forUser: user)
                 self.instantiateRootViewController()

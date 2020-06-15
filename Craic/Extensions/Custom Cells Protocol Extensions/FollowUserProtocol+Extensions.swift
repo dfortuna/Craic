@@ -30,7 +30,7 @@ extension FollowUserProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }
@@ -50,7 +50,7 @@ extension FollowUserProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }

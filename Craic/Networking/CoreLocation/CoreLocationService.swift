@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
 
 struct Address {
@@ -24,8 +25,9 @@ class CoreLocationService: NSObject {
     static let shared = CoreLocationService()
     private let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
+    var alertMessage: Alert? = nil
     
-//TODOooooo
+//TODO! - Check LOCATION
 //    private lazy var locationManager: CLLocationManager = {
 //
 //        let manager = CLLocationManager()
@@ -34,20 +36,17 @@ class CoreLocationService: NSObject {
 //        return manager
 //    }()
     
-    
-    
-    
-    
-    
     // Check if the user has enable Location services in Settings
     // execute this at MainVC
-    func checkLocationServices() {
+    func checkLocationServices() -> Alert? {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManger()
-            checkAuthorizations()
+            alertMessage = checkAuthorizations()
         } else {
-            //TODO - alert
+            //TODO! - ALERT: Enable location services
+            alertMessage = Alert.locationAccessDisable
         }
+        return alertMessage
     }
     
     private func setupLocationManger() {
@@ -55,30 +54,29 @@ class CoreLocationService: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    private func checkAuthorizations() {
+    private func checkAuthorizations() -> Alert? {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             //Not going to ask for this one
-            break
+            return nil
         case .authorizedWhenInUse:
             currentLocation = locationManager.location
             locationManager.startUpdatingLocation()
 //            locationManager.requestLocation()
+            return nil
         case .denied:
-            //Can show pop up asking for permission again
-            //TODO - Show alert telling user what to do
             locationManager.requestWhenInUseAuthorization()
-            break
+            return nil
         case .notDetermined:
             // request the permission
             locationManager.requestWhenInUseAuthorization()
-            break
+            return nil
         case .restricted:
             //the user cant change the statuts(parental control)
-            //TODO - Show alert
-            break
+            //TODO! - ALERT: location services disable
+            return Alert.locationRestricted
         default:
-            break
+            return nil
         }
     }
     
@@ -129,7 +127,7 @@ class CoreLocationService: NSObject {
 extension CoreLocationService: CLLocationManagerDelegate{
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkAuthorizations()
+        alertMessage = checkAuthorizations()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

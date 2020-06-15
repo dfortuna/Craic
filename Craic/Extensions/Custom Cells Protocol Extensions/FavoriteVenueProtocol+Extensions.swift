@@ -20,7 +20,7 @@ extension FavoriteVenueProtocol {
     }
     
     func isFavorite(userID: String) -> Bool {
-        //TODO check real database
+        //TODO! - Realm Access
         return false
     }
     
@@ -36,7 +36,7 @@ extension FavoriteVenueProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }
@@ -47,7 +47,7 @@ extension FavoriteVenueProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
         
@@ -69,7 +69,7 @@ extension FavoriteVenueProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }
@@ -80,7 +80,7 @@ extension FavoriteVenueProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }

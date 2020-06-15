@@ -58,7 +58,5 @@ class UserCollectionViewCell: UICollectionViewCell {
         userNameLabel.text = friendData.name
         
         setIsFavoriteButtonName()
-        print("%%%%% CELL", self.bounds.height)
-        print("")
     }
 }

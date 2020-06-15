@@ -91,7 +91,7 @@ class UserProfileViewController: UIViewController {
             case .success(let events):
                 self.formatResult(forList: events)
             case .failure(let error):
-                print(error)// TODO MESSAGE
+                print(error)//TODO! -  Message view (no events to show)
             }
         }
     }
@@ -102,7 +102,7 @@ class UserProfileViewController: UIViewController {
             case .success(let venues):
                 self.formatResult(forList: venues)
             case .failure(let error):
-                print(error)// TODO MESSAGE
+                print(error) //TODO! -  Message view (no venues to show)
             }
         }
     }
@@ -114,7 +114,7 @@ class UserProfileViewController: UIViewController {
                                          field: "friends") { (result) in
                                             switch result {
                                             case .failure(let error):
-                                                print(error)// TODO MESSAGE
+                                                print(error) //TODO! MESSAGE
                                             case .success(let friendships):
                                                 self.formatResult(forList: friendships)
                                             }
@@ -153,7 +153,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             guard let friendship = resultList[indexPath.row] as? Friendship else { return UICollectionViewCell() }
             guard let friend = Friend(friendship: friendship, userID: user.id) else { return UICollectionViewCell() }
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(friendData: friend, isFavorite: false)
             return cell
             
@@ -164,7 +164,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             let userDistance = coreLocationService.userDistanceToCoordinate(latitudeStr: event.latitude,
                                                                             longitudeStr: event.longitude)
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(event: event, isAttending: false, distance: userDistance)
             return cell
             
@@ -173,7 +173,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             guard let venue = resultList[indexPath.row] as? Venue else { return UICollectionViewCell() }
             let isFavorite = false
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(venue: venue, isFavorite: isFavorite)
             return cell
         }

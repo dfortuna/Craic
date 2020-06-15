@@ -34,7 +34,7 @@ extension DocumentSnapshot {
         
         var firObjData = self.data() as! [String: AnyObject]
         
-        firObjData["id"] = self.documentID as AnyObject  //TODO - check this
+        firObjData["id"] = self.documentID as AnyObject  
         let teste = objectType.init(with: firObjData)
         return teste
     }

@@ -41,11 +41,16 @@ class GenericListUIView: UIView {
 //MARK: - Inicialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    override func awakeFromNib() {
+        initializeSubviews()
+        registerListCells()
+//        fetchData()
     }
     
     private func initializeSubviews(){
@@ -55,9 +60,10 @@ class GenericListUIView: UIView {
         self.addSubview(gLCollectionView!)
         gLCollectionView.delegate = self
         gLCollectionView.dataSource = self
+        
     }
     
-    private func registerCells() {
+    private func registerListCells() {
         gLCollectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "UserCollectionViewCell")
         gLCollectionView.register(UINib(nibName: "EventCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "EventCollectionViewCell")
         gLCollectionView.register(UINib(nibName: "VenueCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "VenueCollectionViewCell")
@@ -71,25 +77,27 @@ class GenericListUIView: UIView {
                                         forUser user: User,
                                         searchType: SearchType,
                                         isSortingByFriends: Bool) {
-        
+
         if let kw = keyword, let f = fields {
             firebaseService.fetchDocumentsByKeyword(from: firebaseCollection,
-                                             returning: returningType,
-                                             keyword: kw,
-                                             field: f ) { (result) in
-                                                switch result {
-                                                case .failure(let error):
-                                                    print(error)// TODO MESSAGE
-                                                case .success(let list):
-                                                    self.formatResult(forList: list)
-                                                }
+                                                    returning: returningType,
+                                                    keyword: kw,
+                                                    field: f ) { (result) in
+                                                        switch result {
+                                                        case .failure(let error):
+                                                            print(error)//
+                                                            //TODO! -  Message view (no xxxx to show)
+                                                        case .success(let list):
+                                                            self.formatResult(forList: list)
+                                                        }
             }
         } else {
             firebaseService.fetchWithListener(from: firebaseCollection,
                                               returning: returningType) { (result) in
                                                 switch result {
                                                 case .failure(let error):
-                                                    print(error)// TODO MESSAGE
+                                                    print(error)
+                                                    //TODO! -  Message view (no xxxx to show)
                                                 case .success(let list):
                                                     self.formatResult(forList: list)
                                                 }
@@ -153,7 +161,7 @@ extension GenericListUIView: UICollectionViewDataSource {
             let userDistance = coreLocationService.userDistanceToCoordinate(latitudeStr: event.latitude,
                                                                             longitudeStr: event.longitude)
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(event: event, isAttending: false, distance: userDistance)
             return cell
             
@@ -162,7 +170,7 @@ extension GenericListUIView: UICollectionViewDataSource {
             guard let friendship = resultList[indexPath.row] as? Friendship else { return UICollectionViewCell() }
             guard let friend = Friend(friendship: friendship, userID: user.id) else { return UICollectionViewCell() }
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(friendData: friend, isFavorite: false)
             return cell
             
@@ -171,7 +179,7 @@ extension GenericListUIView: UICollectionViewDataSource {
             guard let venue = resultList[indexPath.row] as? Venue else { return UICollectionViewCell() }
             let isFavorite = false
             cell.delegate = self
-            //TODO Realm
+            //TODO! - Realm Access
             cell.formatUI(venue: venue, isFavorite: isFavorite)
             return cell
         }

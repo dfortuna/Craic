@@ -159,9 +159,9 @@
 		36244AAE2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
 		36244AAF2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
 		36244AB02491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
-		36244AB12491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningTimeTableViewCell.swift */; };
-		36244AB22491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningTimeTableViewCell.swift */; };
-		36244AB32491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningTimeTableViewCell.swift */; };
+		36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
+		36244AB22491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
+		36244AB32491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
 		36244AB42491D0F8003EA526 /* VenueProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */; };
 		36244AB52491D0F8003EA526 /* VenueProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */; };
 		36244AB62491D0F8003EA526 /* VenueProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */; };
@@ -259,6 +259,8 @@
 		36244B4424920985003EA526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36244B322491D319003EA526 /* Assets.xcassets */; };
 		36244B4524920986003EA526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36244B322491D319003EA526 /* Assets.xcassets */; };
 		36244B4724927D18003EA526 /* GenericListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244B4624927D18003EA526 /* GenericListUIView.swift */; };
+		3675B642249499BA000049E3 /* VenueProfileListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */; };
+		3675B6442495B457000049E3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6432495B457000049E3 /* Alert.swift */; };
 		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
 		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
@@ -342,7 +344,7 @@
 		36244A492491D0F3003EA526 /* VenueInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInfoTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueMainTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueGenericTableViewCell.swift; sourceTree = "<group>"; };
-		36244A4C2491D0F3003EA526 /* VenueOpeningTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueOpeningTimeTableViewCell.swift; sourceTree = "<group>"; };
+		36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueOpeningHoursTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VenueProfile.storyboard; sourceTree = "<group>"; };
 		36244A4E2491D0F3003EA526 /* VenueProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueProfileViewController.swift; sourceTree = "<group>"; };
 		36244A502491D0F3003EA526 /* EventProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventProfile.storyboard; sourceTree = "<group>"; };
@@ -376,6 +378,8 @@
 		36244B3B249204A9003EA526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36244B402492097D003EA526 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		36244B4624927D18003EA526 /* GenericListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListUIView.swift; sourceTree = "<group>"; };
+		3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueProfileListsViewController.swift; sourceTree = "<group>"; };
+		3675B6432495B457000049E3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
 		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -663,7 +667,7 @@
 			children = (
 				36244A442491D0F3003EA526 /* User Profile */,
 				36244A472491D0F3003EA526 /* Venue Profile */,
-				36244A4F2491D0F3003EA526 /* New Group */,
+				36244A4F2491D0F3003EA526 /* Event Profile */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -693,19 +697,19 @@
 				36244A492491D0F3003EA526 /* VenueInfoTableViewCell.swift */,
 				36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */,
 				36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */,
-				36244A4C2491D0F3003EA526 /* VenueOpeningTimeTableViewCell.swift */,
+				36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		36244A4F2491D0F3003EA526 /* New Group */ = {
+		36244A4F2491D0F3003EA526 /* Event Profile */ = {
 			isa = PBXGroup;
 			children = (
 				36244A502491D0F3003EA526 /* EventProfile.storyboard */,
 				36244A512491D0F3003EA526 /* Cells */,
 				36244A532491D0F3003EA526 /* EventProfileViewController.swift */,
 			);
-			path = "New Group";
+			path = "Event Profile";
 			sourceTree = "<group>";
 		};
 		36244A512491D0F3003EA526 /* Cells */ = {
@@ -738,6 +742,8 @@
 			children = (
 				36244A642491D0F5003EA526 /* Cells */,
 				36244B4624927D18003EA526 /* GenericListUIView.swift */,
+				3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */,
+				3675B6432495B457000049E3 /* Alert.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1120,6 +1126,7 @@
 				36244A022491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				36244AC02491D0F8003EA526 /* EventProfileViewController.swift in Sources */,
 				36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */,
+				3675B642249499BA000049E3 /* VenueProfileListsViewController.swift in Sources */,
 				362449DE2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
@@ -1135,6 +1142,7 @@
 				36244A9C2491D0F8003EA526 /* FirebaseService.swift in Sources */,
 				36244B2F2491D0F9003EA526 /* FollowUserProtocol+Extensions.swift in Sources */,
 				36244AC32491D0F8003EA526 /* Metadata.swift in Sources */,
+				3675B6442495B457000049E3 /* Alert.swift in Sources */,
 				362449EA2491D087003EA526 /* SearchFiltersViewController.swift in Sources */,
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
@@ -1150,7 +1158,7 @@
 				36244A202491D087003EA526 /* FriendsTableViewController.swift in Sources */,
 				36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */,
 				36244A292491D087003EA526 /* MainViewController.swift in Sources */,
-				36244AB12491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */,
+				36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244AF62491D0F8003EA526 /* EventCollectionViewCell.swift in Sources */,
 				36244A112491D087003EA526 /* MenuTableViewCell.swift in Sources */,
 				36244AA22491D0F8003EA526 /* UserProfileViewController.swift in Sources */,
@@ -1190,7 +1198,7 @@
 				36244AF42491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
 				362449DF2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F72491D087003EA526 /* FeedCollectionViewCell.swift in Sources */,
-				36244AB22491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */,
+				36244AB22491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244A8B2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				362449D32491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
 				36244A212491D087003EA526 /* FriendsTableViewController.swift in Sources */,
@@ -1260,7 +1268,7 @@
 				36244AF52491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
 				362449E02491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F82491D087003EA526 /* FeedCollectionViewCell.swift in Sources */,
-				36244AB32491D0F8003EA526 /* VenueOpeningTimeTableViewCell.swift in Sources */,
+				36244AB32491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244A8C2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				362449D42491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
 				36244A222491D087003EA526 /* FriendsTableViewController.swift in Sources */,

@@ -73,7 +73,7 @@ class MessagesListTableViewController: UITableViewController {
             firebase.getDocument(documentID: cell.eventID, documentType: Event.self, fromCollection: .event) { (result) in
                 switch result{
                 case .failure(_):
-                    //TODO - present Event not found screen
+                    //TODO! - Message view (no event to show)
                     print()
                 case .success(let event):
                     let eventVC = UIStoryboard(name: "EventProfile", bundle: nil).instantiateViewController(withIdentifier: "EventProfileViewController") as! EventProfileViewController
@@ -96,7 +96,8 @@ class MessagesListTableViewController: UITableViewController {
                 switch result {
                 case .failure(let error):
                     print(error)
-                    //TODO - alert error
+                    //TODO! - ALERT: Something went wrong message
+                    Alert.somethingWentWrong.call(onViewController: self)
                 case .success(_):
                     self.messages.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)

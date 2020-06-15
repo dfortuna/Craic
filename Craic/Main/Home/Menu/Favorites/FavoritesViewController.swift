@@ -75,7 +75,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCollectionViewCell", for: indexPath) as! VenueCollectionViewCell
         let venue = favorites[indexPath.row]
         cell.delegate = self
-        //TODO check local database
+        //TODO! - Realm Access
         let isFavorite = false
         //************************
         cell.formatUI(venue: venue, isFavorite: isFavorite)

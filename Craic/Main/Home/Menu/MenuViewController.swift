@@ -30,7 +30,6 @@ class MenuViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        print("*********um teste maroto")
         return .lightContent
     }
     

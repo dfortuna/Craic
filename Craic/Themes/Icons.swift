@@ -35,7 +35,7 @@ struct Icons {
     static let phone = #imageLiteral(resourceName: "phone")
     static let email = #imageLiteral(resourceName: "email")
     static let website = #imageLiteral(resourceName: "web")
-    static let address = #imageLiteral(resourceName: "pin")
+    static let address = #imageLiteral(resourceName: "location")
     
     //UserProfile (Locked):
     static let lockedAccount = #imageLiteral(resourceName: "locked")
@@ -45,7 +45,7 @@ struct Icons {
     static let isntFavoriteButton = #imageLiteral(resourceName: "favoriteButton2")
 
     // UserCell | UserProfile
-    static let follow = #imageLiteral(resourceName: "pin")
+    static let follow = #imageLiteral(resourceName: "addFriend")
     
     //UserProfile (add as Friend)
     static let addAsFriend = #imageLiteral(resourceName: "addFriend")

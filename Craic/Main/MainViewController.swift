@@ -17,7 +17,10 @@ class MainViewController: UIViewController {
     let databaseVersion = 1.2
     
     override func viewDidLoad() {
-        coreLocationService.checkLocationServices() // check authorizations and format current location
+        // check authorizations and format current location
+        if let alert = coreLocationService.checkLocationServices() {
+            alert.call(onViewController: self)
+        }
         getMetaData()
     }
     
@@ -31,7 +34,8 @@ class MainViewController: UIViewController {
                                     fromCollection: .metadata) { (result) in
                                         switch result {
                                         case .failure(let error):
-                                            //TODO - allert Try again later..
+                                            //TODO! - ALERT: Something went wrong message
+                                            Alert.somethingWentWrong.call(onViewController: self)
                                             print("getMetaData ", error)
                                         case .success(let metadata):
                                             self.checkAppVersion(metadata: metadata)
@@ -42,7 +46,8 @@ class MainViewController: UIViewController {
     
     func checkAppVersion(metadata: Metadata) {
         if metadata.appDatabaseVersion > databaseVersion {
-            //TODO - Alert update app version
+            //TODO! - ALERT: Update app version
+            Alert.updateAppVersion.call(onViewController: self)
         } else {
             checkIfUserIsLogged()
             formatCiyToDatabase(metadata: metadata)
@@ -76,7 +81,7 @@ class MainViewController: UIViewController {
         findUserCityToDatabase { (result) in
             switch result {
             case .failure(let error):
-                print(error) // TODO - check this
+                print(error) //TODO! - ???????????
             case .success(let currentAddress):
                 self.formatMetadataToDatabase(metadata: metadata, currentAddress: currentAddress)
             }

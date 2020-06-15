@@ -37,7 +37,6 @@ class FriendsViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        print("******um teste maroto 222")
         return .lightContent
     }
     
@@ -49,7 +48,7 @@ class FriendsViewController: UIViewController {
                                          field: "friends") { (result) in
                                             switch result {
                                             case .failure(let error):
-                                                //TODO - "no friends yet" image
+                                                //TODO! -  Message view (no friends to show)
                                                 print(error)
                                             case .success(let friendships):
                                                 self.formatFriends(from: friendships, userID: userId)
@@ -89,11 +88,9 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell
-        let height = cell?.userProfilePictureImageView.bounds.height
-        let width = cell?.userProfilePictureImageView.bounds.width
         cell?.delegate = self
         let friend = friends[indexPath.row]
-        cell?.formatUI(friendData: friend, isFavorite: false) //TODO
+        cell?.formatUI(friendData: friend, isFavorite: false)
          return cell!
     }
     
@@ -123,7 +120,6 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
 extension FriendsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = friendsCollectionView.frame.width - 12
-        print("%%%%% Freinds cell width", width )
         return CGSize(width: width , height: 120)
     }
 }

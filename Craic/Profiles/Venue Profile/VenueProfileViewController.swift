@@ -77,7 +77,7 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
             cell?.formatUI(forVenue: venue)
             return cell!
         case "OpeningHours":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VenueOpeningHoursTableViewCell", for: indexPath) as? VenueOpeningTimeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VenueOpeningHoursTableViewCell", for: indexPath) as? VenueOpeningHoursTableViewCell
             cell?.formatUI(forVenue: venue)
             return cell!
         case "Galery":

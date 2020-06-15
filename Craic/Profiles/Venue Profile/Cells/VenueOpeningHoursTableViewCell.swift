@@ -1,5 +1,5 @@
 //
-//  VenueOpeningTimeTableViewCell.swift
+//  VenueOpeningHoursTableViewCell.swift
 //  Project4
 //
 //  Created by Denis Fortuna on 11/4/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VenueOpeningTimeTableViewCell: UITableViewCell {
+class VenueOpeningHoursTableViewCell: UITableViewCell {
 
     @IBOutlet weak var openingTimeLabel: UILabel!
     

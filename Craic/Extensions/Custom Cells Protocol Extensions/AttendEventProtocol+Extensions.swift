@@ -21,7 +21,7 @@ extension AttendEventProtocol {
     }
     
     func isUserAttendingEvent(userID: String) -> Bool {
-        //TODO check real database
+        //TODO! - Realm Access
         return false
     }
     
@@ -37,7 +37,7 @@ extension AttendEventProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }
@@ -48,7 +48,7 @@ extension AttendEventProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
         
@@ -70,7 +70,7 @@ extension AttendEventProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }
@@ -81,7 +81,7 @@ extension AttendEventProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print()// TODO
+                print() //TODO! - add @escaping
             }
         }
     }

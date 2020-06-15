@@ -61,7 +61,7 @@ class SearchViewController: UIViewController {
                 self.formatResult(forList: events)
             case .failure(let error):
                 DispatchQueue.main.async {
-                    print(error) //TODO: Alert (try again later)
+                    print(error) //TODO! - Message view (no events to show)
                 }
             }
         }
@@ -74,7 +74,7 @@ class SearchViewController: UIViewController {
                 self.formatResult(forList: venues)
             case .failure(let error):
                 DispatchQueue.main.async {
-                    print(error) //TODO: Alert (try again later)
+                    print(error) //TODO! - Message view (no venues to show)
                 }
             }
         }
@@ -98,7 +98,6 @@ class SearchViewController: UIViewController {
         self.navigationController?.present(filtersVC, animated: true)
         filtersVC.filtersSet = {
             self.filters = SearchModel().getAttributesDictionary()
-            print(self.filters)
             self.fetchResults()
         }
     }
