@@ -96,24 +96,24 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellId = currentCellIds[indexPath.row]
-        
         guard let user = loggedUser else { return }
+        guard let venue = venue else { return }
         
+        let cellId = currentCellIds[indexPath.row]
         switch cellId {
         case "Galery":
             print()
-        case "Events":
             
-            let geneircListVC = GenericListViewController<Event, EventCollectionViewCell, EventProfileViewController>()
+        case "Events":
+            let geneircListVC = VenueEventsViewController()
             geneircListVC.setData(isASortedList: false,
                                    viewForCollsTopConstraint: nil,
                                    loggedUser: user,
                                    searchType: .events,
-                                   controllerTitle: "Events")
+                                   controllerTitle: "Events",
+                                   objectID: venue.id)
             self.navigationController?.pushViewController(geneircListVC, animated: true)
 
-            
         case "Followers":
             print()
         default:

@@ -259,6 +259,7 @@
 		3675B64624993EE3000049E3 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64524993EE3000049E3 /* SearchType.swift */; };
 		3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6472499682E000049E3 /* GenericListViewController.swift */; };
 		3675B64A249A6E40000049E3 /* FIRCellInputObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B649249A6E40000049E3 /* FIRCellInputObj.swift */; };
+		3675B64C249AEE32000049E3 /* VenueEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */; };
 		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
 		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
@@ -378,6 +379,7 @@
 		3675B64524993EE3000049E3 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
 		3675B6472499682E000049E3 /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
 		3675B649249A6E40000049E3 /* FIRCellInputObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCellInputObj.swift; sourceTree = "<group>"; };
+		3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueEventsViewController.swift; sourceTree = "<group>"; };
 		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
 		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -681,14 +683,15 @@
 		36244A472491D0F3003EA526 /* Venue Profile */ = {
 			isa = PBXGroup;
 			children = (
-				36244A482491D0F3003EA526 /* Cells */,
+				36244A482491D0F3003EA526 /* Profile Cells */,
 				36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */,
 				36244A4E2491D0F3003EA526 /* VenueProfileViewController.swift */,
+				3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */,
 			);
 			path = "Venue Profile";
 			sourceTree = "<group>";
 		};
-		36244A482491D0F3003EA526 /* Cells */ = {
+		36244A482491D0F3003EA526 /* Profile Cells */ = {
 			isa = PBXGroup;
 			children = (
 				36244A492491D0F3003EA526 /* VenueInfoTableViewCell.swift */,
@@ -696,7 +699,7 @@
 				36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */,
 				36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */,
 			);
-			path = Cells;
+			path = "Profile Cells";
 			sourceTree = "<group>";
 		};
 		36244A4F2491D0F3003EA526 /* Event Profile */ = {
@@ -1116,6 +1119,7 @@
 				3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */,
 				36244AE42491D0F8003EA526 /* Friendship.swift in Sources */,
 				36244A082491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
+				3675B64C249AEE32000049E3 /* VenueEventsViewController.swift in Sources */,
 				36244B052491D0F8003EA526 /* Colors.swift in Sources */,
 				36244AD82491D0F8003EA526 /* Message.swift in Sources */,
 				36244A9F2491D0F8003EA526 /* CoreLocationService.swift in Sources */,

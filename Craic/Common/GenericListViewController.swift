@@ -23,8 +23,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
 // MARK: - Variables
     
     private var genericCollectionView: UICollectionView!
-    private let firebaseService = FirebaseService.shared
-    private let coreLocationService = CoreLocationService.shared
+    let firebaseService = FirebaseService.shared
     private var resultList = [FIRObjectProtocol]()
     private let cellBorder: CGFloat = 12
     
@@ -34,15 +33,17 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     private var searchData: SearchData!
     private var loggedUser: User!
     private var controllerTitle: String?
+    var objID: String?
     
  // MARK: - Inicialization
     
-    func setData(isASortedList: Bool, viewForCollsTopConstraint: UIView?, loggedUser: User, searchType: SearchType, controllerTitle: String?) {
+    func setData(isASortedList: Bool, viewForCollsTopConstraint: UIView?, loggedUser: User, searchType: SearchType, controllerTitle: String?, objectID: String?) {
         self.isASortedList = isASortedList
         self.viewForCollsTopConstraint = viewForCollsTopConstraint
         self.loggedUser = loggedUser
         self.searchData = searchType.getCellData()
         self.controllerTitle = controllerTitle
+        self.objID = objectID
     }
     
 // MARK: - View Controller Lifecyle
@@ -51,12 +52,10 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
         self.title = controllerTitle
         layoutSubviews()
         registerListCells()
-        self.genericCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchData()
-        genericCollectionView.reloadData()
     }
     
     private func registerListCells() {
@@ -76,11 +75,11 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
  // MARK: - Logic
 
     //Function has to be overwritten for every subclass of the GenericListViewController
-    private func fetchData(){
+    func fetchData(){
 
     }
     
-    private func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
+    func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
         resultList.removeAll()
         resultList = list
         DispatchQueue.main.async {
