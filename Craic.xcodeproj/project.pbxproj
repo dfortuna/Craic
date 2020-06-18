@@ -93,9 +93,6 @@
 		36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
 		36244A1E2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
 		36244A1F2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
-		36244A202491D087003EA526 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C72491D086003EA526 /* FriendsTableViewController.swift */; };
-		36244A212491D087003EA526 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C72491D086003EA526 /* FriendsTableViewController.swift */; };
-		36244A222491D087003EA526 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C72491D086003EA526 /* FriendsTableViewController.swift */; };
 		36244A232491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
 		36244A242491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
 		36244A252491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
@@ -258,9 +255,10 @@
 		36244B432492097D003EA526 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36244B402492097D003EA526 /* Colors.xcassets */; };
 		36244B4424920985003EA526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36244B322491D319003EA526 /* Assets.xcassets */; };
 		36244B4524920986003EA526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36244B322491D319003EA526 /* Assets.xcassets */; };
-		36244B4724927D18003EA526 /* GenericListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244B4624927D18003EA526 /* GenericListUIView.swift */; };
-		3675B642249499BA000049E3 /* VenueProfileListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */; };
 		3675B6442495B457000049E3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6432495B457000049E3 /* Alert.swift */; };
+		3675B64624993EE3000049E3 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64524993EE3000049E3 /* SearchType.swift */; };
+		3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6472499682E000049E3 /* GenericListViewController.swift */; };
+		3675B64A249A6E40000049E3 /* FIRCellInputObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B649249A6E40000049E3 /* FIRCellInputObj.swift */; };
 		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
 		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
@@ -322,7 +320,6 @@
 		362449C32491D086003EA526 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		362449C42491D086003EA526 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		362449C62491D086003EA526 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		362449C72491D086003EA526 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		362449C82491D086003EA526 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		362449C92491D086003EA526 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		362449CA2491D086003EA526 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -377,9 +374,10 @@
 		36244B322491D319003EA526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/denisfortuna/Desktop/Projects/Craic/Craic/Supporting Files/Assets.xcassets"; sourceTree = "<absolute>"; };
 		36244B3B249204A9003EA526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36244B402492097D003EA526 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		36244B4624927D18003EA526 /* GenericListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListUIView.swift; sourceTree = "<group>"; };
-		3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueProfileListsViewController.swift; sourceTree = "<group>"; };
 		3675B6432495B457000049E3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		3675B64524993EE3000049E3 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
+		3675B6472499682E000049E3 /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
+		3675B649249A6E40000049E3 /* FIRCellInputObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCellInputObj.swift; sourceTree = "<group>"; };
 		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
 		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -606,7 +604,6 @@
 			isa = PBXGroup;
 			children = (
 				362449C62491D086003EA526 /* FriendsViewController.swift */,
-				362449C72491D086003EA526 /* FriendsTableViewController.swift */,
 				362449C82491D086003EA526 /* Friends.storyboard */,
 			);
 			path = Friends;
@@ -741,9 +738,10 @@
 			isa = PBXGroup;
 			children = (
 				36244A642491D0F5003EA526 /* Cells */,
-				36244B4624927D18003EA526 /* GenericListUIView.swift */,
-				3675B641249499BA000049E3 /* VenueProfileListsViewController.swift */,
 				3675B6432495B457000049E3 /* Alert.swift */,
+				3675B64524993EE3000049E3 /* SearchType.swift */,
+				3675B6472499682E000049E3 /* GenericListViewController.swift */,
+				3675B649249A6E40000049E3 /* FIRCellInputObj.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1115,25 +1113,25 @@
 				36244ADB2491D0F8003EA526 /* User.swift in Sources */,
 				362449D22491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
 				362449ED2491D087003EA526 /* SearchViewController.swift in Sources */,
+				3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */,
 				36244AE42491D0F8003EA526 /* Friendship.swift in Sources */,
 				36244A082491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
 				36244B052491D0F8003EA526 /* Colors.swift in Sources */,
 				36244AD82491D0F8003EA526 /* Message.swift in Sources */,
 				36244A9F2491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AB72491D0F8003EA526 /* VenueProfileViewController.swift in Sources */,
+				3675B64A249A6E40000049E3 /* FIRCellInputObj.swift in Sources */,
 				36244AA82491D0F8003EA526 /* VenueInfoTableViewCell.swift in Sources */,
 				36244A932491D0F8003EA526 /* FIRCollectionReference.swift in Sources */,
 				36244A022491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				36244AC02491D0F8003EA526 /* EventProfileViewController.swift in Sources */,
 				36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */,
-				3675B642249499BA000049E3 /* VenueProfileListsViewController.swift in Sources */,
 				362449DE2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
 				36244AE12491D0F8003EA526 /* MessageType.swift in Sources */,
 				36244AE72491D0F8003EA526 /* Feed.swift in Sources */,
 				36244AF32491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
-				36244B4724927D18003EA526 /* GenericListUIView.swift in Sources */,
 				36244A872491D0F8003EA526 /* FacebookService.swift in Sources */,
 				36244AF92491D0F8003EA526 /* UserCollectionViewCell.swift in Sources */,
 				36244A902491D0F8003EA526 /* FirebaseError.swift in Sources */,
@@ -1155,7 +1153,6 @@
 				36244A322491D087003EA526 /* LoginViewController.swift in Sources */,
 				36244A992491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
 				36244B022491D0F8003EA526 /* Icons.swift in Sources */,
-				36244A202491D087003EA526 /* FriendsTableViewController.swift in Sources */,
 				36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */,
 				36244A292491D087003EA526 /* MainViewController.swift in Sources */,
 				36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
@@ -1177,6 +1174,7 @@
 				36244AC62491D0F8003EA526 /* Friend.swift in Sources */,
 				36244A8A2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				36244A262491D087003EA526 /* MenuViewController.swift in Sources */,
+				3675B64624993EE3000049E3 /* SearchType.swift in Sources */,
 				36244B232491D0F8003EA526 /* UINavigationController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1201,7 +1199,6 @@
 				36244AB22491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244A8B2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				362449D32491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
-				36244A212491D087003EA526 /* FriendsTableViewController.swift in Sources */,
 				362449DC2491D087003EA526 /* PriceTableViewCell.swift in Sources */,
 				362449D02491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244A9D2491D0F8003EA526 /* FirebaseService.swift in Sources */,
@@ -1271,7 +1268,6 @@
 				36244AB32491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244A8C2491D0F8003EA526 /* FacebookUser.swift in Sources */,
 				362449D42491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
-				36244A222491D087003EA526 /* FriendsTableViewController.swift in Sources */,
 				362449DD2491D087003EA526 /* PriceTableViewCell.swift in Sources */,
 				362449D12491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244A9E2491D0F8003EA526 /* FirebaseService.swift in Sources */,

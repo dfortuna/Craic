@@ -8,13 +8,13 @@
 
 import UIKit
 
-class VenueProfileViewController: UIViewController {
+class VenueProfileViewController: UIViewController, FIRObjectViewController {
     
+    var firObj: FIRObjectProtocol?
     @IBOutlet weak var venueProfileTableView: UITableView!
     private var currentCellIds = ["Main", "Info"]
     let loggedUser = UserSettings().getLoggedUser()
     var venue: Venue?
-    let firestore = FirebaseService.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,21 +97,24 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellId = currentCellIds[indexPath.row]
+        
+        guard let user = loggedUser else { return }
+        
         switch cellId {
         case "Galery":
             print()
         case "Events":
-//            let eventProfile = UIStoryboard(name: "EventProfile", bundle: nil)
-//            .instantiateViewController(withIdentifier: "EventProfileViewController")
-//                as! EventProfileViewController
-//            self.navigationController?.pushViewController(eventProfile, animated: true)
-//            eventProfile.formatUI(forEvent: event)
-            print()
+            
+            let geneircListVC = GenericListViewController<Event, EventCollectionViewCell, EventProfileViewController>()
+            geneircListVC.setData(isASortedList: false,
+                                   viewForCollsTopConstraint: nil,
+                                   loggedUser: user,
+                                   searchType: .events,
+                                   controllerTitle: "Events")
+            self.navigationController?.pushViewController(geneircListVC, animated: true)
+
+            
         case "Followers":
-//            let followersLit = UIStoryboard(name: "UsersList", bundle: nil)
-//            .instantiateViewController(withIdentifier: "UsersListViewController")
-//            as? UsersListViewController
-//            self.navigationController?.pushViewController(followersLit, animated: true)
             print()
         default:
             break

@@ -38,4 +38,22 @@ struct User: FIRObjectProtocol {
             return nil
         }
     }
+    
+    init?(friendship: Friendship, userID: String) {
+        if userID == friendship.f1Id {
+            self.name = friendship.f2Name
+            self.id = friendship.f2Id
+            self.profileImage = friendship.f2ProfilePicture
+        } else if userID == friendship.f2Id {
+            self.name = friendship.f1Name
+            self.id = friendship.f1Id
+            self.profileImage = friendship.f1ProfilePicture
+        } else {
+            return nil
+        }
+        self.email = ""
+        self.gender = ""
+        self.firstName = ""
+        self.lastName = ""
+    }
 }

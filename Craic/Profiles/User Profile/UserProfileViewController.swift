@@ -8,7 +8,9 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, FIRObjectViewController {
+    var firObj: FIRObjectProtocol?
+    
     
     //MARK: - Variables
     private enum SearchType {
@@ -151,30 +153,29 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         case .friends:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell else { return UICollectionViewCell() }
             guard let friendship = resultList[indexPath.row] as? Friendship else { return UICollectionViewCell() }
-            guard let friend = Friend(friendship: friendship, userID: user.id) else { return UICollectionViewCell() }
+            guard let friend = User(friendship: friendship, userID: user.id) else { return UICollectionViewCell() }
             cell.delegate = self
-            //TODO! - Realm Access
-            cell.formatUI(friendData: friend, isFavorite: false)
+            
+            guard let obj = FIRCellInputObj(withFIRObjectProtocol: friend) else { return UICollectionViewCell()}
+            cell.formatCellUI(withData: obj)
             return cell
             
         case .events:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as? EventCollectionViewCell else { return UICollectionViewCell() }
             guard let event = resultList[indexPath.row] as? Event else { return UICollectionViewCell() }
-            
-            let userDistance = coreLocationService.userDistanceToCoordinate(latitudeStr: event.latitude,
-                                                                            longitudeStr: event.longitude)
             cell.delegate = self
-            //TODO! - Realm Access
-            cell.formatUI(event: event, isAttending: false, distance: userDistance)
+            
+            guard let obj = FIRCellInputObj(withFIRObjectProtocol: event) else { return UICollectionViewCell()}
+            cell.formatCellUI(withData: obj)
             return cell
             
         case .favoriteVenues:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCollectionViewCell", for: indexPath) as? VenueCollectionViewCell else { return UICollectionViewCell() }
             guard let venue = resultList[indexPath.row] as? Venue else { return UICollectionViewCell() }
-            let isFavorite = false
             cell.delegate = self
-            //TODO! - Realm Access
-            cell.formatUI(venue: venue, isFavorite: isFavorite)
+            
+            guard let obj = FIRCellInputObj(withFIRObjectProtocol: venue) else { return UICollectionViewCell()}
+            cell.formatCellUI(withData: obj)
             return cell
         }
     }
@@ -227,7 +228,7 @@ extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
 extension UserProfileViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
     
     func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.currentVenue else { return }
+        guard let venue = sender.venue else { return }
         guard let user = loggedUser else { return }
         
         if sender.isFavorite {
@@ -241,7 +242,7 @@ extension UserProfileViewController: VenueCollectionViewCellProtocol, FavoriteVe
 //MARK: - EventViewCellDelegate
 extension UserProfileViewController: EventCollectionViewCellProtocol, AttendEventProtocol {
     func handleAttendButton(sender: EventCollectionViewCell) {
-        guard let event = sender.currentEvent else { return }
+        guard let event = sender.event else { return }
         guard let user = loggedUser else { return }
 
         if sender.isAttending {
@@ -256,17 +257,13 @@ extension UserProfileViewController: EventCollectionViewCellProtocol, AttendEven
 extension UserProfileViewController: UserCollectionViewCellProtocol, FollowUserProtocol {
     func handleFavoriteToggle(sender: UserCollectionViewCell) {
         
-        guard let friend = sender.friend else { return }
-        guard let userFriend = User(with: ["id": friend.friendID as AnyObject,
-                                           "name": friend.name as AnyObject,
-                                           "profileImage": friend.profilePic as AnyObject]) else { return }
-        
+        guard let friend = sender.user else { return }
         guard let user = loggedUser else { return }
 
         if sender.isFavorite {
-            followUser(forFriend: userFriend, loggedUser: user)
+            followUser(forFriend: friend, loggedUser: user)
         } else {
-            unfollowUser(forFriend: userFriend, loggedUser: user)
+            unfollowUser(forFriend: friend, loggedUser: user)
         }
     }
 }

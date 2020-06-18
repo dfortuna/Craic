@@ -75,10 +75,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCollectionViewCell", for: indexPath) as! VenueCollectionViewCell
         let venue = favorites[indexPath.row]
         cell.delegate = self
-        //TODO! - Realm Access
-        let isFavorite = false
-        //************************
-        cell.formatUI(venue: venue, isFavorite: isFavorite)
+        
+        guard let obj = FIRCellInputObj(withFIRObjectProtocol: venue) else { return UICollectionViewCell() }
+        cell.formatCellUI(withData: obj)
         return cell
     }
 }
@@ -103,7 +102,7 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
 extension FavoritesViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
     func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.currentVenue else { return }
+        guard let venue = sender.venue else { return }
         guard let user = loggedUser else { return }
 
         if sender.isFavorite {

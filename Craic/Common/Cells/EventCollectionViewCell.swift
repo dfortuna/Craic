@@ -12,11 +12,12 @@ protocol EventCollectionViewCellProtocol: class {
     func handleAttendButton(sender:EventCollectionViewCell)
 }
 
-class EventCollectionViewCell: UICollectionViewCell {
+class EventCollectionViewCell: UICollectionViewCell, FIRObjectCell {
     
-    weak var delegate: EventCollectionViewCellProtocol?
-    var currentEvent: Event?
+    var event: Event?
+    var distance: String!
     var isAttending = false
+    weak var delegate: EventCollectionViewCellProtocol?
     
     @IBOutlet weak var eventProfilePicImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
@@ -58,22 +59,17 @@ class EventCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func formatUI(event: Event, isAttending: Bool, distance: String?) {
+    func formatCellUI(withData cellData: FIRCellInputObj) {
         self.format()
-        currentEvent = event
+        guard let event = cellData.event else { return }
+        self.event = event 
         eventNameLabel.attributedText = formatLabel(labelText: event.name)
-        
         eventPriceLabel.text = event.price
-        if let d = distance {
-            distanceLabel.text = d
-        } else {
-            distanceLabel.text = ""
-        }
-        
+        distanceLabel.text = cellData.distance
         eventDateLabel.text = event.date
         
         formatprofilePicture(event)
-        self.isAttending = isAttending
+        self.isAttending = cellData.isAttending ?? false
         setAttendButtonName()
     }
     

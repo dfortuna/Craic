@@ -113,23 +113,23 @@ extension SearchViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let userID = loggedUser?.id else { return UICollectionViewCell() }
+        
         switch searchType {
         case .events:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
             guard let event = resultList[indexPath.row] as? Event else { return UICollectionViewCell() }
-            
-            let userDistance = coreLocationService.userDistanceToCoordinate(latitudeStr: event.latitude,
-                                                                            longitudeStr: event.longitude)
-            
             cell.delegate = self
-            cell.formatUI(event: event, isAttending: isUserAttendingEvent(userID: userID), distance: userDistance)
+            guard let obj = FIRCellInputObj(withFIRObjectProtocol: event) else { return UICollectionViewCell()}
+            cell.formatCellUI(withData: obj)
             return cell
+            
         case .venues:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCollectionViewCell", for: indexPath) as! VenueCollectionViewCell
             guard let venue = resultList[indexPath.row] as? Venue else { return UICollectionViewCell() }
             cell.delegate = self
-            cell.formatUI(venue: venue, isFavorite: isFavorite(userID: userID))
+            
+            guard let obj = FIRCellInputObj(withFIRObjectProtocol: venue) else { return UICollectionViewCell()}
+            cell.formatCellUI(withData: obj)
             return cell
         }
     }
@@ -174,7 +174,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
 extension SearchViewController: EventCollectionViewCellProtocol, AttendEventProtocol {
     func handleAttendButton(sender: EventCollectionViewCell) {
-        guard let event = sender.currentEvent else { return }
+        guard let event = sender.event else { return }
         guard let user = loggedUser else { return }
         
         if sender.isAttending {
@@ -191,7 +191,7 @@ extension SearchViewController: EventCollectionViewCellProtocol, AttendEventProt
 
 extension SearchViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
     func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.currentVenue else { return }
+        guard let venue = sender.venue else { return }
         guard let user = loggedUser else { return }
 
         if sender.isFavorite {

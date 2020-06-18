@@ -261,20 +261,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueGenericTableViewCell" id="Abe-l9-Gtc" customClass="VenueGenericTableViewCell" customModule="Craic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="745" width="414" height="50.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="745" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-l9-Gtc" id="Sl5-Sx-aYE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-ss-1cu">
-                                                    <rect key="frame" x="30" y="11.666666666666666" width="64.666666666666671" height="27.333333333333336"/>
+                                                    <rect key="frame" x="30" y="11.666666666666664" width="64.666666666666671" height="27"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eqg-Zv-YNc">
-                                                    <rect key="frame" x="379" y="15.333333333333336" width="20" height="20"/>
+                                                    <rect key="frame" x="379" y="15" width="20" height="20"/>
                                                     <color key="tintColor" name="DarkBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="IQC-y8-3RS"/>
@@ -323,17 +323,17 @@
         <!--Venue Profile Lists View Controller-->
         <scene sceneID="l0y-Iw-Hc7">
             <objects>
-                <viewController id="edb-GQ-m3b" customClass="VenueProfileListsViewController" customModule="Craic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VenueProfileListsViewController" id="edb-GQ-m3b" customClass="VenueProfileListsViewController" customModule="Craic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kaG-Y1-Khm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-1r-16o" customClass="GenericListUIView" customModule="Craic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bFb-iK-Hxx" firstAttribute="trailing" secondItem="3cg-1r-16o" secondAttribute="trailing" id="3v3-zv-sV9"/>
                             <constraint firstItem="3cg-1r-16o" firstAttribute="top" secondItem="bFb-iK-Hxx" secondAttribute="top" id="5ol-Jo-BdM"/>

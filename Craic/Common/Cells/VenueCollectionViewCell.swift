@@ -12,11 +12,11 @@ protocol VenueCollectionViewCellProtocol: class {
     func handleAddAsFavorite(sender:VenueCollectionViewCell)
 }
 
-class VenueCollectionViewCell: UICollectionViewCell {
+class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
     
-    weak var delegate: VenueCollectionViewCellProtocol?
-    var currentVenue: Venue?
+    var venue: Venue?
     var isFavorite = false
+    weak var delegate: VenueCollectionViewCellProtocol?
     
     @IBOutlet weak var venueProfileImageView: UIImageView!
     @IBOutlet weak var venueNameLabel: UILabel!
@@ -55,14 +55,12 @@ class VenueCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func formatUI(venue: Venue, isFavorite: Bool){
-        self.format()
-        currentVenue = venue
+    func formatCellUI(withData cellData: FIRCellInputObj) {
+        guard let venue = cellData.venue, let isFollowing = cellData.isFollowing else { return }
+        self.venue = venue
         venueNameLabel.attributedText = formatLabel(labelText: venue.name)
+        self.isFavorite = isFollowing
         formatProfilePicture(venue)
-        
-//        self.isFavorite = isFavorite
-        self.isFavorite = true
         setFollowingButtonName()
     }
     

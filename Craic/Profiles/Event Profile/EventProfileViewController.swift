@@ -8,7 +8,10 @@
 
 import UIKit
 
-class EventProfileViewController: UIViewController {
+class EventProfileViewController: UIViewController, FIRObjectViewController {
+    
+    var firObj: FIRObjectProtocol?
+    
     
     var cellIds = ["eventProfilePictures"]
     var event: Event?

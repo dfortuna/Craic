@@ -11,7 +11,7 @@ import UIKit
 class FriendsViewController: UIViewController {
     
     var firebase = FirebaseService.shared
-    var friends = [Friend]()
+    var friends = [User]()
     var loggedUser: User?
     
     @IBOutlet weak var friendsCollectionView: UICollectionView!
@@ -58,7 +58,7 @@ class FriendsViewController: UIViewController {
 
     func formatFriends(from friendships: [Friendship], userID: String){
         for friendship in friendships {
-            if let friend = Friend(friendship: friendship, userID: userID) {
+            if let friend = User(friendship: friendship, userID: userID) {
                 friends.append(friend)
             }
         }
@@ -90,7 +90,9 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell
         cell?.delegate = self
         let friend = friends[indexPath.row]
-        cell?.formatUI(friendData: friend, isFavorite: false)
+        
+        guard let obj = FIRCellInputObj(withFIRObjectProtocol: friend) else { return UICollectionViewCell()}
+        cell?.formatCellUI(withData: obj)
          return cell!
     }
     
@@ -99,10 +101,6 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
         
         if let friendCell = collectionView.cellForItem(at: indexPath) as? UserCollectionViewCell {
             let friend = friends[indexPath.row]
-            guard let user = User(with: ["id": friend.friendID as AnyObject,
-                                         "name": friend.name as AnyObject,
-                                         "profileImage": friend.profilePic as AnyObject]) else { return }
-            
             var friendImage = Icons.userPictureNotFound
             if let friendProfileImage = friendCell.userProfilePictureImageView.image {
                 friendImage = friendProfileImage
@@ -112,7 +110,7 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
 
             self.navigationController?.pushViewController(userProfile, animated: true)
             
-            userProfile.setData(forProfileImage: friendImage, andUser: user)
+            userProfile.setData(forProfileImage: friendImage, andUser: friend)
         }
     }
 }
@@ -128,17 +126,13 @@ extension FriendsViewController: UICollectionViewDelegateFlowLayout {
 extension FriendsViewController: UserCollectionViewCellProtocol, FollowUserProtocol {
     func handleFavoriteToggle(sender: UserCollectionViewCell) {
         
-        guard let friend = sender.friend else { return }
-        guard let userFriend = User(with: ["id": friend.friendID as AnyObject,
-                                           "name": friend.name as AnyObject,
-                                           "profileImage": friend.profilePic as AnyObject]) else { return }
-        
+        guard let friend = sender.user else { return }
         guard let user = loggedUser else { return }
 
         if sender.isFavorite {
-            followUser(forFriend: userFriend, loggedUser: user)
+            followUser(forFriend: friend, loggedUser: user)
         } else {
-            unfollowUser(forFriend: userFriend, loggedUser: user)
+            unfollowUser(forFriend: friend, loggedUser: user)
         }
     }
 }

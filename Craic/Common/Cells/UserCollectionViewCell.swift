@@ -12,24 +12,24 @@ protocol UserCollectionViewCellProtocol: class {
     func handleFavoriteToggle(sender: UserCollectionViewCell)
 }
 
-class UserCollectionViewCell: UICollectionViewCell {
+class UserCollectionViewCell: UICollectionViewCell, FIRObjectCell {
+    
+    var user: User?
+    var isFavorite = false
+    weak var delegate: UserCollectionViewCellProtocol?
     
     @IBOutlet weak var userProfilePictureImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var isFavoriteButtonOutlet: UIButton!
-    var friend: Friend?
-    var isFavorite = false
-    weak var delegate: UserCollectionViewCellProtocol?
-    
     @IBAction func isFavoriteButtonAction(_ sender: UIButton) {
         isFavorite = isFavorite == false ? true : false
         setIsFavoriteButtonName()
         delegate?.handleFavoriteToggle(sender: self)
     }
     
-    fileprivate func formatProfilePicture(_ friendData: Friend) {
+    fileprivate func formatProfilePicture(_ loggedUser: User) {
         userProfilePictureImageView.layer.cornerRadius = userProfilePictureImageView.frame.height / 2
-        if let profilePictureURL = URL(string: friendData.profilePic) {
+        if let profilePictureURL = URL(string: loggedUser.profileImage) {
             DispatchQueue.global().async {
                 guard let imageData = try? Data(contentsOf: profilePictureURL)  else { return }
                 DispatchQueue.main.async {
@@ -49,14 +49,13 @@ class UserCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func formatUI(friendData: Friend, isFavorite: Bool) {
+    func formatCellUI(withData cellData: FIRCellInputObj) {
         self.format()
-        friend = friendData
-        self.isFavorite = isFavorite
-        
-        formatProfilePicture(friendData)
-        userNameLabel.text = friendData.name
-        
+        guard let user = cellData.user else { return }
+        self.user = user
+        self.isFavorite = cellData.isFollowing ??  false
+        formatProfilePicture(user)
+        userNameLabel.text = user.name
         setIsFavoriteButtonName()
     }
 }
