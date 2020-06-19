@@ -172,32 +172,29 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
     
-extension SearchViewController: EventCollectionViewCellProtocol, AttendEventProtocol {
-    func handleAttendButton(sender: EventCollectionViewCell) {
-        guard let event = sender.event else { return }
-        guard let user = loggedUser else { return }
-        
-        if sender.isAttending {
-            attendEvent(forEvent: event, user: user)
+extension SearchViewController: FIRCellButtonProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    
+    func didTapFollowUserButton(sender: FIRObjectCell) {}
+    
+    func didTapFavoriteVenueButton(sender: FIRObjectCell) {
+        guard let venueCell = sender as? VenueCollectionViewCell else { return }
+        guard let venue = venueCell.venue else { return }
+        guard let loggedUser = loggedUser else { return }
+        if venueCell.isFavorite {
+            followVenue(forVenue: venue, user: loggedUser)
         } else {
-            unattendedEvent(forEvent: event, user: user)
+            unfollowVenue(forVenue: venue, user: loggedUser)
         }
     }
     
-    func handleShareButton(sender: EventCollectionViewCell) {
-        
-    }
-}
-
-extension SearchViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
-    func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.venue else { return }
-        guard let user = loggedUser else { return }
-
-        if sender.isFavorite {
-            followVenue(forVenue: venue, user: user)
+    func didTapAttendEventButton(sender: FIRObjectCell) {
+        guard let eventCell = sender as? EventCollectionViewCell else { return }
+        guard let event = eventCell.event else { return }
+        guard let loggedUser = loggedUser else { return }
+        if eventCell.isAttending {
+            attendEvent(forEvent: event, user: loggedUser)
         } else {
-            unfollowVenue(forVenue: venue, user: user)
+            unattendedEvent(forEvent: event, user: loggedUser)
         }
     }
 }

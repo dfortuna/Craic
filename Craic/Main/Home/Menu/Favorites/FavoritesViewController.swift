@@ -100,15 +100,20 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension FavoritesViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
-    func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.venue else { return }
-        guard let user = loggedUser else { return }
-
-        if sender.isFavorite {
-            followVenue(forVenue: venue, user: user)
+extension FavoritesViewController: FIRCellButtonProtocol, FavoriteVenueProtocol{
+    
+    func didTapFollowUserButton(sender: FIRObjectCell) {}
+    
+    func didTapAttendEventButton(sender: FIRObjectCell) {}
+    
+    func didTapFavoriteVenueButton(sender: FIRObjectCell) {
+        guard let venueCell = sender as? VenueCollectionViewCell else { return }
+        guard let venue = venueCell.venue else { return }
+        guard let loggedUser = loggedUser else { return }
+        if venueCell.isFavorite {
+            followVenue(forVenue: venue, user: loggedUser)
         } else {
-            unfollowVenue(forVenue: venue, user: user)
+            unfollowVenue(forVenue: venue, user: loggedUser)
         }
     }
 }

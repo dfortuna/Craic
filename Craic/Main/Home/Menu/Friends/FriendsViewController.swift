@@ -122,17 +122,21 @@ extension FriendsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-extension FriendsViewController: UserCollectionViewCellProtocol, FollowUserProtocol {
-    func handleFavoriteToggle(sender: UserCollectionViewCell) {
-        
-        guard let friend = sender.user else { return }
-        guard let user = loggedUser else { return }
-
-        if sender.isFavorite {
-            followUser(forFriend: friend, loggedUser: user)
+extension FriendsViewController: FIRCellButtonProtocol, FollowUserProtocol{
+    
+    func didTapFavoriteVenueButton(sender: FIRObjectCell) {}
+    
+    func didTapAttendEventButton(sender: FIRObjectCell) {}
+    
+    func didTapFollowUserButton(sender: FIRObjectCell) {
+        guard let userCell = sender as? UserCollectionViewCell else { return }
+        guard let user = userCell.user else { return }
+        guard let loggedUser = loggedUser else { return }
+        if userCell.isFavorite {
+            followUser(forFriend: user, loggedUser: loggedUser)
         } else {
-            unfollowUser(forFriend: friend, loggedUser: user)
+            unfollowUser(forFriend: user, loggedUser: loggedUser)
         }
     }
 }
+

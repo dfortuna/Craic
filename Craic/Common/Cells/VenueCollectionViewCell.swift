@@ -8,15 +8,11 @@
 
 import UIKit
 
-protocol VenueCollectionViewCellProtocol: class {
-    func handleAddAsFavorite(sender:VenueCollectionViewCell)
-}
-
 class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
     
     var venue: Venue?
     var isFavorite = false
-    weak var delegate: VenueCollectionViewCellProtocol?
+    weak var delegate: FIRCellButtonProtocol?
     
     @IBOutlet weak var venueProfileImageView: UIImageView!
     @IBOutlet weak var venueNameLabel: UILabel!
@@ -25,7 +21,7 @@ class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
     @IBAction func addFavoriteUIButton(_ sender: Any) {
         isFavorite = isFavorite == false ? true : false
         setFollowingButtonName()
-        delegate?.handleAddAsFavorite(sender: self)
+        delegate?.didTapFavoriteVenueButton(sender: self)
     }
     
     fileprivate func formatProfilePicture(_ venue: Venue) {

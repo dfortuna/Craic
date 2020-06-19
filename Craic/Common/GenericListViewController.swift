@@ -8,9 +8,17 @@
 
 import UIKit
 
+
+protocol FIRCellButtonProtocol: class {
+    func didTapFavoriteVenueButton(sender: FIRObjectCell)
+    func didTapFollowUserButton(sender: FIRObjectCell)
+    func didTapAttendEventButton(sender:FIRObjectCell)
+}
+
 protocol FIRObjectCell where Self: UICollectionViewCell {
     //Object that wraps all inputs for UICollectionViewCells that conform to the FIRObjectCell protocol
     func formatCellUI(withData cellData: FIRCellInputObj)
+    var delegate: FIRCellButtonProtocol? { get set }
 }
 
 protocol FIRObjectViewController where Self: UIViewController {
@@ -101,7 +109,8 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Dequeue cell as generic CELL(FIRObjectCell)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchData.cellID, for: indexPath) as? CELL else { return UICollectionViewCell() }
-
+        cell.delegate = self
+        
         // get obj for cell input(FIRObjectProtocol)
         guard let firObj = resultList[indexPath.row] as? OBJ else { return UICollectionViewCell() }
 
@@ -130,38 +139,34 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     }
 }
 
-//MARK: - VenueViewCellDelegate
-extension GenericListViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
-    func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.venue else { return }
-        if sender.isFavorite {
+extension GenericListViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    func didTapFavoriteVenueButton(sender: FIRObjectCell) {
+        guard let venueCell = sender as? VenueCollectionViewCell else { return }
+        guard let venue = venueCell.venue else { return }
+        if venueCell.isFavorite {
             followVenue(forVenue: venue, user: loggedUser)
         } else {
             unfollowVenue(forVenue: venue, user: loggedUser)
         }
     }
-}
-
-//MARK: - EventViewCellDelegate
-extension GenericListViewController: EventCollectionViewCellProtocol, AttendEventProtocol {
-    func handleAttendButton(sender: EventCollectionViewCell) {
-        guard let event = sender.event else { return }
-        if sender.isAttending {
-            attendEvent(forEvent: event, user: loggedUser)
-        } else {
-            unattendedEvent(forEvent: event, user: loggedUser)
-        }
-    }
-}
-
-//MARK: - UserViewCellDelegate
-extension GenericListViewController: UserCollectionViewCellProtocol, FollowUserProtocol {
-    func handleFavoriteToggle(sender: UserCollectionViewCell) {
-        guard let user = sender.user else { return }
-        if sender.isFavorite {
+    
+    func didTapFollowUserButton(sender: FIRObjectCell) {
+        guard let userCell = sender as? UserCollectionViewCell else { return }
+        guard let user = userCell.user else { return }
+        if userCell.isFavorite {
             followUser(forFriend: user, loggedUser: loggedUser)
         } else {
             unfollowUser(forFriend: user, loggedUser: loggedUser)
+        }
+    }
+    
+    func didTapAttendEventButton(sender: FIRObjectCell) {
+        guard let eventCell = sender as? EventCollectionViewCell else { return }
+        guard let event = eventCell.event else { return }
+        if eventCell.isAttending {
+            attendEvent(forEvent: event, user: loggedUser)
+        } else {
+            unattendedEvent(forEvent: event, user: loggedUser)
         }
     }
 }

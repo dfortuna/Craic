@@ -224,46 +224,37 @@ extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: - VenueViewCellDelegate
-extension UserProfileViewController: VenueCollectionViewCellProtocol, FavoriteVenueProtocol {
+extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    func didTapFavoriteVenueButton(sender: FIRObjectCell) {
+        guard let loggedUser = loggedUser else { return }
+        guard let venueCell = sender as? VenueCollectionViewCell else { return }
+        guard let venue = venueCell.venue else { return }
+        if venueCell.isFavorite {
+            followVenue(forVenue: venue, user: loggedUser)
+        } else {
+            unfollowVenue(forVenue: venue, user: loggedUser)
+        }
+    }
     
-    func handleAddAsFavorite(sender: VenueCollectionViewCell) {
-        guard let venue = sender.venue else { return }
-        guard let user = loggedUser else { return }
-        
-        if sender.isFavorite {
-            followVenue(forVenue: venue, user: user)
+    func didTapFollowUserButton(sender: FIRObjectCell) {
+        guard let userCell = sender as? UserCollectionViewCell else { return }
+        guard let user = userCell.user else { return }
+        guard let loggedUser = loggedUser else { return }
+        if userCell.isFavorite {
+            followUser(forFriend: user, loggedUser: loggedUser)
         } else {
-            unfollowVenue(forVenue: venue, user: user)
+            unfollowUser(forFriend: user, loggedUser: loggedUser)
         }
     }
-}
-
-//MARK: - EventViewCellDelegate
-extension UserProfileViewController: EventCollectionViewCellProtocol, AttendEventProtocol {
-    func handleAttendButton(sender: EventCollectionViewCell) {
-        guard let event = sender.event else { return }
-        guard let user = loggedUser else { return }
-
-        if sender.isAttending {
-            attendEvent(forEvent: event, user: user)
+    
+    func didTapAttendEventButton(sender: FIRObjectCell) {
+        guard let eventCell = sender as? EventCollectionViewCell else { return }
+        guard let event = eventCell.event else { return }
+        guard let loggedUser = loggedUser else { return }
+        if eventCell.isAttending {
+            attendEvent(forEvent: event, user: loggedUser)
         } else {
-            unattendedEvent(forEvent: event, user: user)
-        }
-    }
-}
-
-//MARK: - UserViewCellDelegate
-extension UserProfileViewController: UserCollectionViewCellProtocol, FollowUserProtocol {
-    func handleFavoriteToggle(sender: UserCollectionViewCell) {
-        
-        guard let friend = sender.user else { return }
-        guard let user = loggedUser else { return }
-
-        if sender.isFavorite {
-            followUser(forFriend: friend, loggedUser: user)
-        } else {
-            unfollowUser(forFriend: friend, loggedUser: user)
+            unattendedEvent(forEvent: event, user: loggedUser)
         }
     }
 }

@@ -8,28 +8,24 @@
 
 import UIKit
 
-protocol EventCollectionViewCellProtocol: class {
-    func handleAttendButton(sender:EventCollectionViewCell)
-}
-
 class EventCollectionViewCell: UICollectionViewCell, FIRObjectCell {
     
     var event: Event?
     var distance: String!
     var isAttending = false
-    weak var delegate: EventCollectionViewCellProtocol?
+    weak var delegate: FIRCellButtonProtocol?
     
     @IBOutlet weak var eventProfilePicImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventPriceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    
     @IBOutlet weak var attendButtonOutlet: UIButton!
+    
     @IBAction func attendButton(_ sender: UIButton) {
         isAttending = isAttending == false ? true : false
         setAttendButtonName()
-        delegate?.handleAttendButton(sender: self)
+        delegate?.didTapAttendEventButton(sender: self)
     }
     
     fileprivate func formatprofilePicture(_ event: Event) {

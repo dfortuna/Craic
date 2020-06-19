@@ -8,23 +8,20 @@
 
 import UIKit
 
-protocol UserCollectionViewCellProtocol: class {
-    func handleFavoriteToggle(sender: UserCollectionViewCell)
-}
-
 class UserCollectionViewCell: UICollectionViewCell, FIRObjectCell {
     
     var user: User?
     var isFavorite = false
-    weak var delegate: UserCollectionViewCellProtocol?
+    weak var delegate: FIRCellButtonProtocol?
     
     @IBOutlet weak var userProfilePictureImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var isFavoriteButtonOutlet: UIButton!
+    
     @IBAction func isFavoriteButtonAction(_ sender: UIButton) {
         isFavorite = isFavorite == false ? true : false
         setIsFavoriteButtonName()
-        delegate?.handleFavoriteToggle(sender: self)
+        delegate?.didTapFollowUserButton(sender: self)
     }
     
     fileprivate func formatProfilePicture(_ loggedUser: User) {
