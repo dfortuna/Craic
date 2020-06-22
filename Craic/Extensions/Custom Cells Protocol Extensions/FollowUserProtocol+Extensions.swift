@@ -13,15 +13,22 @@ protocol FollowUserProtocol {
 }
 
 extension FollowUserProtocol {
+    
+    private var realm: RealmService {
+        get {
+            return RealmService.shared
+        }
+    }
+    
     private var firestore: FirebaseService {
         get {
             return FirebaseService.shared
-        }
+        }           
     }
     
     func followUser(forFriend friend: User, loggedUser: User){
         addUserAsFollowerOnRemoteDatabase(forFriend: friend, loggedUser: loggedUser)
-        addUserAsFollowerOnLocalDatabase(forFriend: friend, loggedUser: loggedUser)
+        addUserAsFollowerOnLocalDatabase(forFriend: friend)
     }
     
     private func addUserAsFollowerOnRemoteDatabase(forFriend friend: User, loggedUser: User){
@@ -35,8 +42,9 @@ extension FollowUserProtocol {
         }
     }
     
-    private func addUserAsFollowerOnLocalDatabase(forFriend friend : User, loggedUser: User) {
-        
+    private func addUserAsFollowerOnLocalDatabase(forFriend friend : User) {
+        let realmEvent = FollowingUser(userID: friend.id, friendName: friend.name, friendProfilePicture: friend.profileImage)
+        realm.create(realmEvent)
     }
     
     func unfollowUser(forFriend friend: User, loggedUser: User){
@@ -55,8 +63,8 @@ extension FollowUserProtocol {
         }
     }
     
-    private func deleteUserAsFollowerOnLocalDatabase(forFriend event: User, loggedUser: User) {
-        
+    private func deleteUserAsFollowerOnLocalDatabase(forFriend user: User, loggedUser: User) {
+        realm.deleteObject(ofPrimaryKey: user.id, fromCollection: .followingUser)
     }
     
 }

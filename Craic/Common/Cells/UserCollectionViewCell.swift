@@ -50,7 +50,7 @@ class UserCollectionViewCell: UICollectionViewCell, FIRObjectCell {
         self.format()
         guard let user = cellData.user else { return }
         self.user = user
-        self.isFavorite = cellData.isFollowing ??  false
+        self.isFavorite = user.isFollowing ??  false
         formatProfilePicture(user)
         userNameLabel.text = user.name
         setIsFavoriteButtonName()

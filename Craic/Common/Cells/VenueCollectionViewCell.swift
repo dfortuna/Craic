@@ -52,10 +52,11 @@ class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
     }
     
     func formatCellUI(withData cellData: FIRCellInputObj) {
-        guard let venue = cellData.venue, let isFollowing = cellData.isFollowing else { return }
+        guard let venue = cellData.venue else { return }
         self.venue = venue
+        self.isFavorite = venue.isFollowing ?? false
         venueNameLabel.attributedText = formatLabel(labelText: venue.name)
-        self.isFavorite = isFollowing
+        
         formatProfilePicture(venue)
         setFollowingButtonName()
     }

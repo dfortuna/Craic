@@ -260,6 +260,11 @@
 		3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6472499682E000049E3 /* GenericListViewController.swift */; };
 		3675B64A249A6E40000049E3 /* FIRCellInputObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B649249A6E40000049E3 /* FIRCellInputObj.swift */; };
 		3675B64C249AEE32000049E3 /* VenueEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */; };
+		36E647DE249C58A400193A42 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DD249C58A400193A42 /* RealmService.swift */; };
+		36E647E0249CCF1400193A42 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DF249CCF1400193A42 /* FavoriteVenue.swift */; };
+		36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E2249CCF7600193A42 /* AttendingEvent.swift */; };
+		36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E4249CCFFF00193A42 /* FollowingUser.swift */; };
+		36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */; };
 		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
 		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
@@ -380,6 +385,11 @@
 		3675B6472499682E000049E3 /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
 		3675B649249A6E40000049E3 /* FIRCellInputObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCellInputObj.swift; sourceTree = "<group>"; };
 		3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueEventsViewController.swift; sourceTree = "<group>"; };
+		36E647DD249C58A400193A42 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		36E647DF249CCF1400193A42 /* FavoriteVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
+		36E647E2249CCF7600193A42 /* AttendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingEvent.swift; sourceTree = "<group>"; };
+		36E647E4249CCFFF00193A42 /* FollowingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUser.swift; sourceTree = "<group>"; };
+		36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCollectionTypes.swift; sourceTree = "<group>"; };
 		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
 		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -450,6 +460,7 @@
 				36244A6C2491D0F6003EA526 /* Themes */,
 				3624499F2491D086003EA526 /* Main */,
 				361D9B842491966C00351CFD /* Supporting Files */,
+				36E647E1249CCF4300193A42 /* DataBase */,
 			);
 			path = Craic;
 			sourceTree = "<group>";
@@ -791,6 +802,26 @@
 				36244A832491D0F8003EA526 /* FollowUserProtocol+Extensions.swift */,
 			);
 			path = "Custom Cells Protocol Extensions";
+			sourceTree = "<group>";
+		};
+		36E647E1249CCF4300193A42 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				36E647DD249C58A400193A42 /* RealmService.swift */,
+				36E647E6249CD00F00193A42 /* Collections */,
+				36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		36E647E6249CD00F00193A42 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				36E647DF249CCF1400193A42 /* FavoriteVenue.swift */,
+				36E647E2249CCF7600193A42 /* AttendingEvent.swift */,
+				36E647E4249CCFFF00193A42 /* FollowingUser.swift */,
+			);
+			path = Collections;
 			sourceTree = "<group>";
 		};
 		43CD7B85C9E45F13AE74EE70 /* Pods */ = {
@@ -1148,6 +1179,7 @@
 				362449EA2491D087003EA526 /* SearchFiltersViewController.swift in Sources */,
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
+				36E647DE249C58A400193A42 /* RealmService.swift in Sources */,
 				361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */,
 				36244AAE2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
 				362449FC2491D087003EA526 /* FeedViewController.swift in Sources */,
@@ -1161,9 +1193,11 @@
 				36244A292491D087003EA526 /* MainViewController.swift in Sources */,
 				36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244AF62491D0F8003EA526 /* EventCollectionViewCell.swift in Sources */,
+				36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */,
 				36244A112491D087003EA526 /* MenuTableViewCell.swift in Sources */,
 				36244AA22491D0F8003EA526 /* UserProfileViewController.swift in Sources */,
 				36244B292491D0F9003EA526 /* AttendEventProtocol+Extensions.swift in Sources */,
+				36E647E0249CCF1400193A42 /* FavoriteVenue.swift in Sources */,
 				362449E42491D087003EA526 /* GenericTableViewCell.swift in Sources */,
 				36244A052491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
 				36244A962491D0F8003EA526 /* FirebaseAuthService.swift in Sources */,
@@ -1173,7 +1207,9 @@
 				36244B2C2491D0F9003EA526 /* FavoriteVenueProtocol+Extensions.swift in Sources */,
 				362449DB2491D087003EA526 /* PriceTableViewCell.swift in Sources */,
 				362449F62491D087003EA526 /* FeedCollectionViewCell.swift in Sources */,
+				36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */,
 				362449E72491D087003EA526 /* EventCategoryTableViewCell.swift in Sources */,
+				36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */,
 				362449CF2491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244AC62491D0F8003EA526 /* Friend.swift in Sources */,
 				36244A8A2491D0F8003EA526 /* FacebookUser.swift in Sources */,

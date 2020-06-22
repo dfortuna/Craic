@@ -13,21 +13,23 @@ protocol FavoriteVenueProtocol {
 }
 
 extension FavoriteVenueProtocol {
+    
+    private var realm: RealmService {
+        get {
+            return RealmService.shared
+        }
+    }
+    
     private var firestore: FirebaseService {
         get {
             return FirebaseService.shared
         }
     }
     
-    func isFavorite(userID: String) -> Bool {
-        //TODO! - Realm Access
-        return false
-    }
-    
     func followVenue(forVenue venue: Venue, user: User){
         addUserAsFollowerOnRemoteDatabase(forVenue: venue, user: user)
         addVenueAsFavoriteOnRemoteDatabase(forVenue: venue, user: user)
-        addVenueAsFavoriteOnLocalDatabase(forVenue: venue, user: user)
+        addVenueAsFavoriteOnLocalDatabase(forVenue: venue)
     }
     
     private func addUserAsFollowerOnRemoteDatabase(forVenue venue: Venue, user: User){
@@ -53,8 +55,9 @@ extension FavoriteVenueProtocol {
         
     }
     
-    private func addVenueAsFavoriteOnLocalDatabase(forVenue venue : Venue, user: User) {
-        
+    private func addVenueAsFavoriteOnLocalDatabase(forVenue venue: Venue) {
+        let realmEvent = FavoriteVenue(venueID: venue.id, venueName: venue.name, venueProfilePicture: venue.images["0"] ?? "")
+        realm.create(realmEvent)
     }
     
     func unfollowVenue(forVenue venue: Venue, user: User){
@@ -86,7 +89,7 @@ extension FavoriteVenueProtocol {
     }
     
     private func deleteVenueAsFavoriteOnLocalDatabase(forVenue venue: Venue, user: User) {
-        
+        realm.deleteObject(ofPrimaryKey: venue.id, fromCollection: .favoriteVenue)
     }
     
 }

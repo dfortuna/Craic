@@ -16,6 +16,7 @@ struct Venue: FIRObjectProtocol {
     var images: [String: String]
     var category: String
     var description: String
+    var isFollowing: Bool?
     
     //Info
     var phone: String

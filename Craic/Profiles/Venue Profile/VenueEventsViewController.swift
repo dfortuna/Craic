@@ -24,4 +24,3 @@ class VenueEventsViewController: GenericListViewController<Event, EventCollectio
         }
     }
 }
-

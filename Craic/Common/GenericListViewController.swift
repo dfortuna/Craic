@@ -113,7 +113,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
         
         // get obj for cell input(FIRObjectProtocol)
         guard let firObj = resultList[indexPath.row] as? OBJ else { return UICollectionViewCell() }
-
+        
         // initialize FIRCellInputObj
         guard let cellData = FIRCellInputObj(withFIRObjectProtocol: firObj) else { return UICollectionViewCell() }
 

@@ -14,21 +14,22 @@ protocol AttendEventProtocol {
 
 extension AttendEventProtocol {
     
+    private var realm: RealmService {
+        get {
+            return RealmService.shared
+        }
+    }
+    
     private var firestore: FirebaseService {
         get {
             return FirebaseService.shared
         }
     }
     
-    func isUserAttendingEvent(userID: String) -> Bool {
-        //TODO! - Realm Access
-        return false
-    }
-    
     func attendEvent(forEvent event: Event, user: User){
         addUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)
         addEventOnUsersAttendingListOnRemoteDatabase(forEvent: event, user: user)
-        addEventOnUsersAttendingListOnLocalDatabase(forEvent: event, user: user)
+        addToAttendingEventOnLocalDatabase(forEvent: event)
     }
     
     private func addUserAsAttendeeOnRemoteDatabase(forEvent event: Event, user: User){
@@ -54,14 +55,16 @@ extension AttendEventProtocol {
         
     }
     
-    private func addEventOnUsersAttendingListOnLocalDatabase(forEvent event : Event, user: User) {
-        
+    private func addToAttendingEventOnLocalDatabase(forEvent event : Event) {
+        //VER REALM EVENT
+        let realmEvent = AttendingEvent(eventID: event.id, eventName: event.name, eventProfilePicture: event.images["0"] ?? "")
+        realm.create(realmEvent)
     }
     
     func unattendedEvent(forEvent event: Event, user: User){
         deleteUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)
         deleteEventOnUsersAttendingListOnRemoteDatabase(forEvent: event, user: user)
-        deleteEventOnUsersAttendingListOnLocalDatabase(forEvent: event, user: user)
+        removeFromAttendingEventOnLocalDatabase(forEvent: event)
     }
     
     private func deleteUserAsAttendeeOnRemoteDatabase(forEvent event: Event, user: User){
@@ -86,9 +89,8 @@ extension AttendEventProtocol {
         }
     }
     
-    private func deleteEventOnUsersAttendingListOnLocalDatabase(forEvent event: Event, user: User) {
-        
+    private func removeFromAttendingEventOnLocalDatabase(forEvent event: Event) {
+        realm.deleteObject(ofPrimaryKey: event.id, fromCollection: .attendingEvent)
     }
-    
 }
 

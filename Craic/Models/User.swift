@@ -16,6 +16,8 @@ struct User: FIRObjectProtocol {
     var firstName: String
     var lastName: String
     var profileImage = String()
+    var isFollowing: Bool?
+    var isFriend: Bool?
     
     init?(with dictionary: [String: AnyObject]) {
         if let userId = dictionary["id"] as? String, userId != "" {

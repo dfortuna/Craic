@@ -58,14 +58,15 @@ class EventCollectionViewCell: UICollectionViewCell, FIRObjectCell {
     func formatCellUI(withData cellData: FIRCellInputObj) {
         self.format()
         guard let event = cellData.event else { return }
-        self.event = event 
+        self.event = event
+        self.isAttending = event.isAttending ?? false
+        
         eventNameLabel.attributedText = formatLabel(labelText: event.name)
         eventPriceLabel.text = event.price
         distanceLabel.text = cellData.distance
         eventDateLabel.text = event.date
         
         formatprofilePicture(event)
-        self.isAttending = cellData.isAttending ?? false
         setAttendButtonName()
     }
     

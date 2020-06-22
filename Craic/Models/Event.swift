@@ -15,6 +15,7 @@ struct Event: FIRObjectProtocol {
     var images: [String:String]
     var category: String
     var description: String
+    var isAttending: Bool?
     
     var phone: String?
     var address: String?
