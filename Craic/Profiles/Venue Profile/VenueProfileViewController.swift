@@ -110,12 +110,20 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
                                    viewForCollsTopConstraint: nil,
                                    loggedUser: user,
                                    searchType: .events,
-                                   controllerTitle: "Events",
+                                   controllerTitle: "Upcoming Events",
                                    objectID: venue.id)
             self.navigationController?.pushViewController(geneircListVC, animated: true)
 
         case "Followers":
-            print()
+            let geneircListVC = VenueFollowersViewController()
+            geneircListVC.setData(isASortedList: false,
+                                   viewForCollsTopConstraint: nil,
+                                   loggedUser: user,
+                                   searchType: .users,
+                                   controllerTitle: "Followers",
+                                   objectID: venue.id)
+            self.navigationController?.pushViewController(geneircListVC, animated: true)
+            
         default:
             break
         }

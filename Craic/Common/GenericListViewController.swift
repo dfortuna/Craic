@@ -31,9 +31,12 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
 // MARK: - Variables
     
     private var genericCollectionView: UICollectionView!
+    private var indicator: UIActivityIndicatorView!
+    private var woopsView: UIView!
     let firebaseService = FirebaseService.shared
     private var resultList = [FIRObjectProtocol]()
     private let cellBorder: CGFloat = 12
+    private var messageView = NotFoundMessageUIView()
     
     //input (to be set before viewDidLoad)
     private var isASortedList: Bool!
@@ -55,22 +58,39 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     }
     
 // MARK: - View Controller Lifecyle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = controllerTitle
-        layoutSubviews()
+        
+        configureMessageView()
+        indicator = UIActivityIndicatorView(style: .gray)
+        self.view.addSubview(indicator)
+        configureCollectionView()
         registerListCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        indicator.startAnimating()
         fetchData()
+    }
+    
+    
+// MARK: - Formating Views
+    fileprivate func configureMessageView() {
+        self.view.addSubview(messageView)
+        messageView.anchorEdges(top: self.view.topAnchor,
+                                left: self.view.leftAnchor,
+                                right: self.view.rightAnchor,
+                                bottom: self.view.bottomAnchor, padding: .zero)
+        messageView.alpha = 0
     }
     
     private func registerListCells() {
         genericCollectionView.register(UINib(nibName: searchData.cellID, bundle: .main), forCellWithReuseIdentifier: searchData.cellID)
     }
     
-    private func layoutSubviews() {
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         genericCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
@@ -78,6 +98,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
         genericCollectionView.delegate = self
         genericCollectionView.backgroundColor = Colors.lightBackgroundColor
         self.view.addSubview(genericCollectionView)
+        genericCollectionView.anchorEdges(top: self.view.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor, bottom: self.view.bottomAnchor, padding: .zero)
     }
 
  // MARK: - Logic
@@ -90,8 +111,15 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
         resultList.removeAll()
         resultList = list
+        indicator.stopAnimating()
         DispatchQueue.main.async {
-            self.genericCollectionView.reloadData()
+            if self.resultList.count > 0 {
+                self.messageView.alpha = 0
+                self.genericCollectionView.reloadData()
+            } else {
+                self.messageView.alpha = 1
+                self.messageView.superview?.bringSubviewToFront(self.messageView)
+            }
         }
     }
 

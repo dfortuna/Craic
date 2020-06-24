@@ -64,4 +64,7 @@ struct Icons {
     
     //Back button for UserProfile, EventProfile and VenueProfile
     static let backButton = #imageLiteral(resourceName: "backArrow")
+    
+    //Nothing Found
+    static let woops = #imageLiteral(resourceName: "Woops")
 }

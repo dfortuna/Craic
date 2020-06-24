@@ -52,6 +52,7 @@ class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
     }
     
     func formatCellUI(withData cellData: FIRCellInputObj) {
+        self.format()   
         guard let venue = cellData.venue else { return }
         self.venue = venue
         self.isFavorite = venue.isFollowing ?? false

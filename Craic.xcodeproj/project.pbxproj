@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C4ABD354FD1D65E450F13C2 /* Pods_Craic_CraicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */; };
+		3619521824A2F33A000544AC /* NotFoundMessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619521724A2F33A000544AC /* NotFoundMessageUIView.swift */; };
 		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
 		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
 		361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B6824918C4B00351CFD /* CraicTests.swift */; };
@@ -265,6 +266,8 @@
 		36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E2249CCF7600193A42 /* AttendingEvent.swift */; };
 		36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E4249CCFFF00193A42 /* FollowingUser.swift */; };
 		36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */; };
+		36E647ED24A1113700193A42 /* VenueFollowersViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647EC24A1113700193A42 /* VenueFollowersViewController .swift */; };
+		36E647EF24A17F9900193A42 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647EE24A17F9900193A42 /* UIView+Extensions.swift */; };
 		B01DFA29861F9B4BFA00DC20 /* Pods_Craic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737D8C86106AC7C2A0359A2 /* Pods_Craic.framework */; };
 		E2263CECA76CE92E7C14ECDE /* Pods_CraicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5905C35F06595E011901554F /* Pods_CraicTests.framework */; };
 /* End PBXBuildFile section */
@@ -289,6 +292,7 @@
 /* Begin PBXFileReference section */
 		0F73A6FC5545B775DDB52874 /* Pods-CraicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraicTests.debug.xcconfig"; path = "Target Support Files/Pods-CraicTests/Pods-CraicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Craic_CraicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3619521724A2F33A000544AC /* NotFoundMessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundMessageUIView.swift; sourceTree = "<group>"; };
 		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		361D9B5D24918C4B00351CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 		36E647E2249CCF7600193A42 /* AttendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingEvent.swift; sourceTree = "<group>"; };
 		36E647E4249CCFFF00193A42 /* FollowingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUser.swift; sourceTree = "<group>"; };
 		36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCollectionTypes.swift; sourceTree = "<group>"; };
+		36E647EC24A1113700193A42 /* VenueFollowersViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenueFollowersViewController .swift"; sourceTree = "<group>"; };
+		36E647EE24A17F9900193A42 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		541D835C5881A883DADEE12F /* Pods-Craic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.release.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.release.xcconfig"; sourceTree = "<group>"; };
 		5905C35F06595E011901554F /* Pods_CraicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B403DD5909CAA98522324BD /* Pods-Craic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Craic.debug.xcconfig"; path = "Target Support Files/Pods-Craic/Pods-Craic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -697,7 +703,8 @@
 				36244A482491D0F3003EA526 /* Profile Cells */,
 				36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */,
 				36244A4E2491D0F3003EA526 /* VenueProfileViewController.swift */,
-				3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */,
+				36E647EB24A1107F00193A42 /* Venue Events */,
+				36E647F024A1E97000193A42 /* Venue Followers */,
 			);
 			path = "Venue Profile";
 			sourceTree = "<group>";
@@ -756,6 +763,7 @@
 				3675B64524993EE3000049E3 /* SearchType.swift */,
 				3675B6472499682E000049E3 /* GenericListViewController.swift */,
 				3675B649249A6E40000049E3 /* FIRCellInputObj.swift */,
+				3619521724A2F33A000544AC /* NotFoundMessageUIView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -790,6 +798,7 @@
 				36244A7E2491D0F8003EA526 /* UINavigationController+Extension.swift */,
 				36244A7F2491D0F8003EA526 /* UICollectionViewCell+Extensions.swift */,
 				36244A802491D0F8003EA526 /* Custom Cells Protocol Extensions */,
+				36E647EE24A17F9900193A42 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -822,6 +831,22 @@
 				36E647E4249CCFFF00193A42 /* FollowingUser.swift */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		36E647EB24A1107F00193A42 /* Venue Events */ = {
+			isa = PBXGroup;
+			children = (
+				3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */,
+			);
+			path = "Venue Events";
+			sourceTree = "<group>";
+		};
+		36E647F024A1E97000193A42 /* Venue Followers */ = {
+			isa = PBXGroup;
+			children = (
+				36E647EC24A1113700193A42 /* VenueFollowersViewController .swift */,
+			);
+			path = "Venue Followers";
 			sourceTree = "<group>";
 		};
 		43CD7B85C9E45F13AE74EE70 /* Pods */ = {
@@ -1152,6 +1177,7 @@
 				36244A082491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
 				3675B64C249AEE32000049E3 /* VenueEventsViewController.swift in Sources */,
 				36244B052491D0F8003EA526 /* Colors.swift in Sources */,
+				3619521824A2F33A000544AC /* NotFoundMessageUIView.swift in Sources */,
 				36244AD82491D0F8003EA526 /* Message.swift in Sources */,
 				36244A9F2491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AB72491D0F8003EA526 /* VenueProfileViewController.swift in Sources */,
@@ -1160,6 +1186,7 @@
 				36244A932491D0F8003EA526 /* FIRCollectionReference.swift in Sources */,
 				36244A022491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				36244AC02491D0F8003EA526 /* EventProfileViewController.swift in Sources */,
+				36E647ED24A1113700193A42 /* VenueFollowersViewController .swift in Sources */,
 				36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				362449DE2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
@@ -1187,6 +1214,7 @@
 				362449E12491D087003EA526 /* DistanceRadiusTableViewCell.swift in Sources */,
 				36244A0B2491D087003EA526 /* FavoritesViewController.swift in Sources */,
 				36244A322491D087003EA526 /* LoginViewController.swift in Sources */,
+				36E647EF24A17F9900193A42 /* UIView+Extensions.swift in Sources */,
 				36244A992491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
 				36244B022491D0F8003EA526 /* Icons.swift in Sources */,
 				36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */,

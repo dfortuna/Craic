@@ -18,9 +18,13 @@ class VenueEventsViewController: GenericListViewController<Event, EventCollectio
                                             case .success(let events):
                                                 self.formatResult(forList: events)
                                             case .failure(_):
-                                                print()
-                                                //TODO! -  Message view (no venues to show)
+                                                Alert.somethingWentWrong.call(onViewController: self)
                                             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let venueID = objID else { return }
+        firebaseService.removeListener(from: .venueEvents(ofVenue: venueID))
     }
 }
