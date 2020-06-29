@@ -1,5 +1,5 @@
 //
-//  VenueGenericTableViewCell.swift
+//  SegueToListTableViewCell.swift
 //  Project4
 //
 //  Created by Denis Fortuna on 11/4/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VenueGenericTableViewCell: UITableViewCell {
+class SegueToListTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var featureLabel: UILabel!

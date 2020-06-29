@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0C4ABD354FD1D65E450F13C2 /* Pods_Craic_CraicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */; };
 		3619521824A2F33A000544AC /* NotFoundMessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619521724A2F33A000544AC /* NotFoundMessageUIView.swift */; };
+		3619521A24A42DF4000544AC /* EventDateNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619521924A42DF4000544AC /* EventDateNameTableViewCell.swift */; };
+		3619521C24A42EAC000544AC /* EventTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619521B24A42EAC000544AC /* EventTagsTableViewCell.swift */; };
+		3619521E24A42ED6000544AC /* EventDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619521D24A42ED6000544AC /* EventDescriptionTableViewCell.swift */; };
+		3619522124A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522024A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift */; };
+		3619522424A88F1B000544AC /* CallendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522324A88F1B000544AC /* CallendarView.swift */; };
+		3619522C24A9C4AE000544AC /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522B24A9C4AE000544AC /* EventInfoTableViewCell.swift */; };
 		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
 		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
 		361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B6824918C4B00351CFD /* CraicTests.swift */; };
@@ -154,9 +160,9 @@
 		36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */; };
 		36244AAC2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */; };
 		36244AAD2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */; };
-		36244AAE2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
-		36244AAF2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
-		36244AB02491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */; };
+		36244AAE2491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* SegueToListTableViewCell.swift */; };
+		36244AAF2491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* SegueToListTableViewCell.swift */; };
+		36244AB02491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4B2491D0F3003EA526 /* SegueToListTableViewCell.swift */; };
 		36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
 		36244AB22491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
 		36244AB32491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */; };
@@ -293,6 +299,12 @@
 		0F73A6FC5545B775DDB52874 /* Pods-CraicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraicTests.debug.xcconfig"; path = "Target Support Files/Pods-CraicTests/Pods-CraicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29BD11C65D280904C1B4BD90 /* Pods_Craic_CraicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Craic_CraicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3619521724A2F33A000544AC /* NotFoundMessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundMessageUIView.swift; sourceTree = "<group>"; };
+		3619521924A42DF4000544AC /* EventDateNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDateNameTableViewCell.swift; sourceTree = "<group>"; };
+		3619521B24A42EAC000544AC /* EventTagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTagsTableViewCell.swift; sourceTree = "<group>"; };
+		3619521D24A42ED6000544AC /* EventDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		3619522024A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
+		3619522324A88F1B000544AC /* CallendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallendarView.swift; sourceTree = "<group>"; };
+		3619522B24A9C4AE000544AC /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableViewCell.swift; sourceTree = "<group>"; };
 		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		361D9B5D24918C4B00351CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -350,7 +362,7 @@
 		36244A462491D0F3003EA526 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		36244A492491D0F3003EA526 /* VenueInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInfoTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueMainTableViewCell.swift; sourceTree = "<group>"; };
-		36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueGenericTableViewCell.swift; sourceTree = "<group>"; };
+		36244A4B2491D0F3003EA526 /* SegueToListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueToListTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueOpeningHoursTableViewCell.swift; sourceTree = "<group>"; };
 		36244A4D2491D0F3003EA526 /* VenueProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VenueProfile.storyboard; sourceTree = "<group>"; };
 		36244A4E2491D0F3003EA526 /* VenueProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueProfileViewController.swift; sourceTree = "<group>"; };
@@ -433,6 +445,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3619521F24A57EF4000544AC /* PicturesCell */ = {
+			isa = PBXGroup;
+			children = (
+				36244A522491D0F3003EA526 /* EventProfilePicturesTableViewCell.swift */,
+				3619522024A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift */,
+			);
+			path = PicturesCell;
+			sourceTree = "<group>";
+		};
+		3619522224A88EFC000544AC /* NameCell */ = {
+			isa = PBXGroup;
+			children = (
+				3619521924A42DF4000544AC /* EventDateNameTableViewCell.swift */,
+				3619522324A88F1B000544AC /* CallendarView.swift */,
+			);
+			path = NameCell;
+			sourceTree = "<group>";
+		};
+		3619522924A9C3B6000544AC /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				3619521D24A42ED6000544AC /* EventDescriptionTableViewCell.swift */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
+		3619522A24A9C3C8000544AC /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				3619521B24A42EAC000544AC /* EventTagsTableViewCell.swift */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
+		3619522D24A9C4CB000544AC /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				3619522B24A9C4AE000544AC /* EventInfoTableViewCell.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		361D9B4524918C4800351CFD = {
 			isa = PBXGroup;
 			children = (
@@ -714,7 +768,7 @@
 			children = (
 				36244A492491D0F3003EA526 /* VenueInfoTableViewCell.swift */,
 				36244A4A2491D0F3003EA526 /* VenueMainTableViewCell.swift */,
-				36244A4B2491D0F3003EA526 /* VenueGenericTableViewCell.swift */,
+				36244A4B2491D0F3003EA526 /* SegueToListTableViewCell.swift */,
 				36244A4C2491D0F3003EA526 /* VenueOpeningHoursTableViewCell.swift */,
 			);
 			path = "Profile Cells";
@@ -733,7 +787,11 @@
 		36244A512491D0F3003EA526 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				36244A522491D0F3003EA526 /* EventProfilePicturesTableViewCell.swift */,
+				3619521F24A57EF4000544AC /* PicturesCell */,
+				3619522224A88EFC000544AC /* NameCell */,
+				3619522A24A9C3C8000544AC /* Tags */,
+				3619522924A9C3B6000544AC /* Description */,
+				3619522D24A9C4CB000544AC /* Info */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1172,6 +1230,7 @@
 				36244ADB2491D0F8003EA526 /* User.swift in Sources */,
 				362449D22491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
 				362449ED2491D087003EA526 /* SearchViewController.swift in Sources */,
+				3619522C24A9C4AE000544AC /* EventInfoTableViewCell.swift in Sources */,
 				3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */,
 				36244AE42491D0F8003EA526 /* Friendship.swift in Sources */,
 				36244A082491D087003EA526 /* MessagesTableViewCell.swift in Sources */,
@@ -1192,9 +1251,11 @@
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
 				36244AE12491D0F8003EA526 /* MessageType.swift in Sources */,
+				3619521E24A42ED6000544AC /* EventDescriptionTableViewCell.swift in Sources */,
 				36244AE72491D0F8003EA526 /* Feed.swift in Sources */,
 				36244AF32491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
 				36244A872491D0F8003EA526 /* FacebookService.swift in Sources */,
+				3619521A24A42DF4000544AC /* EventDateNameTableViewCell.swift in Sources */,
 				36244AF92491D0F8003EA526 /* UserCollectionViewCell.swift in Sources */,
 				36244A902491D0F8003EA526 /* FirebaseError.swift in Sources */,
 				36244A1A2491D087003EA526 /* ProfileTableViewController.swift in Sources */,
@@ -1207,8 +1268,9 @@
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
 				36E647DE249C58A400193A42 /* RealmService.swift in Sources */,
+				3619521C24A42EAC000544AC /* EventTagsTableViewCell.swift in Sources */,
 				361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */,
-				36244AAE2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
+				36244AAE2491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */,
 				362449FC2491D087003EA526 /* FeedViewController.swift in Sources */,
 				36244B262491D0F8003EA526 /* UICollectionViewCell+Extensions.swift in Sources */,
 				362449E12491D087003EA526 /* DistanceRadiusTableViewCell.swift in Sources */,
@@ -1229,6 +1291,7 @@
 				362449E42491D087003EA526 /* GenericTableViewCell.swift in Sources */,
 				36244A052491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
 				36244A962491D0F8003EA526 /* FirebaseAuthService.swift in Sources */,
+				3619522424A88F1B000544AC /* CallendarView.swift in Sources */,
 				36244A842491D0F8003EA526 /* FacebookError.swift in Sources */,
 				36244AD22491D0F8003EA526 /* Event.swift in Sources */,
 				36244AD52491D0F8003EA526 /* Venue.swift in Sources */,
@@ -1241,6 +1304,7 @@
 				362449CF2491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244AC62491D0F8003EA526 /* Friend.swift in Sources */,
 				36244A8A2491D0F8003EA526 /* FacebookUser.swift in Sources */,
+				3619522124A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift in Sources */,
 				36244A262491D087003EA526 /* MenuViewController.swift in Sources */,
 				3675B64624993EE3000049E3 /* SearchType.swift in Sources */,
 				36244B232491D0F8003EA526 /* UINavigationController+Extension.swift in Sources */,
@@ -1303,7 +1367,7 @@
 				362449FD2491D087003EA526 /* FeedViewController.swift in Sources */,
 				36244AA02491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AD62491D0F8003EA526 /* Venue.swift in Sources */,
-				36244AAF2491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
+				36244AAF2491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */,
 				36244ADC2491D0F8003EA526 /* User.swift in Sources */,
 				36244AD32491D0F8003EA526 /* Event.swift in Sources */,
 				36244A9A2491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
@@ -1372,7 +1436,7 @@
 				362449FE2491D087003EA526 /* FeedViewController.swift in Sources */,
 				36244AA12491D0F8003EA526 /* CoreLocationService.swift in Sources */,
 				36244AD72491D0F8003EA526 /* Venue.swift in Sources */,
-				36244AB02491D0F8003EA526 /* VenueGenericTableViewCell.swift in Sources */,
+				36244AB02491D0F8003EA526 /* SegueToListTableViewCell.swift in Sources */,
 				36244ADD2491D0F8003EA526 /* User.swift in Sources */,
 				36244AD42491D0F8003EA526 /* Event.swift in Sources */,
 				36244A9B2491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,

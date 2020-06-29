@@ -16,16 +16,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="144"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vkN-ZS-jPF">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BTH-NU-8rJ">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="144"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcg-Wc-ozK">
                         <rect key="frame" x="0.0" y="95.5" width="360" height="48.5"/>
                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV3-4q-fR0">
-                        <rect key="frame" x="8" y="95.5" width="352" height="20.5"/>
+                        <rect key="frame" x="8" y="95.5" width="344" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -64,25 +63,25 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="vkN-ZS-jPF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4cD-nL-BWf"/>
-                <constraint firstItem="U3a-hb-0Ez" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="7s9-HA-E0l"/>
+                <constraint firstItem="pns-3o-Lc1" firstAttribute="trailing" secondItem="LV3-4q-fR0" secondAttribute="trailing" id="116-vB-rJB"/>
+                <constraint firstItem="pns-3o-Lc1" firstAttribute="trailing" secondItem="3Ik-jS-h9B" secondAttribute="trailing" id="1il-is-gLt"/>
                 <constraint firstAttribute="bottom" secondItem="U3a-hb-0Ez" secondAttribute="bottom" constant="8" id="9HH-hn-wim"/>
                 <constraint firstItem="pns-3o-Lc1" firstAttribute="leading" secondItem="nzF-xK-aRy" secondAttribute="trailing" constant="50" id="ATe-4C-OxX"/>
                 <constraint firstAttribute="bottom" secondItem="pns-3o-Lc1" secondAttribute="bottom" constant="8" id="BLp-LT-ZFQ"/>
                 <constraint firstItem="3Ik-jS-h9B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="BaE-ea-3Jp"/>
-                <constraint firstItem="vkN-ZS-jPF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="E5n-zR-Lpt"/>
-                <constraint firstAttribute="bottom" secondItem="vkN-ZS-jPF" secondAttribute="bottom" id="EnS-NC-L4B"/>
-                <constraint firstAttribute="trailing" secondItem="vkN-ZS-jPF" secondAttribute="trailing" id="Ft4-44-TcM"/>
                 <constraint firstItem="LV3-4q-fR0" firstAttribute="top" secondItem="Pcg-Wc-ozK" secondAttribute="top" id="LDD-7Z-Nk4"/>
                 <constraint firstItem="LV3-4q-fR0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="NrR-FI-8gX"/>
                 <constraint firstAttribute="bottom" secondItem="Pcg-Wc-ozK" secondAttribute="bottom" id="OWw-aT-v7S"/>
-                <constraint firstAttribute="trailing" secondItem="LV3-4q-fR0" secondAttribute="trailing" id="TR8-3v-teD"/>
                 <constraint firstAttribute="trailing" secondItem="pns-3o-Lc1" secondAttribute="trailing" constant="8" id="YDb-WH-0XM"/>
                 <constraint firstItem="U3a-hb-0Ez" firstAttribute="top" secondItem="LV3-4q-fR0" secondAttribute="bottom" id="cEi-SC-W4J"/>
                 <constraint firstAttribute="bottom" secondItem="nzF-xK-aRy" secondAttribute="bottom" constant="8" id="cm3-mX-3bX"/>
-                <constraint firstAttribute="trailing" secondItem="3Ik-jS-h9B" secondAttribute="trailing" constant="8" id="rTq-Zq-0vn"/>
+                <constraint firstItem="BTH-NU-8rJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fgi-d9-SWF"/>
+                <constraint firstItem="U3a-hb-0Ez" firstAttribute="leading" secondItem="LV3-4q-fR0" secondAttribute="leading" id="gDv-lx-iJl"/>
+                <constraint firstItem="BTH-NU-8rJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oFZ-ID-rdh"/>
+                <constraint firstAttribute="trailing" secondItem="BTH-NU-8rJ" secondAttribute="trailing" id="rNn-rj-Qmj"/>
                 <constraint firstItem="Pcg-Wc-ozK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="shm-hw-BdB"/>
                 <constraint firstAttribute="trailing" secondItem="Pcg-Wc-ozK" secondAttribute="trailing" id="sm5-8u-Dyh"/>
+                <constraint firstAttribute="bottom" secondItem="BTH-NU-8rJ" secondAttribute="bottom" id="wDC-SC-dIE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="233" height="89"/>
@@ -92,7 +91,7 @@
                 <outlet property="eventDateLabel" destination="U3a-hb-0Ez" id="drq-cB-H1K"/>
                 <outlet property="eventNameLabel" destination="LV3-4q-fR0" id="z8g-JW-V00"/>
                 <outlet property="eventPriceLabel" destination="nzF-xK-aRy" id="OLM-s2-5LG"/>
-                <outlet property="eventProfilePicImageView" destination="vkN-ZS-jPF" id="DEY-Kl-5Xx"/>
+                <outlet property="eventProfilePicImageView" destination="BTH-NU-8rJ" id="m14-mb-XHH"/>
             </connections>
             <point key="canvasLocation" x="269.56521739130437" y="127.23214285714285"/>
         </collectionViewCell>

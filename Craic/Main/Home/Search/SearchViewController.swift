@@ -162,13 +162,14 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = seacrhCollectionView.frame.width - 16
-        if resultList[indexPath.row] is Event {
-            return CGSize(width: width , height: 120)
-        } else if resultList[indexPath.row] is Venue {
-            return CGSize(width: width , height: 120)
-        } else {
-            return CGSize()
-        }
+        return CGSize(width: width , height: 120)
+//        if resultList[indexPath.row] is Event {
+//            return CGSize(width: width , height: 120)
+//        } else if resultList[indexPath.row] is Venue {
+//            return CGSize(width: width , height: 120)
+//        } else {
+//            return CGSize()
+//        }
     }
 }
     

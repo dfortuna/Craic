@@ -21,10 +21,21 @@ class VenueMainTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var favoriteOutlet: UIButton!
+    @IBOutlet weak var backButtonOutlet: UIButton!
     
     weak var delegate: VenueProfileMainCellDelegate?
     var currentVenue: Venue?
     var isFavoriteVenue = false
+    
+    fileprivate func formatProfilePictureNotFound() {
+        DispatchQueue.main.async {
+            self.profilePhotoImageView.contentMode = .center
+            self.profilePhotoImageView.tintColor = Colors.cellLabelColor
+            self.profilePhotoImageView.backgroundColor = Colors.darkBackgroundColor
+            self.profilePhotoImageView.image = Icons.venuePictureNotFound
+            self.profilePhotoImageView.layer.cornerRadius = 12
+        }
+    }
     
     func formatUI(forVenue venue: Venue, isFavorite: Bool) {
         currentVenue = venue
@@ -32,13 +43,18 @@ class VenueMainTableViewCell: UITableViewCell {
         
         if let profileImage = URL(string: venue.images["0"] ?? "" ) {
             DispatchQueue.global().async {
-                guard let imageData = try? Data(contentsOf: profileImage)  else { return }
-                DispatchQueue.main.async {
-                    self.profilePhotoImageView.image = UIImage(data: imageData)
+                if let imageData = try? Data(contentsOf: profileImage) {
+                    DispatchQueue.main.async {
+                        self.profilePhotoImageView.image = UIImage(data: imageData)
+                        self.profilePhotoImageView.backgroundColor = Colors.tintColor
+                        self.profilePhotoImageView.layer.cornerRadius = 12
+                    }
+                } else {
+                    self.formatProfilePictureNotFound()
                 }
             }
         } else {
-            profilePhotoImageView.image = Icons.userPictureNotFound
+            formatProfilePictureNotFound()
         }
 
         if let coverImage = URL(string: venue.images["1"] ?? "" ) {
@@ -49,7 +65,12 @@ class VenueMainTableViewCell: UITableViewCell {
                 }
             }
         } else {
+            coverPhotoImageView.contentMode = .scaleAspectFit
+            coverPhotoImageView.tintColor = Colors.cellLabelColor
+            coverPhotoImageView.backgroundColor = Colors.darkBackgroundColor
             coverPhotoImageView.image = Icons.venuePictureNotFound
+            coverPhotoImageView.contentMode = .center
+            
         }
         
         nameLabel.text = venue.name
@@ -61,6 +82,10 @@ class VenueMainTableViewCell: UITableViewCell {
         
         favoriteOutlet.tintColor = Colors.mainColor
         setFavoriteButtonImage(isFavorite)
+        
+        backButtonOutlet.layer.cornerRadius = 15
+        backButtonOutlet.backgroundColor = Colors.lightBackgroundColor
+        backButtonOutlet.tintColor = Colors.darkBackgroundColor
     }
     
     fileprivate func setFavoriteButtonImage(_ isFavorite: Bool) {

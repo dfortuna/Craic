@@ -76,9 +76,13 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPC-Se-Kaa">
-                                                    <rect key="frame" x="20" y="58" width="24" height="24"/>
+                                                    <rect key="frame" x="20" y="55" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="9OT-qp-Skh"/>
+                                                        <constraint firstAttribute="height" constant="30" id="y5K-Qg-LZZ"/>
+                                                    </constraints>
                                                     <color key="tintColor" name="CellLabelColor"/>
-                                                    <state key="normal" backgroundImage="backArrow">
+                                                    <state key="normal" image="backArrow">
                                                         <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
@@ -109,6 +113,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="backButtonOutlet" destination="kPC-Se-Kaa" id="icT-Bo-bRG"/>
                                             <outlet property="categoryLabel" destination="eSt-MX-8NH" id="mR9-rT-0K0"/>
                                             <outlet property="coverPhotoImageView" destination="nMK-w9-EXc" id="shg-Xp-suD"/>
                                             <outlet property="descriptionLabel" destination="T3b-Qe-8gI" id="geW-7e-laV"/>
@@ -163,26 +168,38 @@
                                                         <constraint firstAttribute="width" constant="25" id="eHe-7A-Ha9"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" office@d-edge.com.br" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiA-W9-k0O">
-                                                    <rect key="frame" x="40" y="42" width="178" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiA-W9-k0O">
+                                                    <rect key="frame" x="40" y="42.333333333333336" width="27" height="20.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.329999999999998" id="kms-EM-hti"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.d-edge.com.br/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEC-j1-AGi">
-                                                    <rect key="frame" x="40" y="77" width="208" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEC-j1-AGi">
+                                                    <rect key="frame" x="40" y="77.333333333333329" width="27" height="20.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.329999999999998" id="ssY-FS-epX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alameda Olga,170 - Barra Funda, São Paulo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-0G-QMb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-0G-QMb">
                                                     <rect key="frame" x="40" y="110.33333333333333" width="364" height="20.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.329999999999998" id="XTA-tH-VzB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(011) 3665-9500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z14-Vu-c3S">
-                                                    <rect key="frame" x="40" y="7" width="133" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z14-Vu-c3S">
+                                                    <rect key="frame" x="40" y="7.3333333333333339" width="27" height="20.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.329999999999998" id="rsk-bf-qsy"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -217,12 +234,24 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="AddressSpacingConstraint" destination="DhP-aW-rYs" id="XsU-VS-80a"/>
+                                            <outlet property="PhoneLabelHeightConstraint" destination="rsk-bf-qsy" id="djF-vC-BIh"/>
+                                            <outlet property="addressIconHeightConstraint" destination="MLU-BU-4Zn" id="5rU-yk-z8S"/>
                                             <outlet property="addressIconImageView" destination="As5-ot-4i7" id="mEs-SE-9lK"/>
                                             <outlet property="addressLabel" destination="e1D-0G-QMb" id="nVr-U8-djZ"/>
+                                            <outlet property="addressLabelHeightConstraint" destination="XTA-tH-VzB" id="VI2-YB-aWZ"/>
+                                            <outlet property="emailIconHeightConstraint" destination="DIO-5E-iNa" id="enU-0b-wi5"/>
                                             <outlet property="emailIconImageView" destination="igN-9y-ZaQ" id="1di-Ty-Bcq"/>
                                             <outlet property="emailLabel" destination="jiA-W9-k0O" id="Bq3-KG-oTM"/>
+                                            <outlet property="emailLabelHeightConstraint" destination="kms-EM-hti" id="Z1D-PN-mWh"/>
+                                            <outlet property="emailSpacingConstraint" destination="Skc-uS-Hoi" id="8hk-YT-lwf"/>
+                                            <outlet property="phoneIconHeightConstraint" destination="sHG-GN-cwC" id="gXY-tQ-WwZ"/>
                                             <outlet property="phoneIconImageView" destination="XxD-So-YRO" id="A87-MZ-V0F"/>
                                             <outlet property="phoneLabel" destination="Z14-Vu-c3S" id="13U-J7-DbL"/>
+                                            <outlet property="phoneSpacingConstraint" destination="Sxk-l6-1kC" id="XKp-cJ-7ev"/>
+                                            <outlet property="webSiteLabelHeightConstraint" destination="ssY-FS-epX" id="nCZ-UH-lAh"/>
+                                            <outlet property="webSiteSpacingConstraint" destination="pqJ-5l-cXt" id="fm2-nX-gFO"/>
+                                            <outlet property="websiteIconHeightConstraint" destination="wti-L0-Vnf" id="XMW-jn-uZC"/>
                                             <outlet property="websiteIconImageView" destination="l6c-jJ-UPI" id="CkW-pb-rgf"/>
                                             <outlet property="websiteLabel" destination="IEC-j1-AGi" id="3nM-h7-YKa"/>
                                         </connections>
@@ -234,14 +263,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opening time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-JW-Sxe">
-                                                    <rect key="frame" x="30" y="16" width="128" height="26.666666666666671"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opening time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-JW-Sxe">
+                                                    <rect key="frame" x="30" y="15.999999999999998" width="128" height="26.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUJ-UV-lu8">
-                                                    <rect key="frame" x="38" y="52.666666666666664" width="361" height="20.999999999999993"/>
+                                                    <rect key="frame" x="38" y="52.333333333333336" width="361" height="21.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -260,7 +289,7 @@
                                             <outlet property="openingTimeLabel" destination="ZUJ-UV-lu8" id="62K-hF-vQ0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueGenericTableViewCell" id="Abe-l9-Gtc" customClass="VenueGenericTableViewCell" customModule="Craic" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SegueToListTableViewCell" id="Abe-l9-Gtc" customClass="SegueToListTableViewCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="745" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-l9-Gtc" id="Sl5-Sx-aYE">

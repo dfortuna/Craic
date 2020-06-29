@@ -18,6 +18,7 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //place tableview under status bar
         venueProfileTableView.contentInset = UIEdgeInsets(top: -UIApplication.shared.statusBarFrame.size.height,
                                                        left: 0,
                                                        bottom: 0,
@@ -81,15 +82,15 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
             cell?.formatUI(forVenue: venue)
             return cell!
         case "Galery":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VenueGenericTableViewCell", for: indexPath) as? VenueGenericTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SegueToListTableViewCell", for: indexPath) as? SegueToListTableViewCell
             cell?.formatUI(label: "Galery")
             return cell!
         case "Events":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VenueGenericTableViewCell", for: indexPath) as? VenueGenericTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SegueToListTableViewCell", for: indexPath) as? SegueToListTableViewCell
             cell?.formatUI(label: "Events")
             return cell!
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VenueGenericTableViewCell", for: indexPath) as? VenueGenericTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SegueToListTableViewCell", for: indexPath) as? SegueToListTableViewCell
             cell?.formatUI(label: "Followers")
             return cell!
         }
