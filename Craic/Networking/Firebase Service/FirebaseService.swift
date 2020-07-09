@@ -20,6 +20,7 @@ class FirebaseService {
         let db = Firestore.firestore()
         let settings = db.settings
         db.settings = settings
+        
         return db.collection(collectionReference.path)
     }
     
@@ -68,15 +69,68 @@ class FirebaseService {
         }
     }
     
-    func queryDocuments<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference, returning objectType: T.Type, queryFields: [String: String], callback: @escaping (Result<[T], FirebaseError>) -> ()) {
+    func queryDocuments<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference,
+                                             returning objectType: T.Type,
+                                             operatorKeyValue: [(key: String, op: String, value: String)],
+                                             orderByField field: String,
+                                             descending: Bool,
+                                             callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
-        let path = collectionPath(ofReference: collectionReference)
-        for (field, value) in queryFields {
-            path.whereField(field, isEqualTo: value)
+        var query: Query?
+        if !operatorKeyValue.isEmpty {
+            let path = collectionPath(ofReference: collectionReference)
+            if operatorKeyValue.count <= 1 {
+                if let queryResult = queryRouter(path: path,
+                                                 key: operatorKeyValue.first!.key,
+                                                 value: operatorKeyValue.first!.value,
+                                                 queryOperator: operatorKeyValue.first!.op) {
+                    query = queryResult
+                }
+            } else {
+                query = addQuery(path: path, operatorKeyValue: operatorKeyValue)
+            }
+            query?.getDocuments() { (querySnapshot, err) in
+                let results = self.checkResults(querySnapshot: querySnapshot, error: err, errorMessage: .documentNotFound, objectType: objectType)
+                callback(results)
+            }
         }
-        path.getDocuments { (snapshot, error) in
-            let result = self.checkResults(querySnapshot: snapshot, error: error, errorMessage: .documentNotFound, objectType: objectType)
-            callback(result)
+    }
+    
+    private func addQuery(path: Query, operatorKeyValue: [(key: String, op: String, value: String)]) -> Query {
+        
+        var queryPath = path
+        var opKeyValMutable = operatorKeyValue
+
+        if !opKeyValMutable.isEmpty {
+            if  let key = opKeyValMutable.first?.key,
+                let op = opKeyValMutable.first?.op,
+                let value = opKeyValMutable.first?.value {
+                
+                opKeyValMutable = opKeyValMutable.filter { $0.key != key}
+                if let queryResult = queryRouter(path: path, key: key, value: value, queryOperator: op) {
+                    queryPath = queryResult
+                }
+            } else {
+                opKeyValMutable = opKeyValMutable.compactMap{ $0 }
+            }
+        }
+        return queryPath
+    }
+    
+    private func queryRouter(path: Query, key: String, value: String, queryOperator: String) -> Query? {
+        switch queryOperator {
+        case "==":
+            return path.whereField(key, isEqualTo: value)
+        case ">=":
+            return path.whereField(key, isGreaterThanOrEqualTo: value)
+        case "<=":
+            return path.whereField(key, isLessThanOrEqualTo: value)
+        case ">":
+            return path.whereField(key, isGreaterThan: value)
+        case "<":
+            return path.whereField(key, isLessThan: value)
+        default:
+            return nil
         }
     }
     

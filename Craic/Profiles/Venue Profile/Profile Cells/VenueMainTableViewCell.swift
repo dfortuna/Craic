@@ -14,6 +14,10 @@ protocol VenueProfileMainCellDelegate: class {
 }
 
 class VenueMainTableViewCell: UITableViewCell {
+    
+    weak var delegate: VenueProfileMainCellDelegate?
+    var currentVenue: Venue?
+    var isFavoriteVenue = false
 
     @IBOutlet weak var coverPhotoImageView: UIImageView!
     @IBOutlet weak var profilePhotoImageView: UIImageView!
@@ -23,9 +27,38 @@ class VenueMainTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteOutlet: UIButton!
     @IBOutlet weak var backButtonOutlet: UIButton!
     
-    weak var delegate: VenueProfileMainCellDelegate?
-    var currentVenue: Venue?
-    var isFavoriteVenue = false
+    @IBAction func favoriteButton(_ sender: UIButton) {
+        delegate?.handleIsFavoriteToggleButton(sender: self)
+        setFavoriteButtonImage(isFavoriteVenue)
+    }
+    
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        delegate?.handleBackButton(sender: self)
+    }
+    
+    func formatUI(forVenue venue: Venue, isFavorite: Bool) {
+        currentVenue = venue
+        isFavoriteVenue = isFavorite
+        
+        nameLabel.text = venue.name
+        descriptionLabel.text = venue.description
+        descriptionLabel.dynamicHeight()
+        
+        formatProfileImage(venue)
+        formatCoverImage(venue)
+        formatCategoryLabel(venue)
+        setFavoriteButtonImage(isFavorite)
+        formatBackButton()
+    }
+    
+    fileprivate func setFavoriteButtonImage(_ isFavorite: Bool) {
+        favoriteOutlet.tintColor = Colors.mainColor
+        if isFavorite {
+            favoriteOutlet.setBackgroundImage(Icons.itsFavoriteButton, for: .normal)
+        } else {
+            favoriteOutlet.setBackgroundImage(Icons.isntFavoriteButton, for: .normal)
+        }
+    }
     
     fileprivate func formatProfilePictureNotFound() {
         DispatchQueue.main.async {
@@ -37,10 +70,7 @@ class VenueMainTableViewCell: UITableViewCell {
         }
     }
     
-    func formatUI(forVenue venue: Venue, isFavorite: Bool) {
-        currentVenue = venue
-        isFavoriteVenue = isFavorite
-        
+    fileprivate func formatProfileImage(_ venue: Venue) {
         if let profileImage = URL(string: venue.images["0"] ?? "" ) {
             DispatchQueue.global().async {
                 if let imageData = try? Data(contentsOf: profileImage) {
@@ -56,12 +86,15 @@ class VenueMainTableViewCell: UITableViewCell {
         } else {
             formatProfilePictureNotFound()
         }
-
+    }
+    
+    fileprivate func formatCoverImage(_ venue: Venue) {
         if let coverImage = URL(string: venue.images["1"] ?? "" ) {
             DispatchQueue.global().async {
                 guard let imageData = try? Data(contentsOf: coverImage)  else { return }
                 DispatchQueue.main.async {
                     self.coverPhotoImageView.image = UIImage(data: imageData)
+                    self.coverPhotoImageView.contentMode = .scaleToFill
                 }
             }
         } else {
@@ -70,38 +103,19 @@ class VenueMainTableViewCell: UITableViewCell {
             coverPhotoImageView.backgroundColor = Colors.darkBackgroundColor
             coverPhotoImageView.image = Icons.venuePictureNotFound
             coverPhotoImageView.contentMode = .center
-            
         }
-        
-        nameLabel.text = venue.name
+    }
+    
+    fileprivate func formatCategoryLabel(_ venue: Venue) {
         categoryLabel.text = venue.category
         categoryLabel.layer.borderWidth = 0.8
         categoryLabel.layer.borderColor = Colors.mainColor?.cgColor
         categoryLabel.textColor = Colors.mainColor
-        descriptionLabel.text = venue.description
-        
-        favoriteOutlet.tintColor = Colors.mainColor
-        setFavoriteButtonImage(isFavorite)
-        
+    }
+    
+    fileprivate func formatBackButton() {
         backButtonOutlet.layer.cornerRadius = 15
         backButtonOutlet.backgroundColor = Colors.lightBackgroundColor
         backButtonOutlet.tintColor = Colors.darkBackgroundColor
-    }
-    
-    fileprivate func setFavoriteButtonImage(_ isFavorite: Bool) {
-        if isFavorite {
-            favoriteOutlet.setBackgroundImage(Icons.itsFavoriteButton, for: .normal)
-        } else {
-            favoriteOutlet.setBackgroundImage(Icons.isntFavoriteButton, for: .normal)
-        }
-    }
-    
-    @IBAction func favoriteButton(_ sender: UIButton) {
-        delegate?.handleIsFavoriteToggleButton(sender: self)
-        setFavoriteButtonImage(isFavoriteVenue)
-    }
-    
-    @IBAction func backButtonAction(_ sender: UIButton) {
-        delegate?.handleBackButton(sender: self)
     }
 }

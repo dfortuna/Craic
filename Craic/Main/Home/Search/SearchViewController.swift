@@ -55,28 +55,35 @@ class SearchViewController: UIViewController {
     }
 
     func getEvents(fromFormatedFilters filters: [String: String]) {
-        firestore.queryDocuments(from: .event, returning: Event.self, queryFields: filters) { (results) in
-            switch results {
-            case .success(let events):
-                self.formatResult(forList: events)
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    print(error) //TODO! - Message view (no events to show)
-                }
-            }
+        firestore.queryDocuments(from: .event,
+                                 returning: Event.self,
+                                 operatorKeyValue: [(key: "category", op: "==", value: "Musical")],
+                                 orderByField: "", descending: true) { (result) in
+                                switch result {
+                                case .success(let events):
+                                    self.formatResult(forList: events)
+                                case .failure(let error):
+                                    DispatchQueue.main.async {
+                                        print(error) //TODO! - Messag e view (no venues to show)
+                                    }
+                                }
         }
     }
     
     func getVenues(fromFormatedFilters filters: [String: String]) {
-        firestore.queryDocuments(from: .venue, returning: Venue.self, queryFields: filters) { (result) in
-            switch result {
-            case .success(let venues):
-                self.formatResult(forList: venues)
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    print(error) //TODO! - Message view (no venues to show)
-                }
-            }
+        
+        firestore.queryDocuments(from: .venue,
+                                 returning: Venue.self,
+                                 operatorKeyValue: [(key: "category", op: "==", value: "Arts")],
+                                 orderByField: "", descending: true) { (result) in
+                                switch result {
+                                case .success(let venues):
+                                    self.formatResult(forList: venues)
+                                case .failure(let error):
+                                    DispatchQueue.main.async {
+                                        print(error) //TODO! - Message view (no venues to show)
+                                    }
+                                }
         }
     }
     
@@ -146,30 +153,22 @@ extension SearchViewController: UICollectionViewDelegate {
             .instantiateViewController(withIdentifier: "EventProfileViewController")
                 as! EventProfileViewController
             self.navigationController?.pushViewController(eventProfile, animated: true)
-            eventProfile.event = event
+            eventProfile.firObj = event
         case .venues:
             guard let venue = resultList[indexPath.row] as? Venue else { return }
             let venueProfile = UIStoryboard(name: "VenueProfile", bundle: nil)
             .instantiateViewController(withIdentifier: "VenueProfileViewController")
                 as! VenueProfileViewController
             self.navigationController?.pushViewController(venueProfile, animated: true)
-            venueProfile.venue = venue
+            venueProfile.firObj = venue
         }
     }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = seacrhCollectionView.frame.width - 16
         return CGSize(width: width , height: 120)
-//        if resultList[indexPath.row] is Event {
-//            return CGSize(width: width , height: 120)
-//        } else if resultList[indexPath.row] is Venue {
-//            return CGSize(width: width , height: 120)
-//        } else {
-//            return CGSize()
-//        }
     }
 }
     

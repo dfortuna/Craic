@@ -31,10 +31,10 @@ struct Venue: FIRObjectProtocol {
     var openingHours: String
     
     //Events
-    var hasEvents: Bool
-    
+    var upcomingEvents: Int
+
     //Followers
-    var hasFollowers: Bool
+    var followers: Int
     
     init?(with dictionary: [String : AnyObject]) {
         if let venueId = dictionary["id"] as? String, venueId != "" {
@@ -53,8 +53,8 @@ struct Venue: FIRObjectProtocol {
             self.website = dictionary["website"] as? String ?? String()
             
             self.openingHours = dictionary["openingHours"] as? String ?? String()
-            self.hasEvents = dictionary["hasEvents"] as? Bool ?? false
-            self.hasFollowers = dictionary["hasFollowers"] as? Bool ?? false
+            self.upcomingEvents = dictionary["upcomingEvents"] as? Int ?? Int()
+            self.followers = dictionary["followers"] as? Int ?? Int()
 
         } else {
             print("Venue obj not created - id not valid")

@@ -9,16 +9,18 @@
 import UIKit
 
 class EventDescriptionTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if selected {
+            self.backgroundColor = .white
+        }
     }
-
+    
+    func formatUI(description: String) {
+        descriptionTextView.text = description
+        descriptionTextView.dynamicHeight()
+    }
 }

@@ -14,6 +14,13 @@ class SegueToListTableViewCell: UITableViewCell {
     @IBOutlet weak var featureLabel: UILabel!
     @IBOutlet weak var showFeatureIconImageView: UIImageView!
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if selected {
+            self.backgroundColor = .white
+        }
+    }
+    
     func formatUI(label: String) {
         featureLabel.text = label
         showFeatureIconImageView.image = Icons.tableViewCellArrow

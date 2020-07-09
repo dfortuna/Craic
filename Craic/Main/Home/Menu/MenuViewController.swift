@@ -37,8 +37,7 @@ class MenuViewController: UIViewController {
         guard let user = loggedUser else { return }
         let userProfileVC = UIStoryboard(name: "UserProfile", bundle: nil).instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
         self.navigationController?.pushViewController(userProfileVC, animated: true)
-        guard let profilePic = profilePicImageView.image else { return }
-        userProfileVC.setData(forProfileImage: profilePic, andUser: user)
+        userProfileVC.firObj = user
     }
 
     private func updateUI(){

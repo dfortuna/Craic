@@ -10,11 +10,16 @@ import UIKit
 
 class VenueProfileViewController: UIViewController, FIRObjectViewController {
     
+    //GenericList calls VenueProfileViewController passing a Venue obj to firObj
+    // When called from a EventProfileViewController, VenueProfileViewController gets venueID passed in
     var firObj: FIRObjectProtocol?
-    @IBOutlet weak var venueProfileTableView: UITableView!
+    var venueID: String?
+    
+    private let firebaseService = FirebaseService.shared
+    private let loggedUser = UserSettings().getLoggedUser()
     private var currentCellIds = ["Main", "Info"]
-    let loggedUser = UserSettings().getLoggedUser()
-    var venue: Venue?
+    
+    @IBOutlet weak var venueProfileTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,32 +29,52 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
                                                        bottom: 0,
                                                        right: 0)
         venueProfileTableView.tableFooterView = UIView(frame: CGRect.zero)
-        formatUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        venueProfileTableView.reloadData()
+        if let venue = firObj as? Venue {
+            addRows(venue: venue)
+        } else if venueID != nil {
+            fetchVenueData(venueID: venueID!)
+        } else {
+            //TODO!
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    private func formatUI() {
-        guard let venue = venue else { return }
-        
+    private func addRows(venue: Venue) {
         if !venue.openingHours.isEmpty {
             currentCellIds.append("OpeningHours")
         }
         if venue.images.count > 2 {
             currentCellIds.append("Galery")
         }
-        if venue.hasEvents {
+        if venue.upcomingEvents > 0 {
             currentCellIds.append("Events")
         }
-        if venue.hasFollowers {
+        if venue.followers > 0 {
             currentCellIds.append("Followers")
+        }
+        venueProfileTableView.reloadData()
+    }
+    
+    private func fetchVenueData(venueID: String) {
+        firebaseService.getDocument(documentID: venueID, documentType: Venue.self, fromCollection: .venue) {
+            [unowned self] (result) in
+            switch result {
+            case .success(let venue):
+                DispatchQueue.main.async {
+                    self.firObj = venue
+                    self.addRows(venue: venue)
+                }
+            case .failure(_):
+                //TODO! :
+                print()
+            }
         }
     }
 }
@@ -65,7 +90,7 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let venue = venue else { return UITableViewCell() }
+        guard let venue = firObj as? Venue else { return UITableViewCell() }
         let cellId = currentCellIds[indexPath.row]
         switch cellId {
         case "Main":
@@ -98,7 +123,7 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let user = loggedUser else { return }
-        guard let venue = venue else { return }
+        guard let venue = firObj as? Venue else { return }
         
         let cellId = currentCellIds[indexPath.row]
         switch cellId {

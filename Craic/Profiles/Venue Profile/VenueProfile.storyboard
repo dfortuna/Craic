@@ -46,11 +46,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T3b-Qe-8gI">
-                                                    <rect key="frame" x="20" y="283.33333333333331" width="374" height="181.66666666666669"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T3b-Qe-8gI">
+                                                    <rect key="frame" x="20" y="268.66666666666669" width="374" height="196.33333333333331"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="196.5" id="iGB-3v-KZJ"/>
+                                                        <constraint firstAttribute="height" constant="196.5" id="iGB-3v-KZJ"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -58,7 +58,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Baladas, Música Eletrônica" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSt-MX-8NH">
-                                                    <rect key="frame" x="15" y="263" width="204" height="20.333333333333314"/>
+                                                    <rect key="frame" x="15" y="263" width="204" height="5.6666666666666856"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -204,13 +204,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SN-Jq-duD">
-                                                    <rect key="frame" x="60" y="159" width="0.0" height="0.0"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="igN-9y-ZaQ" firstAttribute="leading" secondItem="XxD-So-YRO" secondAttribute="leading" id="2wK-xG-HGw"/>
@@ -234,24 +227,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="AddressSpacingConstraint" destination="DhP-aW-rYs" id="XsU-VS-80a"/>
-                                            <outlet property="PhoneLabelHeightConstraint" destination="rsk-bf-qsy" id="djF-vC-BIh"/>
-                                            <outlet property="addressIconHeightConstraint" destination="MLU-BU-4Zn" id="5rU-yk-z8S"/>
+                                            <outlet property="addressIconBottomContraint" destination="DhP-aW-rYs" id="Hbt-Ih-NBh"/>
+                                            <outlet property="addressIconHeightContraint" destination="MLU-BU-4Zn" id="2cN-BM-7E0"/>
                                             <outlet property="addressIconImageView" destination="As5-ot-4i7" id="mEs-SE-9lK"/>
                                             <outlet property="addressLabel" destination="e1D-0G-QMb" id="nVr-U8-djZ"/>
-                                            <outlet property="addressLabelHeightConstraint" destination="XTA-tH-VzB" id="VI2-YB-aWZ"/>
-                                            <outlet property="emailIconHeightConstraint" destination="DIO-5E-iNa" id="enU-0b-wi5"/>
+                                            <outlet property="emailIconBottomContraint" destination="Skc-uS-Hoi" id="9Y6-dl-R2F"/>
+                                            <outlet property="emailIconHeightContraint" destination="DIO-5E-iNa" id="MDU-Nm-Qcx"/>
                                             <outlet property="emailIconImageView" destination="igN-9y-ZaQ" id="1di-Ty-Bcq"/>
                                             <outlet property="emailLabel" destination="jiA-W9-k0O" id="Bq3-KG-oTM"/>
-                                            <outlet property="emailLabelHeightConstraint" destination="kms-EM-hti" id="Z1D-PN-mWh"/>
-                                            <outlet property="emailSpacingConstraint" destination="Skc-uS-Hoi" id="8hk-YT-lwf"/>
-                                            <outlet property="phoneIconHeightConstraint" destination="sHG-GN-cwC" id="gXY-tQ-WwZ"/>
+                                            <outlet property="phoneIconBottomContraint" destination="Sxk-l6-1kC" id="3jk-8e-t4Y"/>
+                                            <outlet property="phoneIconHeightContraint" destination="sHG-GN-cwC" id="T3G-qF-lZc"/>
                                             <outlet property="phoneIconImageView" destination="XxD-So-YRO" id="A87-MZ-V0F"/>
                                             <outlet property="phoneLabel" destination="Z14-Vu-c3S" id="13U-J7-DbL"/>
-                                            <outlet property="phoneSpacingConstraint" destination="Sxk-l6-1kC" id="XKp-cJ-7ev"/>
-                                            <outlet property="webSiteLabelHeightConstraint" destination="ssY-FS-epX" id="nCZ-UH-lAh"/>
-                                            <outlet property="webSiteSpacingConstraint" destination="pqJ-5l-cXt" id="fm2-nX-gFO"/>
-                                            <outlet property="websiteIconHeightConstraint" destination="wti-L0-Vnf" id="XMW-jn-uZC"/>
+                                            <outlet property="websiteIconBottomContraint" destination="pqJ-5l-cXt" id="fGh-1O-xhU"/>
+                                            <outlet property="websiteIconHeightContraint" destination="wti-L0-Vnf" id="nur-3P-1Hj"/>
                                             <outlet property="websiteIconImageView" destination="l6c-jJ-UPI" id="CkW-pb-rgf"/>
                                             <outlet property="websiteLabel" destination="IEC-j1-AGi" id="3nM-h7-YKa"/>
                                         </connections>

@@ -77,7 +77,7 @@ class MessagesListTableViewController: UITableViewController {
                     print()
                 case .success(let event):
                     let eventVC = UIStoryboard(name: "EventProfile", bundle: nil).instantiateViewController(withIdentifier: "EventProfileViewController") as! EventProfileViewController
-                    eventVC.event = event
+                    eventVC.firObj = event
                 }
             }
         case .shortMessage:

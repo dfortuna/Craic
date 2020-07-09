@@ -31,7 +31,7 @@ struct Event: FIRObjectProtocol {
     var price: String
     var date: String
     var time: String
-    var hasAttendees: Bool
+    var attendees: Int
     
     init?(with dictionary: [String: AnyObject]) {
         if let eventId = dictionary["id"] as? String {
@@ -55,7 +55,8 @@ struct Event: FIRObjectProtocol {
             self.price = dictionary["price"] as? String ?? String()
             self.date = dictionary["date"] as? String ?? String()
             self.time = dictionary["time"] as? String ?? String()
-            self.hasAttendees = dictionary["website"] as? Bool ?? false
+            self.attendees = dictionary["attendees"] as? Int ?? Int()
+            
             
         } else {
             print("Event obj not created - id not valid")

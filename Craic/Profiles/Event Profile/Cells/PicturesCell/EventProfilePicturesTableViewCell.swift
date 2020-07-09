@@ -62,7 +62,6 @@ extension EventProfilePicturesTableViewCell: UICollectionViewDataSource {
     
         let x = targetContentOffset.pointee.x
         pageControl.currentPage = Int(x / picturesCollectionView.frame.width)
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

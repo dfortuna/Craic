@@ -24,7 +24,6 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     private let coreLocationService = CoreLocationService.shared
     private var resultList = [FIRObjectProtocol]()
     private var profileImage = UIImage()
-    private var loggedUser: User?
     
     //MARK: - UI Elements
     @IBOutlet weak var profilePicImageView: UIImageView!
@@ -36,7 +35,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
-        guard let user = loggedUser else { return }
+        guard let user = firObj as? User else { return }
         if sender.selectedSegmentIndex == 0 {
             currentSearchType = .events
         } else if sender.selectedSegmentIndex == 1 {
@@ -54,13 +53,14 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         userListsCollectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "UserCollectionViewCell")
         userListsCollectionView.register(UINib(nibName: "EventCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "EventCollectionViewCell")
         userListsCollectionView.register(UINib(nibName: "VenueCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "VenueCollectionViewCell")
-        formatUI()
+        guard let user = firObj as? User else { return }
+        formatUI(forUser: user)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let user = loggedUser else { return }
-        fetchResultsForCurrentSearchType(user: user)
         self.navigationController?.isNavigationBarHidden = true
+        guard let user = firObj as? User else { return }
+        fetchResultsForCurrentSearchType(user: user)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,15 +68,22 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     //MARK: - Logic
-    
-    func setData(forProfileImage profileImage: UIImage, andUser user: User) {
-        self.profileImage = profileImage
-        self.loggedUser = user
+    private func formatProfilePicture(forUser user: User) {
+        if let profilePictureURL = URL(string: user.profileImage) {
+            DispatchQueue.global().async {
+                guard let imageData = try? Data(contentsOf: profilePictureURL)  else { return }
+                DispatchQueue.main.async {
+                    self.profilePicImageView.image = UIImage(data: imageData)
+                }
+            }
+        } else {
+            profilePicImageView.image = Icons.userPictureNotFound
+        }
     }
     
-    private func formatUI() {
-        profilePicImageView.image = profileImage
-        fullNameAndAgeLabel.text = loggedUser?.name
+    private func formatUI(forUser user: User) {
+        fullNameAndAgeLabel.text = user.name
+        formatProfilePicture(forUser: user)
     }
     
     private func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
@@ -93,6 +100,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
             case .success(let events):
                 self.formatResult(forList: events)
             case .failure(let error):
+                print("** ERROR **")
                 print(error)//TODO! -  Message view (no events to show)
             }
         }
@@ -148,7 +156,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let user = loggedUser else { return UICollectionViewCell() }
+        guard let user = firObj as? User else { return UICollectionViewCell() }
         switch currentSearchType {
         case .friends:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell else { return UICollectionViewCell() }
@@ -182,23 +190,26 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let user = loggedUser else { return }
         switch currentSearchType {
         case .friends:
-            if let friendCell = collectionView.cellForItem(at: indexPath) as? UserCollectionViewCell {
-                var friendImage = Icons.userPictureNotFound
-                if let friendProfileImage = friendCell.userProfilePictureImageView.image {
-                    friendImage = friendProfileImage
-                }
+            if (collectionView.cellForItem(at: indexPath) as? UserCollectionViewCell) != nil {
+                guard let user = firObj as? User else { return }
+                guard let friendship = resultList[indexPath.row] as? Friendship else { return }
+                guard let friend = User(friendship: friendship, userID: user.id) else { return }
                 let userProfile = UIStoryboard(name: "UserProfile", bundle: nil)
                     .instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
                 self.navigationController?.pushViewController(userProfile, animated: true)
-                userProfile.setData(forProfileImage: friendImage, andUser: user)
+                userProfile.firObj = friend
             }
             
         case .events:
             if (collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell) != nil {
-                
+                guard let event = resultList[indexPath.row] as? Event else { return }
+                let eventProfile = UIStoryboard(name: "EventProfile", bundle: nil)
+                .instantiateViewController(withIdentifier: "EventProfileViewController")
+                    as! EventProfileViewController
+                self.navigationController?.pushViewController(eventProfile, animated: true)
+                eventProfile.firObj = event
             }
             
         case .favoriteVenues:
@@ -209,8 +220,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
                 .instantiateViewController(withIdentifier: "VenueProfileViewController")
                     as! VenueProfileViewController
                 self.navigationController?.pushViewController(venueProfile, animated: true)
-                venueProfile.venue = venue
-                
+                venueProfile.firObj = venue
             }
         }
     }
@@ -226,7 +236,7 @@ extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
 
 extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
     func didTapFavoriteVenueButton(sender: FIRObjectCell) {
-        guard let loggedUser = loggedUser else { return }
+        guard let loggedUser = firObj as? User else { return }
         guard let venueCell = sender as? VenueCollectionViewCell else { return }
         guard let venue = venueCell.venue else { return }
         if venueCell.isFavorite {
@@ -239,7 +249,7 @@ extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, 
     func didTapFollowUserButton(sender: FIRObjectCell) {
         guard let userCell = sender as? UserCollectionViewCell else { return }
         guard let user = userCell.user else { return }
-        guard let loggedUser = loggedUser else { return }
+        guard let loggedUser = firObj as? User else { return }
         if userCell.isFavorite {
             followUser(forFriend: user, loggedUser: loggedUser)
         } else {
@@ -250,7 +260,7 @@ extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, 
     func didTapAttendEventButton(sender: FIRObjectCell) {
         guard let eventCell = sender as? EventCollectionViewCell else { return }
         guard let event = eventCell.event else { return }
-        guard let loggedUser = loggedUser else { return }
+        guard let loggedUser = firObj as? User else { return }
         if eventCell.isAttending {
             attendEvent(forEvent: event, user: loggedUser)
         } else {

@@ -30,6 +30,9 @@ extension AttendEventProtocol {
         addUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)
         addEventOnUsersAttendingListOnRemoteDatabase(forEvent: event, user: user)
         addToAttendingEventOnLocalDatabase(forEvent: event)
+//        if !event.hasAttendees {
+//            updateHasAttendees(forEvent: event)
+//        }
     }
     
     private func addUserAsAttendeeOnRemoteDatabase(forEvent event: Event, user: User){
@@ -49,10 +52,9 @@ extension AttendEventProtocol {
             case .success(_):
                 break
             case .failure(_):
-                print() //TODO! - add @escaping
+                print() //TODO! - error handling
             }
         }
-        
     }
     
     private func addToAttendingEventOnLocalDatabase(forEvent event : Event) {
@@ -60,6 +62,18 @@ extension AttendEventProtocol {
         let realmEvent = AttendingEvent(eventID: event.id, eventName: event.name, eventProfilePicture: event.images["0"] ?? "")
         realm.create(realmEvent)
     }
+    
+//    private func updateHasAttendees(forEvent event: Event) {
+//        firestore.updateMergeData(objectID: event.id, in: .event, dataToUpdate: ["hasAttendees": true]) { (result) in
+//            switch result {
+//            case .success(_):
+//                break
+//            case .failure(_):
+//                print() //TODO! - error handling
+//            }
+//        }
+//    }
+    
     
     func unattendedEvent(forEvent event: Event, user: User){
         deleteUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)

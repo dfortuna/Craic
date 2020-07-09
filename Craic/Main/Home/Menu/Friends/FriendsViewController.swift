@@ -10,10 +10,13 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
+
+    var testData = TestData.shared
+    
     var firebase = FirebaseService.shared
     var friends = [User]()
     var loggedUser: User?
-    
+
     @IBOutlet weak var friendsCollectionView: UICollectionView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -107,10 +110,8 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
             }
             let userProfile = UIStoryboard(name: "UserProfile", bundle: nil)
                 .instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
-
             self.navigationController?.pushViewController(userProfile, animated: true)
-            
-            userProfile.setData(forProfileImage: friendImage, andUser: friend)
+            userProfile.firObj = friend
         }
     }
 }
@@ -139,4 +140,3 @@ extension FriendsViewController: FIRCellButtonProtocol, FollowUserProtocol{
         }
     }
 }
-

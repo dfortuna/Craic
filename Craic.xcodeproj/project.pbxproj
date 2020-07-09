@@ -15,6 +15,9 @@
 		3619522124A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522024A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift */; };
 		3619522424A88F1B000544AC /* CallendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522324A88F1B000544AC /* CallendarView.swift */; };
 		3619522C24A9C4AE000544AC /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522B24A9C4AE000544AC /* EventInfoTableViewCell.swift */; };
+		3619522F24AB8F25000544AC /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619522E24AB8F25000544AC /* UITextView+Extensions.swift */; };
+		3619523124AD68AC000544AC /* EventAttendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523024AD68AC000544AC /* EventAttendees.swift */; };
+		3619523324B57884000544AC /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523224B57883000544AC /* TestData.swift */; };
 		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
 		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
 		361D9B6924918C4B00351CFD /* CraicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B6824918C4B00351CFD /* CraicTests.swift */; };
@@ -305,6 +308,9 @@
 		3619522024A57F6E000544AC /* HorizontalDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		3619522324A88F1B000544AC /* CallendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallendarView.swift; sourceTree = "<group>"; };
 		3619522B24A9C4AE000544AC /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableViewCell.swift; sourceTree = "<group>"; };
+		3619522E24AB8F25000544AC /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
+		3619523024AD68AC000544AC /* EventAttendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAttendees.swift; sourceTree = "<group>"; };
+		3619523224B57883000544AC /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		361D9B5D24918C4B00351CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -512,6 +518,7 @@
 		361D9B5024918C4800351CFD /* Craic */ = {
 			isa = PBXGroup;
 			children = (
+				3619523224B57883000544AC /* TestData.swift */,
 				36244A632491D0F5003EA526 /* Common */,
 				36244A7A2491D0F8003EA526 /* Extensions */,
 				36244A542491D0F4003EA526 /* Models */,
@@ -780,6 +787,7 @@
 				36244A502491D0F3003EA526 /* EventProfile.storyboard */,
 				36244A512491D0F3003EA526 /* Cells */,
 				36244A532491D0F3003EA526 /* EventProfileViewController.swift */,
+				3619523024AD68AC000544AC /* EventAttendees.swift */,
 			);
 			path = "Event Profile";
 			sourceTree = "<group>";
@@ -857,6 +865,7 @@
 				36244A7F2491D0F8003EA526 /* UICollectionViewCell+Extensions.swift */,
 				36244A802491D0F8003EA526 /* Custom Cells Protocol Extensions */,
 				36E647EE24A17F9900193A42 /* UIView+Extensions.swift */,
+				3619522E24AB8F25000544AC /* UITextView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1256,6 +1265,7 @@
 				36244AF32491D0F8003EA526 /* VenueCollectionViewCell.swift in Sources */,
 				36244A872491D0F8003EA526 /* FacebookService.swift in Sources */,
 				3619521A24A42DF4000544AC /* EventDateNameTableViewCell.swift in Sources */,
+				3619522F24AB8F25000544AC /* UITextView+Extensions.swift in Sources */,
 				36244AF92491D0F8003EA526 /* UserCollectionViewCell.swift in Sources */,
 				36244A902491D0F8003EA526 /* FirebaseError.swift in Sources */,
 				36244A1A2491D087003EA526 /* ProfileTableViewController.swift in Sources */,
@@ -1278,6 +1288,7 @@
 				36244A322491D087003EA526 /* LoginViewController.swift in Sources */,
 				36E647EF24A17F9900193A42 /* UIView+Extensions.swift in Sources */,
 				36244A992491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
+				3619523124AD68AC000544AC /* EventAttendees.swift in Sources */,
 				36244B022491D0F8003EA526 /* Icons.swift in Sources */,
 				36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */,
 				36244A292491D087003EA526 /* MainViewController.swift in Sources */,
@@ -1300,6 +1311,7 @@
 				362449F62491D087003EA526 /* FeedCollectionViewCell.swift in Sources */,
 				36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */,
 				362449E72491D087003EA526 /* EventCategoryTableViewCell.swift in Sources */,
+				3619523324B57884000544AC /* TestData.swift in Sources */,
 				36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */,
 				362449CF2491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244AC62491D0F8003EA526 /* Friend.swift in Sources */,

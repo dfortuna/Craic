@@ -89,7 +89,7 @@ extension FavoritesViewController: UICollectionViewDelegate {
         .instantiateViewController(withIdentifier: "VenueProfileViewController")
             as! VenueProfileViewController
         self.navigationController?.pushViewController(venueProfile, animated: true)
-        venueProfile.venue = venue
+        venueProfile.firObj = venue
     }
 }
 

@@ -84,13 +84,13 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
             .instantiateViewController(withIdentifier: "EventProfileViewController")
                 as! EventProfileViewController
             self.navigationController?.pushViewController(eventProfile, animated: true)
-            eventProfile.event = event
+            eventProfile.firObj = event
         } else if let venue = venue {
             let venueProfile = UIStoryboard(name: "VenueProfile", bundle: nil)
             .instantiateViewController(withIdentifier: "VenueProfileViewController")
                 as! VenueProfileViewController
             self.navigationController?.pushViewController(venueProfile, animated: true)
-            venueProfile.venue = venue
+            venueProfile.firObj = venue 
         }
     }
     
