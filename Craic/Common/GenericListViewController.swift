@@ -17,7 +17,7 @@ protocol FIRCellButtonProtocol: class {
 
 protocol FIRObjectCell where Self: UICollectionViewCell {
     //Object that wraps all inputs for UICollectionViewCells that conform to the FIRObjectCell protocol
-    func formatCellUI(withData cellData: FIRCellInputObj)
+    func formatCellUI(withData cellData: FIRCellInputObj, hasPermission: Bool)
     var delegate: FIRCellButtonProtocol? { get set }
 }
 
@@ -30,7 +30,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
 
 // MARK: - Variables
     
-    private var genericCollectionView: UICollectionView!
+    var genericCollectionView: UICollectionView!
     private var indicator: UIActivityIndicatorView!
     private var woopsView: UIView!
     let firebaseService = FirebaseService.shared
@@ -86,7 +86,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
         messageView.alpha = 0
     }
     
-    private func registerListCells() {
+    func registerListCells() {
         genericCollectionView.register(UINib(nibName: searchData.cellID, bundle: .main), forCellWithReuseIdentifier: searchData.cellID)
     }
     
@@ -146,7 +146,7 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
         guard let cellData = FIRCellInputObj(withFIRObjectProtocol: firObj) else { return UICollectionViewCell() }
 
         //format cell
-        cell.formatCellUI(withData: cellData)
+        cell.formatCellUI(withData: cellData, hasPermission: true)
         return cell
     }
     

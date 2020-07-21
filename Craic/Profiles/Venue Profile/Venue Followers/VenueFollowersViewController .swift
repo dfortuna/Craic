@@ -12,19 +12,18 @@ class VenueFollowersViewController: GenericListViewController<User, UserCollecti
 
     override func fetchData() {
         guard let venueID = objID else { return }
-        firebaseService.fetchWithListener(from: .venueFollowers(ofVenue: venueID),
-                                          returning: User.self) { (result) in
-                                            switch result {
-                                            case .success(let users):
-                                                self.formatResult(forList: users)
-                                            case .failure(_):
-                                                Alert.somethingWentWrong.call(onViewController: self)
-                                            }
+        firebaseService.collectionGroupQuery(collectionID: "UserFavorites",
+                                             field: "venueID",
+                                             queryOperator: "==",
+                                             value: venueID,
+                                             returning: UserFavorites.self) { (result) in
+                                                switch result {
+                                                case .success(let uf):
+                                                    let users = uf.compactMap{ $0.getUser()}
+                                                    self.formatResult(forList: users)
+                                                case .failure(_):
+                                                    Alert.somethingWentWrong.call(onViewController: self)
+                                                }
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        guard let venueID = objID else { return }
-        firebaseService.removeListener(from: .venueFollowers(ofVenue: venueID))
     }
 }

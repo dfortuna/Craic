@@ -46,7 +46,7 @@ struct Feed: FIRObjectProtocol {
     var eventPrice: String?
     var eventDate: String?
     var eventTime: String?
-    var hasAttendees: Bool?
+    var attendees: Int?
     
     //Venue
     var venueID: String?
@@ -85,7 +85,7 @@ struct Feed: FIRObjectProtocol {
             self.eventPrice = dictionary["eventPrice"] as? String ?? nil
             self.eventDate = dictionary["eventDate"] as? String ?? nil
             self.eventTime = dictionary["eventTime"] as? String ?? nil
-            self.hasAttendees = dictionary["website"] as? Bool ?? nil
+            self.attendees = dictionary["attendees"] as? Int ?? nil
             
             self.venueID = dictionary["venueID"] as? String ?? nil
             self.openingHours = dictionary["openingHours"] as? String ?? nil

@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
 ////        button.bounds = CGRect(x: 0, y: 0, width: 200, height: 60)
 //        button.center = self.view.center
 //        view.addSubview(button)
-        var button = UIButton()
+        let button = UIButton()
         self.view.addSubview(button)
         button.center = view.center
         button.bounds = CGRect(x: 0, y: 0, width: 150, height: 60)
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
         friendshipData["userName"] = user.name
         friendshipData["userProfilePicture"] = user.profileImage
         guard let friendship = Friendship(with: friendshipData as [String : AnyObject]) else {
-            print("Unable to set friendship ", user.id, " ", friend[""])
+            print("Unable to set friendship ", user.id, " ", friend[""] as Any)
             return
         }
         setFriendship(friendship: friendship)

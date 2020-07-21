@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 @objcMembers class FavoriteVenue: Object {
+    dynamic var id = ""
     dynamic var venueID = ""
     dynamic var venueName = ""
     dynamic var venueProfilePicture: String = ""
@@ -18,8 +19,9 @@ import RealmSwift
         "venueID"
     }
     
-    convenience init(venueID: String, venueName: String, venueProfilePicture: String){
+    convenience init(id: String, venueID: String, venueName: String, venueProfilePicture: String){
         self.init()
+        self.id = id
         self.venueID = venueID
         self.venueName = venueName
         self.venueProfilePicture = venueProfilePicture

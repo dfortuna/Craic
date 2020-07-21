@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 @objcMembers class FollowingUser: Object {
-    
     dynamic var userID: String = ""
     dynamic var friendName: String = ""
     dynamic var friendProfilePicture: String = ""

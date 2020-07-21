@@ -26,85 +26,73 @@ extension AttendEventProtocol {
         }
     }
     
+// *** Adding Event to Agenda ************************************************************************************
+    
     func attendEvent(forEvent event: Event, user: User){
-        addUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)
-        addEventOnUsersAttendingListOnRemoteDatabase(forEvent: event, user: user)
-        addToAttendingEventOnLocalDatabase(forEvent: event)
-//        if !event.hasAttendees {
-//            updateHasAttendees(forEvent: event)
-//        }
+        let userAgenda = UserAgenda(forUser: user, andEvent: event)
+        
+        addEventToAgendaOnRemoteDatabase(forUserAgenda: userAgenda)
+        addEventToAgendaOnLocalDatabase(forUserAgenda: userAgenda)
+        firestore.incrementField(field: "attendees",
+                                 documentID: event.id,
+                                 incrementBy: 1,
+                                 collectionReference: .event)
     }
     
-    private func addUserAsAttendeeOnRemoteDatabase(forEvent event: Event, user: User){
-        firestore.create(for: user, in: .eventAttendees(ofEvent: event.id)) { (result) in
+    private func addEventToAgendaOnRemoteDatabase(forUserAgenda aEvent: UserAgenda) {
+        firestore.create(for: aEvent, in: .userAgenda(ofUser: aEvent.userId)) { (result) in
             switch result {
             case .success(_):
                 break
             case .failure(_):
-                print() //TODO! - add @escaping
+                print() //TODO! 
             }
         }
     }
     
-    private func addEventOnUsersAttendingListOnRemoteDatabase(forEvent event : Event, user: User) {
-        firestore.create(for: event, in: .userEvents(ofUser: user.id)) { (result) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(_):
-                print() //TODO! - error handling
-            }
-        }
-    }
-    
-    private func addToAttendingEventOnLocalDatabase(forEvent event : Event) {
+    private func addEventToAgendaOnLocalDatabase(forUserAgenda aEvent: UserAgenda) {
         //VER REALM EVENT
-        let realmEvent = AttendingEvent(eventID: event.id, eventName: event.name, eventProfilePicture: event.images["0"] ?? "")
+        let realmEvent = AttendingEvent(id: aEvent.id,
+                                        eventID: aEvent.eventId,
+                                        eventName: aEvent.eventName,
+                                        eventProfilePicture: aEvent.eventProfilePicture)
         realm.create(realmEvent)
     }
     
-//    private func updateHasAttendees(forEvent event: Event) {
-//        firestore.updateMergeData(objectID: event.id, in: .event, dataToUpdate: ["hasAttendees": true]) { (result) in
-//            switch result {
-//            case .success(_):
-//                break
-//            case .failure(_):
-//                print() //TODO! - error handling
-//            }
-//        }
-//    }
-    
+// *** Deleting Event from Agenda **********************************************************************************
     
     func unattendedEvent(forEvent event: Event, user: User){
-        deleteUserAsAttendeeOnRemoteDatabase(forEvent: event, user: user)
-        deleteEventOnUsersAttendingListOnRemoteDatabase(forEvent: event, user: user)
-        removeFromAttendingEventOnLocalDatabase(forEvent: event)
+        
+        //look for AttendingEvent on local DB to retrive id created on remote DB
+        guard let agendaEvent = realm.getDocument(PrimaryKey: event.id, fromCollection: .attendingEvent) as? AttendingEvent else { return }
+        
+        //used id retrived above to delete event from User/UserAgenda
+        deleteEventFromAgendaOnRemoteDatabase(forAgendaEventId: agendaEvent.id, userId: user.id)
+        
+        //delete event from local DB
+        deleteEventFromAgendaOnLocalDatabase(event: agendaEvent)
+        
+        //decrese by 1 attendees field on remote DB
+        firestore.incrementField(field: "attendees",
+                                 documentID: event.id,
+                                 incrementBy: -1,
+                                 collectionReference: .event)
     }
     
-    private func deleteUserAsAttendeeOnRemoteDatabase(forEvent event: Event, user: User){
-        firestore.delete(documentID: user.id, in: .eventAttendees(ofEvent: event.id)) { (result) in
+    private func deleteEventFromAgendaOnRemoteDatabase(forAgendaEventId agendaId: String, userId: String) {
+        firestore.delete(documentID: agendaId,
+                         in: .userAgenda(ofUser: userId)) { (result) in
             switch result {
             case .success(_):
                 break
             case .failure(_):
-                print() //TODO! - add @escaping
+                print() //TODO!
             }
         }
     }
     
-    private func deleteEventOnUsersAttendingListOnRemoteDatabase(forEvent event: Event, user: User) {
-        firestore.delete(documentID: event.id, in: .userEvents(ofUser: user.id)) { (result) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(_):
-                print() //TODO! - add @escaping
-            }
-        }
-    }
-    
-    private func removeFromAttendingEventOnLocalDatabase(forEvent event: Event) {
-        realm.deleteObject(ofPrimaryKey: event.id, fromCollection: .attendingEvent)
+    private func deleteEventFromAgendaOnLocalDatabase(event: AttendingEvent) {
+        realm.delete(event)
     }
 }
 

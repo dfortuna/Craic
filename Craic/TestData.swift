@@ -91,7 +91,7 @@ class TestData {
          "date": eventDate,
          "numericDate": eventNumericDate,
          "time": eventTime,
-         "hasAttendees": false] as [String : AnyObject]
+         "attendees": 0] as [String : AnyObject]
         
         return event1
     }

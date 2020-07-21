@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hy-T0-YWL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hy-T0-YWL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +11,7 @@
         <!--Search View Controller-->
         <scene sceneID="ZxU-ls-6Vf">
             <objects>
-                <viewController id="i3A-MQ-MBs" customClass="SearchViewController" customModule="Project4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i3A-MQ-MBs" customClass="SearchViewController" customModule="Craic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M7z-VI-Ujl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,7 +68,7 @@
         <!--Search Filters View Controller-->
         <scene sceneID="51p-Cq-yVr">
             <objects>
-                <viewController storyboardIdentifier="SearchFiltersViewController" id="7GV-dT-UBh" customClass="SearchFiltersViewController" customModule="Project4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchFiltersViewController" id="7GV-dT-UBh" customClass="SearchFiltersViewController" customModule="Craic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4cg-Bw-eho">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="167" width="414" height="695"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCategoryTableViewCell" rowHeight="55" id="WKT-L7-ym5" customClass="EventCategoryTableViewCell" customModule="Project4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCategoryTableViewCell" rowHeight="55" id="WKT-L7-ym5" customClass="EventCategoryTableViewCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WKT-L7-ym5" id="yKG-ne-UmW">
@@ -186,7 +185,7 @@
                                             <outlet property="searchCategoryTextField" destination="UhY-bN-cHF" id="PZ2-W9-AhW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GenericTableViewCell" rowHeight="55" id="vjv-fy-n8q" customClass="GenericTableViewCell" customModule="Project4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GenericTableViewCell" rowHeight="55" id="vjv-fy-n8q" customClass="GenericTableViewCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="83" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vjv-fy-n8q" id="hn4-ol-b9Z">
@@ -217,10 +216,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="tOh-68-COH" secondAttribute="bottom" constant="10.5" id="3Lo-cZ-i4l"/>
                                                 <constraint firstItem="tOh-68-COH" firstAttribute="leading" secondItem="hn4-ol-b9Z" secondAttribute="leadingMargin" id="3am-I3-L6p"/>
+                                                <constraint firstItem="tOh-68-COH" firstAttribute="centerY" secondItem="tum-is-4t9" secondAttribute="centerY" id="41a-kA-8li"/>
                                                 <constraint firstItem="tOh-68-COH" firstAttribute="top" secondItem="hn4-ol-b9Z" secondAttribute="top" constant="11.5" id="Gyg-Jf-wyU"/>
                                                 <constraint firstAttribute="trailing" secondItem="tum-is-4t9" secondAttribute="trailing" constant="8" id="KMg-Ii-JIz"/>
-                                                <constraint firstItem="tOh-68-COH" firstAttribute="centerY" secondItem="hn4-ol-b9Z" secondAttribute="centerY" id="LUu-a6-YSn"/>
-                                                <constraint firstItem="tum-is-4t9" firstAttribute="centerY" secondItem="tOh-68-COH" secondAttribute="centerY" id="N4V-Pt-EWy"/>
                                                 <constraint firstItem="tOh-68-COH" firstAttribute="leading" secondItem="hn4-ol-b9Z" secondAttribute="leadingMargin" id="ejO-g8-I2s"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -230,7 +228,7 @@
                                             <outlet property="pickedItemTextField" destination="tum-is-4t9" id="YzA-Va-DIh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PriceTableViewCell" rowHeight="55" id="JpN-Ws-wgL" customClass="PriceTableViewCell" customModule="Project4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PriceTableViewCell" rowHeight="55" id="JpN-Ws-wgL" customClass="PriceTableViewCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="138" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JpN-Ws-wgL" id="rKY-Bq-Bbh">
@@ -265,13 +263,12 @@
                                             <color key="backgroundColor" name="BackgroundColor"/>
                                             <color key="tintColor" name="CellLabelColor"/>
                                             <constraints>
-                                                <constraint firstItem="CHD-Tv-CNN" firstAttribute="centerY" secondItem="rKY-Bq-Bbh" secondAttribute="centerY" id="4AN-GP-Grt"/>
                                                 <constraint firstItem="CHD-Tv-CNN" firstAttribute="top" secondItem="rKY-Bq-Bbh" secondAttribute="top" constant="11.5" id="9zu-ZA-fTW"/>
-                                                <constraint firstItem="Fpr-e3-Klj" firstAttribute="centerY" secondItem="CHD-Tv-CNN" secondAttribute="centerY" id="Jyt-H4-Doq"/>
+                                                <constraint firstItem="CHD-Tv-CNN" firstAttribute="centerY" secondItem="Fpr-e3-Klj" secondAttribute="centerY" id="BlG-WF-Czk"/>
                                                 <constraint firstItem="iok-8y-hlN" firstAttribute="leading" secondItem="Fpr-e3-Klj" secondAttribute="trailing" constant="10" id="QIu-lw-r5u"/>
                                                 <constraint firstAttribute="trailing" secondItem="iok-8y-hlN" secondAttribute="trailing" constant="8" id="XmF-Yp-r1f"/>
                                                 <constraint firstItem="CHD-Tv-CNN" firstAttribute="leading" secondItem="rKY-Bq-Bbh" secondAttribute="leadingMargin" id="gzs-Zy-GFJ"/>
-                                                <constraint firstItem="iok-8y-hlN" firstAttribute="centerY" secondItem="CHD-Tv-CNN" secondAttribute="centerY" id="qb6-IX-26D"/>
+                                                <constraint firstItem="Fpr-e3-Klj" firstAttribute="centerY" secondItem="iok-8y-hlN" secondAttribute="centerY" id="vSy-CN-X3u"/>
                                                 <constraint firstAttribute="bottom" secondItem="CHD-Tv-CNN" secondAttribute="bottom" constant="10.5" id="yoy-zi-T17"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -281,7 +278,7 @@
                                             <outlet property="priceRangeTextField" destination="iok-8y-hlN" id="big-jw-zD4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DistanceRadiusTableViewCell" rowHeight="81" id="OoK-4Y-diy" customClass="DistanceRadiusTableViewCell" customModule="Project4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DistanceRadiusTableViewCell" rowHeight="81" id="OoK-4Y-diy" customClass="DistanceRadiusTableViewCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="193" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OoK-4Y-diy" id="nDU-sy-BSE">
@@ -335,7 +332,7 @@
                                             <outlet property="maxDistanceOutlet" destination="d97-J6-NMx" id="NjG-z6-1Vc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OkButtonTableViewControllerCell" rowHeight="53" id="1fi-4M-Gxr" customClass="OkButtonTableViewControllerCell" customModule="Project4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OkButtonTableViewControllerCell" rowHeight="53" id="1fi-4M-Gxr" customClass="OkButtonTableViewControllerCell" customModule="Craic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="274" width="414" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1fi-4M-Gxr" id="FQz-Qo-cZb">
@@ -424,10 +421,10 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CellLabelColor">
-            <color red="0.57400000095367432" green="0.57400000095367432" blue="0.57400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.37099999189376831" green="0.37099999189376831" blue="0.37099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightBackgroundColor">
-            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.83700001239776611" green="0.83700001239776611" blue="0.83700001239776611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainColor">
             <color red="0.47499999403953552" green="0.81199997663497925" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 @objcMembers class AttendingEvent: Object {
+    dynamic var id = ""
     dynamic var eventID = ""
     dynamic var eventName = ""
     dynamic var eventProfilePicture = ""
@@ -18,8 +19,9 @@ import RealmSwift
         "eventID"
     }
     
-    convenience init(eventID: String, eventName: String, eventProfilePicture: String) {
+    convenience init(id: String, eventID: String, eventName: String, eventProfilePicture: String) {
         self.init()
+        self.id = id
         self.eventID = eventID
         self.eventName = eventName
         self.eventProfilePicture = eventProfilePicture

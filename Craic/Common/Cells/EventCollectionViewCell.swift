@@ -55,7 +55,7 @@ class EventCollectionViewCell: UICollectionViewCell, FIRObjectCell {
         }
     }
     
-    func formatCellUI(withData cellData: FIRCellInputObj) {
+    func formatCellUI(withData cellData: FIRCellInputObj, hasPermission: Bool) {
         self.format()
         guard let event = cellData.event else { return }
         self.event = event
@@ -67,7 +67,12 @@ class EventCollectionViewCell: UICollectionViewCell, FIRObjectCell {
         eventDateLabel.text = event.date
         
         formatprofilePicture(event)
-        setAttendButtonName()
+        
+        if hasPermission {
+            setAttendButtonName()
+        } else {
+            attendButtonOutlet.alpha = 0
+        }
     }
     
     func formatLabel(labelText: String) -> NSAttributedString {

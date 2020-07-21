@@ -16,6 +16,7 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
     var venueID: String?
     
     private let firebaseService = FirebaseService.shared
+    private let realmService = RealmService.shared
     private let loggedUser = UserSettings().getLoggedUser()
     private var currentCellIds = ["Main", "Info"]
     
@@ -34,7 +35,7 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         if let venue = firObj as? Venue {
-            addRows(venue: venue)
+            listData(forVenue: venue)
         } else if venueID != nil {
             fetchVenueData(venueID: venueID!)
         } else {
@@ -44,9 +45,11 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+        currentCellIds = ["Main", "Info"]
     }
     
     private func addRows(venue: Venue) {
+        
         if !venue.openingHours.isEmpty {
             currentCellIds.append("OpeningHours")
         }
@@ -56,10 +59,11 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
         if venue.upcomingEvents > 0 {
             currentCellIds.append("Events")
         }
-        if venue.followers > 0 {
+
+        let favoriteVenue = realmService.getDocument(PrimaryKey: venue.id, fromCollection: .favoriteVenue)
+        if (venue.followers > 0 ) || (favoriteVenue != nil) {
             currentCellIds.append("Followers")
         }
-        venueProfileTableView.reloadData()
     }
     
     private func fetchVenueData(venueID: String) {
@@ -67,14 +71,19 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
             [unowned self] (result) in
             switch result {
             case .success(let venue):
-                DispatchQueue.main.async {
-                    self.firObj = venue
-                    self.addRows(venue: venue)
-                }
+                self.listData(forVenue: venue)
             case .failure(_):
                 //TODO! :
                 print()
             }
+        }
+    }
+    
+    private func listData(forVenue venue: Venue){
+        DispatchQueue.main.async {
+            self.firObj = venue
+            self.addRows(venue: venue)
+            self.venueProfileTableView.reloadData()
         }
     }
 }

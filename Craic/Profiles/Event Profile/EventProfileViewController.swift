@@ -11,9 +11,13 @@ import UIKit
 class EventProfileViewController: UIViewController, FIRObjectViewController {
     
     var firObj: FIRObjectProtocol?
+    var eventId: String?
+    
+    private let firebaseService = FirebaseService.shared
+    let realmService = RealmService.shared
+    let loggedUser = UserSettings().getLoggedUser()
     var cellIds = ["eventProfilePictures",
                    "EventDateNameTableViewCell"]
-    let loggedUser = UserSettings().getLoggedUser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +30,13 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        formatUI()
-        eventDataTableView.reloadData()
+        if let event = firObj as? Event {
+            listData(forEvent: event)
+        } else if eventId != nil {
+            fetchEventData(eventID: eventId!)
+        } else {
+            //TODO!
+        }
     }
     
     
@@ -38,7 +47,7 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
     
     @IBOutlet weak var eventDataTableView: UITableView!
     
-    private func formatUI() {
+    private func addRows(forEvent event: Event) {
         guard let event = firObj as? Event else { return }
         if !event.description.isEmpty{
             cellIds.append("EventDescriptionTableViewCell")
@@ -46,15 +55,37 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
         if ((event.address != nil) && (event.address != "")) || (!event.price.isEmpty) {
             cellIds.append("EventInfoTableViewCell")
         }
-        if event.attendees > 0{
+        
+        let attendingEvent = realmService.getDocument(PrimaryKey: event.id, fromCollection: .attendingEvent)
+        if event.attendees > 0 || (attendingEvent != nil) {
             cellIds.append("Attendees")
+        }
+    }
+    
+    private func fetchEventData(eventID: String) {
+        firebaseService.getDocument(documentID: eventID, documentType: Event.self, fromCollection: .event) {
+            [unowned self] (result) in
+            switch result {
+            case .success(let event):
+                self.listData(forEvent: event)
+            case .failure(_):
+                //TODO! :
+                print()
+            }
+        }
+    }
+    
+    private func listData(forEvent event: Event){
+        DispatchQueue.main.async {
+            self.firObj = event
+            self.addRows(forEvent: event)
+            self.eventDataTableView.reloadData()
         }
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
 

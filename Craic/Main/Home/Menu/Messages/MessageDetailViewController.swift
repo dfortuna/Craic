@@ -15,10 +15,10 @@ class MessageDetailViewController: UIViewController {
     }
     
     func setupUI(message: Message) {
-        senderUILabel.text = message.senderName
-        dateTimeUILabel.text = message.date
-        titleUILabel.text = message.title
-        longMessageUITextView.text = message.longMessage
+//        senderUILabel.text = message.senderName
+//        dateTimeUILabel.text = message.date
+//        titleUILabel.text = message.title
+//        longMessageUITextView.text = message.longMessage
     }
     
     @IBOutlet weak var senderUILabel: UILabel!

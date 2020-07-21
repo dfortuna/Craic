@@ -8,9 +8,7 @@
 
 import Foundation
 
-protocol FavoriteVenueProtocol {
-
-}
+protocol FavoriteVenueProtocol { }
 
 extension FavoriteVenueProtocol {
     
@@ -26,48 +24,62 @@ extension FavoriteVenueProtocol {
         }
     }
     
+// *** Adding Venue as Favorite ************************************************************************************
+    
     func followVenue(forVenue venue: Venue, user: User){
-        addUserAsFollowerOnRemoteDatabase(forVenue: venue, user: user)
-        addVenueAsFavoriteOnRemoteDatabase(forVenue: venue, user: user)
-        addVenueAsFavoriteOnLocalDatabase(forVenue: venue)
-    }
-    
-    private func addUserAsFollowerOnRemoteDatabase(forVenue venue: Venue, user: User){
-        firestore.create(for: user, in: .venueFollowers(ofVenue: venue.id)) { (result) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(_):
-                print() //TODO! - add @escaping
-            }
-        }
-    }
-    
-    private func addVenueAsFavoriteOnRemoteDatabase(forVenue venue : Venue, user: User) {
-        firestore.create(for: venue, in: .userFavorites(ofUser: user.id)) { (result) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(_):
-                print() //TODO! - add @escaping
-            }
-        }
+        let favoriteVenue = UserFavorites(forUser: user, andVenue: venue)
         
+        addVenueAsFavoriteOnOnRemoteDatabase(forUserFavorite: favoriteVenue)
+        addVenueAsFavoriteOnLocalDatabase(forUserFavorite: favoriteVenue)
+        firestore.incrementField(field: "followers",
+                                 documentID: venue.id,
+                                 incrementBy: 1,
+                                 collectionReference: .venue)
     }
     
-    private func addVenueAsFavoriteOnLocalDatabase(forVenue venue: Venue) {
-        let realmEvent = FavoriteVenue(venueID: venue.id, venueName: venue.name, venueProfilePicture: venue.images["0"] ?? "")
+    private func addVenueAsFavoriteOnOnRemoteDatabase(forUserFavorite fVenue: UserFavorites){
+        firestore.create(for: fVenue, in: .userFavorites(ofUser: fVenue.userID)) { (result) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(_):
+                print() //TODO! - add @escaping
+            }
+        }
+    }
+    
+    private func addVenueAsFavoriteOnLocalDatabase(forUserFavorite fVenue: UserFavorites) {
+        let realmEvent = FavoriteVenue(id: fVenue.id,
+                                       venueID: fVenue.venueID,
+                                       venueName: fVenue.venueName,
+                                       venueProfilePicture: fVenue.venueProfilePicture)
         realm.create(realmEvent)
     }
     
+// *** Deleting Venue as Favorite **********************************************************************************
+    
     func unfollowVenue(forVenue venue: Venue, user: User){
-        deleteUserAsFollowerOnRemoteDatabase(forVenue: venue, user: user)
-        deleteVenueAsFavoriteOnRemoteDatabase(forVenue: venue, user: user)
-        deleteVenueAsFavoriteOnLocalDatabase(forVenue: venue, user: user)
+        
+        //look for FavoriteVenue on local DB to retrive id created on remote DB
+        guard let favoriteVenue = realm.getDocument(PrimaryKey: venue.id, fromCollection: .favoriteVenue) as? FavoriteVenue else { return }
+        
+        //used id retrived above to delete event from User/UserFavorites
+        deleteVenueAsFavoriteOnRemoteDatabase(forFavoriteVenueId: favoriteVenue.id, userId: user.id)
+        
+        //delete event from local DB
+        deleteVenueAsFavoriteOnLocalDatabase(venue: favoriteVenue)
+        
+        //decrese by 1 attendees field on remote DB
+        firestore.incrementField(field: "followers",
+                                 documentID: venue.id,
+                                 incrementBy: -1,
+                                 collectionReference: .venue)
     }
     
-    private func deleteUserAsFollowerOnRemoteDatabase(forVenue venue: Venue, user: User){
-        firestore.delete(documentID: user.id, in: .venueFollowers(ofVenue: venue.id)) { (result) in
+    private func deleteVenueAsFavoriteOnRemoteDatabase(forFavoriteVenueId fvenue: String, userId: String){
+        
+        
+        firestore.delete(documentID: fvenue, in: .userFavorites(ofUser: userId)) { (result) in
             switch result {
             case .success(_):
                 break
@@ -76,20 +88,9 @@ extension FavoriteVenueProtocol {
             }
         }
     }
-    
-    private func deleteVenueAsFavoriteOnRemoteDatabase(forVenue venue: Venue, user: User) {
-        firestore.delete(documentID: venue.id, in: .userFavorites(ofUser: user.id)) { (result) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(_):
-                print() //TODO! - add @escaping
-            }
-        }
-    }
-    
-    private func deleteVenueAsFavoriteOnLocalDatabase(forVenue venue: Venue, user: User) {
-        realm.deleteObject(ofPrimaryKey: venue.id, fromCollection: .favoriteVenue)
+        
+    private func deleteVenueAsFavoriteOnLocalDatabase(venue: FavoriteVenue) {
+        realm.delete(venue)
     }
     
 }

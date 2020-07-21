@@ -12,39 +12,54 @@ struct Message: FIRObjectProtocol {
     
 //compulsory fields:
     var id: String
-    var date: String
-    var title: String
-    var isRead: Bool
+    
     var senderID: String
     var senderName: String
+    var senderProfilePicture: String
+    
+    var receiverID: String
+    var receiverName: String
+    var receiverProfilePicture: String
+    
+    var text: String
+    var numericDate: Int
+    var stringDate: String
+    
+    var replyingMessageID: String?
+    var messageNumber: Int
+    
     var messageType: String
-  
-//optional fields:
-    var subTitle: String
-    var longMessage: String
-    var senderProfilePic: String
-    var eventID: String
+    var eventID: String?
+    var venueID: String?
     
     
     init?(with dictionary: [String : AnyObject]) {
-        if let messageId = dictionary["id"] as? String, messageId != "",
-           let messageDate = dictionary["date"] as? String, messageId != "",
-           let messageTitle = dictionary["title"] as? String, messageId != "",
-           let messageIsRead = dictionary["isRead"] as? Bool,
-           let messageSenderID = dictionary["senderID"] as? String, messageId != "",
-           let messageSenderName = dictionary["senderName"] as? String, messageId != "",
-           let messageType = dictionary["messageType"] as? String, messageType != "" {
-            self.id = messageId
-            self.date = messageDate
-            self.title = messageTitle
-            self.subTitle = dictionary["subTitle"] as? String ?? String()
-            self.longMessage = dictionary["longMessage"] as? String ?? String()
-            self.isRead = messageIsRead
-            self.senderID = messageSenderID
-            self.senderName = messageSenderName
-            self.senderProfilePic = dictionary["senderProfilePic"] as? String ?? String()
-            self.messageType = messageType
-            self.eventID = dictionary["eventID"] as? String ?? String()
+        if let messageID = dictionary["id"] as? String, messageID != "",
+           let sID = dictionary["senderID"] as? String, sID != "",
+           let sName = dictionary["senderName"] as? String, sName != "",
+           let sPicture = dictionary["senderProfilePicture"] as? String, sPicture != "",
+           let rID = dictionary["receiverID"] as? String, rID != "",
+           let rName = dictionary["receiverName"] as? String, rName != "",
+           let rPicture = dictionary["receiverProfilePicture"] as? String, rPicture != "",
+           let text = dictionary["text"] as? String, text != "",
+           let nDate = dictionary["numericDate"] as? Int,
+           let sDate = dictionary["stringDate"] as? String,
+           let mN = dictionary["messageNumber"] as? Int,
+           let mType = dictionary["messageType"] as? String, mType != "" {
+            
+            self.id = messageID
+            self.senderID = sID
+            self.senderName = sName
+            self.senderProfilePicture = sPicture
+            self.receiverID = rID
+            self.receiverName = rName
+            self.receiverProfilePicture = rPicture
+            self.text = text
+            self.numericDate = nDate
+            self.stringDate = sDate
+            self.messageNumber = mN
+            self.messageType = mType
+            
         } else {
             print("Message obj not created - id not valid")
             return nil

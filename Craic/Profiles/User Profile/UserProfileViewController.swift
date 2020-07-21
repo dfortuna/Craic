@@ -24,6 +24,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     private let coreLocationService = CoreLocationService.shared
     private var resultList = [FIRObjectProtocol]()
     private var profileImage = UIImage()
+    private let loggedUser = UserSettings().getLoggedUser()
     
     //MARK: - UI Elements
     @IBOutlet weak var profilePicImageView: UIImageView!
@@ -32,6 +33,16 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     
     @IBAction func dismissUserProfileButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func sendMessageButton(_ sender: UIButton) {
+        guard let sender = loggedUser else { return }
+        guard let receiver = firObj as? User else { return }
+        
+        let newMessage = UIStoryboard(name: "Messages", bundle: nil).instantiateViewController(withIdentifier: "NewMessageViewController") as! NewMessageViewController
+        
+        self.navigationController?.present(newMessage, animated: true)
+        newMessage.configure(sender: sender, receiver: receiver, messageType: .shortMessage)
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -95,10 +106,11 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
  
     private func getEvents(forUserId userId: String) {
-        firebaseService.fetchWithListener(from: .userEvents(ofUser: userId), returning: Event.self) { (result) in
+        firebaseService.fetchWithListener(from: .userAgenda(ofUser: userId), returning: UserAgenda.self) { (result) in
             switch result{
-            case .success(let events):
-                self.formatResult(forList: events)
+            case .success(let userAgenda):
+                let event = userAgenda.compactMap { $0.getEvent() }
+                self.formatResult(forList: event)
             case .failure(let error):
                 print("** ERROR **")
                 print(error)//TODO! -  Message view (no events to show)
@@ -107,9 +119,10 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     private func getFavoritesVenues(forUserId userId: String){
-        firebaseService.fetchWithListener(from: .userFavorites(ofUser: userId), returning: Venue.self) { (result) in
+        firebaseService.fetchWithListener(from: .userFavorites(ofUser: userId), returning: UserFavorites.self) { (result) in
             switch result{
-            case .success(let venues):
+            case .success(let userFavorites):
+                let venues = userFavorites.compactMap { $0.getFavoriteVenue() }
                 self.formatResult(forList: venues)
             case .failure(let error):
                 print(error) //TODO! -  Message view (no venues to show)
@@ -157,6 +170,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let user = firObj as? User else { return UICollectionViewCell() }
+        let hasPermission = user.id == loggedUser?.id ? true : false
         switch currentSearchType {
         case .friends:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell else { return UICollectionViewCell() }
@@ -165,7 +179,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             cell.delegate = self
             
             guard let obj = FIRCellInputObj(withFIRObjectProtocol: friend) else { return UICollectionViewCell()}
-            cell.formatCellUI(withData: obj)
+            cell.formatCellUI(withData: obj, hasPermission: hasPermission)
             return cell
             
         case .events:
@@ -174,7 +188,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             cell.delegate = self
             
             guard let obj = FIRCellInputObj(withFIRObjectProtocol: event) else { return UICollectionViewCell()}
-            cell.formatCellUI(withData: obj)
+            cell.formatCellUI(withData: obj, hasPermission: hasPermission)
             return cell
             
         case .favoriteVenues:
@@ -183,7 +197,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             cell.delegate = self
             
             guard let obj = FIRCellInputObj(withFIRObjectProtocol: venue) else { return UICollectionViewCell()}
-            cell.formatCellUI(withData: obj)
+            cell.formatCellUI(withData: obj, hasPermission: hasPermission)
             return cell
         }
     }
@@ -220,7 +234,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
                 .instantiateViewController(withIdentifier: "VenueProfileViewController")
                     as! VenueProfileViewController
                 self.navigationController?.pushViewController(venueProfile, animated: true)
-                venueProfile.firObj = venue
+                venueProfile.venueID = venue.id
             }
         }
     }

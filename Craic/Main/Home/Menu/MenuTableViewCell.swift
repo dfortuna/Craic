@@ -22,6 +22,8 @@ class MenuTableViewCell: UITableViewCell {
             iconNameImageView.image = Icons.favorite
         case "Messages":
             iconNameImageView.image = Icons.message
+        case "Agenda":
+            iconNameImageView.image = Icons.website
         default:
             break
         }

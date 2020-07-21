@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView!
 
     let loggedUser = UserSettings().getLoggedUser()
-    private let menuCellNames = ["Friends", "Favorites", "Messages"]
+    private let menuCellNames = ["Friends", "Favorites", "Agenda", "Messages"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,10 @@ class MenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -80,21 +84,40 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         guard let user = loggedUser else { return }
         let cellID = indexPath.row
         switch cellID {
-        case 0:
-            let friendVC = UIStoryboard(name: "Friends", bundle: nil).instantiateViewController(withIdentifier: "FriendsViewController") as! FriendsViewController
-                self.navigationController?.pushViewController(friendVC, animated: true)
-            friendVC.loggedUser =  user
+        case 0:            
+            let geneircListVC = FriendsViewController2()
+            geneircListVC.setData(isASortedList: false,
+                                   viewForCollsTopConstraint: nil,
+                                   loggedUser: user,
+                                   searchType: .users,
+                                   controllerTitle: "Friends",
+                                   objectID: user.id)
+            self.navigationController?.pushViewController(geneircListVC, animated: true)
             
         case 1:
-            let favoritesVC = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "FavoritesViewController") as! FavoritesViewController
-            self.navigationController?.pushViewController(favoritesVC, animated: true)
-            favoritesVC.loggedUser = user
+            let geneircListVC = FavoritesViewController()
+            geneircListVC.setData(isASortedList: false,
+                                   viewForCollsTopConstraint: nil,
+                                   loggedUser: user,
+                                   searchType: .venues,
+                                   controllerTitle: "Favorites",
+                                   objectID: user.id)
+            self.navigationController?.pushViewController(geneircListVC, animated: true)
         
         case 2:
+            let geneircListVC = AgendaViewController()
+            geneircListVC.setData(isASortedList: false,
+                                   viewForCollsTopConstraint: nil,
+                                   loggedUser: user,
+                                   searchType: .events,
+                                   controllerTitle: "Agenda",
+                                   objectID: user.id)
+            self.navigationController?.pushViewController(geneircListVC, animated: true)
+
+        case 3:
             let messagesVC = UIStoryboard(name: "Messages", bundle: nil).instantiateViewController(withIdentifier: "MessagesListTableViewController") as! MessagesListTableViewController
             self.navigationController?.pushViewController(messagesVC, animated: true)
-            messagesVC.loggedUser = user 
-
+            messagesVC.loggedUser = user
         default:
             break
         }

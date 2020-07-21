@@ -16,8 +16,12 @@ class FirebaseService {
     static let shared = FirebaseService()
     private var listeners = [String: ListenerRegistration]()
     
+    private func getDataBaseReference() -> Firestore {
+        return Firestore.firestore()
+    }
+    
     private func collectionPath(ofReference collectionReference: FIRCollectionsReference) -> CollectionReference {
-        let db = Firestore.firestore()
+        let db = getDataBaseReference()
         let settings = db.settings
         db.settings = settings
         
@@ -134,12 +138,16 @@ class FirebaseService {
         }
     }
     
-    private func checkResults<T:FIRObjectProtocol>(querySnapshot: QuerySnapshot?, error: Error?, errorMessage: FirebaseError, objectType: T.Type) -> Result<[T], FirebaseError> {
+    
+    private func checkResults<T:FIRObjectProtocol>(querySnapshot: QuerySnapshot?,
+                                                   error: Error?,
+                                                   errorMessage: FirebaseError,
+                                                   objectType: T.Type) -> Result<[T], FirebaseError> {
         if error != nil {
-            return (.failure(.documentNotFetched))
+            return (.failure(errorMessage))
         } else {
             guard let snapshot = querySnapshot else {
-                return (.failure(.documentNotFetched))
+                return (.failure(errorMessage))
             }
             var documentsResult = [T]()
             for document in snapshot.documents {
@@ -193,5 +201,30 @@ class FirebaseService {
                 callback(.success(""))
             }
         }
+    }
+    
+    
+    //Increment(n) or decrement(-n) a numeric field by giving number n
+    func incrementField(field: String,
+                        documentID: String,
+                        incrementBy n: Int,
+                        collectionReference: FIRCollectionsReference) {
+        collectionPath(ofReference: collectionReference).document(documentID)
+            .updateData([field: FieldValue.increment(Int64(n))])
+    }
+    
+    
+    //Search for field and value across all collections with name collectionID, across the whole database
+    func collectionGroupQuery<T:FIRObjectProtocol>(collectionID: String, field: String, queryOperator: String, value: String, returning objectType: T.Type, callback: @escaping (Result<[T], FirebaseError>) -> ()) {
+        
+        let colGroupReference = getDataBaseReference().collectionGroup(collectionID)
+        let query = queryRouter(path: colGroupReference, key: field, value: value, queryOperator: queryOperator)
+        query?.getDocuments(completion: { (snapshot, error) in
+            
+            print("***************************************")
+            print(error)
+            let result = self.checkResults(querySnapshot: snapshot, error: error, errorMessage: .dataNotMerged, objectType: objectType)
+            callback(result)
+        })
     }
 }

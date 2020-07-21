@@ -16,6 +16,7 @@ enum Alert {
     case updateAppVersion
     case unableToReachServer
     case facebokConnectionError
+    case messageSent
     
     func call(onViewController vc: UIViewController) {
         switch self {
@@ -31,11 +32,13 @@ enum Alert {
             showMessageAlert(on: vc, with: "Oops, server out of reach", message: "Please, check you internet connection or try again later.")
         case .facebokConnectionError:
             showMessageAlert(on: vc, with: "Oops, Facebook out of reach", message: "Please, check you internet connection or try again later.")
+        case .messageSent:
+            showMessageAlert(on: vc, with: "", message: "Your message was sent.")
         }
     }
     
     private func showMessageAlert(on vc: UIViewController, with title: String?, message: String?){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         DispatchQueue.main.async {
             vc.present(alert, animated: true, completion: nil)

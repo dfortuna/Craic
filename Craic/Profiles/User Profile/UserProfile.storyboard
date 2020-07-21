@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2b-zG-a7F">
-                                        <rect key="frame" x="137.5" y="-35" width="100" height="100"/>
+                                        <rect key="frame" x="30" y="-35" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="g9x-oc-HGM"/>
                                             <constraint firstAttribute="height" constant="100" id="mHo-MD-4ST"/>
@@ -32,7 +32,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Denis Foruna, 34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQO-8w-7vn">
-                                        <rect key="frame" x="113.5" y="73" width="148" height="24"/>
+                                        <rect key="frame" x="6" y="73" width="148" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -63,19 +63,100 @@
                                             <outlet property="delegate" destination="2me-6k-mpR" id="mH4-KJ-P4g"/>
                                         </connections>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljc-u2-jGT">
+                                        <rect key="frame" x="130" y="0.0" width="245" height="65"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="mcI-PY-bvw">
+                                                <rect key="frame" x="26" y="9" width="193" height="56"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bsG-8m-gaT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="43" height="56"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFH-km-hyw">
+                                                                <rect key="frame" x="1.5" y="0.0" width="40" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="2zI-TR-MbL"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="Zi7-K0-paB"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="CellLabelColor"/>
+                                                                <state key="normal" backgroundImage="addFriBlank"/>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXB-J5-fEe">
+                                                                <rect key="frame" x="2" y="44" width="39.5" height="12"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
+                                                                <color key="textColor" name="CellLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PL7-8f-8ND">
+                                                        <rect key="frame" x="75" y="0.0" width="43" height="56"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4e-1S-oUv">
+                                                                <rect key="frame" x="1.5" y="0.0" width="40" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="SMc-Wd-whW"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="UfR-Cn-lZg"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="CellLabelColor"/>
+                                                                <state key="normal" backgroundImage="runFilled"/>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="follow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2W-38-Ca8">
+                                                                <rect key="frame" x="5" y="44" width="33" height="12"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
+                                                                <color key="textColor" name="CellLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1rA-fR-0Qy">
+                                                        <rect key="frame" x="150" y="0.0" width="43" height="56"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYM-hs-qBI">
+                                                                <rect key="frame" x="1.5" y="0.0" width="40" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="YzB-IJ-5t5"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="ffL-br-2Gf"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="CellLabelColor"/>
+                                                                <state key="normal" backgroundImage="message"/>
+                                                                <connections>
+                                                                    <action selector="sendMessageButton:" destination="2me-6k-mpR" eventType="touchUpInside" id="rok-y2-XAR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhn-Gn-4PI">
+                                                                <rect key="frame" x="0.0" y="44" width="43" height="12"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="9"/>
+                                                                <color key="textColor" name="CellLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="mcI-PY-bvw" secondAttribute="bottom" id="PIZ-Gj-ENQ"/>
+                                            <constraint firstItem="mcI-PY-bvw" firstAttribute="centerX" secondItem="ljc-u2-jGT" secondAttribute="centerX" id="Ur8-Pc-eyz"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="eSs-ZF-A4j" firstAttribute="leading" secondItem="sKX-qK-kJy" secondAttribute="leading" id="0VG-oP-TP2"/>
-                                    <constraint firstItem="EQO-8w-7vn" firstAttribute="centerX" secondItem="a2b-zG-a7F" secondAttribute="centerX" id="110-te-YsP"/>
                                     <constraint firstItem="eSs-ZF-A4j" firstAttribute="top" secondItem="sKX-qK-kJy" secondAttribute="bottom" id="2cj-KF-80P"/>
+                                    <constraint firstItem="a2b-zG-a7F" firstAttribute="leading" secondItem="cPk-tP-6J1" secondAttribute="leading" constant="30" id="54m-Od-EKY"/>
+                                    <constraint firstItem="EQO-8w-7vn" firstAttribute="centerX" secondItem="a2b-zG-a7F" secondAttribute="centerX" id="6he-ld-bEm"/>
                                     <constraint firstItem="sKX-qK-kJy" firstAttribute="leading" secondItem="cPk-tP-6J1" secondAttribute="leading" constant="10" id="7hg-2p-7a3"/>
                                     <constraint firstItem="eSs-ZF-A4j" firstAttribute="trailing" secondItem="sKX-qK-kJy" secondAttribute="trailing" id="8F9-5a-gy8"/>
                                     <constraint firstAttribute="trailing" secondItem="sKX-qK-kJy" secondAttribute="trailing" constant="10" id="Auy-XX-jNZ"/>
-                                    <constraint firstItem="sKX-qK-kJy" firstAttribute="top" secondItem="EQO-8w-7vn" secondAttribute="bottom" constant="19" id="Djs-hM-sii"/>
-                                    <constraint firstItem="a2b-zG-a7F" firstAttribute="centerX" secondItem="cPk-tP-6J1" secondAttribute="centerX" id="PcQ-C1-LYr"/>
+                                    <constraint firstItem="ljc-u2-jGT" firstAttribute="top" secondItem="cPk-tP-6J1" secondAttribute="top" id="OmX-bw-pad"/>
                                     <constraint firstItem="a2b-zG-a7F" firstAttribute="top" secondItem="cPk-tP-6J1" secondAttribute="top" constant="-35" id="QJn-uz-9dg"/>
+                                    <constraint firstItem="ljc-u2-jGT" firstAttribute="bottom" secondItem="a2b-zG-a7F" secondAttribute="bottom" id="SFO-5h-bke"/>
+                                    <constraint firstAttribute="trailing" secondItem="ljc-u2-jGT" secondAttribute="trailing" id="bHn-hi-yQt"/>
+                                    <constraint firstItem="sKX-qK-kJy" firstAttribute="top" secondItem="EQO-8w-7vn" secondAttribute="bottom" constant="19" id="bdH-wM-N4h"/>
                                     <constraint firstItem="EQO-8w-7vn" firstAttribute="top" secondItem="a2b-zG-a7F" secondAttribute="bottom" constant="8" id="h61-2N-6MZ"/>
+                                    <constraint firstItem="ljc-u2-jGT" firstAttribute="leading" secondItem="a2b-zG-a7F" secondAttribute="trailing" id="hld-WY-WWU"/>
                                     <constraint firstAttribute="bottom" secondItem="eSs-ZF-A4j" secondAttribute="bottom" constant="15" id="pJP-vt-67G"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -123,6 +204,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addFriBlank" width="40" height="40"/>
+        <image name="message" width="24" height="24"/>
+        <image name="runFilled" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="CellLabelColor">
+            <color red="0.37099999189376831" green="0.37099999189376831" blue="0.37099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MainColor">
             <color red="0.47499999403953552" green="0.81199997663497925" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

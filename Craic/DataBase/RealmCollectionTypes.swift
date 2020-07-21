@@ -13,6 +13,8 @@ enum RealmCollectionTypes {
     case favoriteVenue
     case attendingEvent
     case followingUser
+    case message
+    case replyMessage
     
     var path: Object.Type{
         switch self {
@@ -22,6 +24,10 @@ enum RealmCollectionTypes {
             return AttendingEvent.self
         case .followingUser:
             return FollowingUser.self
+        case .message:
+            return ReadMessage.self
+        case .replyMessage:
+            return ReplyMessage.self
         }
     }
 }

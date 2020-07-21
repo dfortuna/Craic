@@ -9,7 +9,7 @@
 import UIKit
 
 class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
-    
+
     var venue: Venue?
     var isFavorite = false
     weak var delegate: FIRCellButtonProtocol?
@@ -51,7 +51,7 @@ class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
         }
     }
     
-    func formatCellUI(withData cellData: FIRCellInputObj) {
+    func formatCellUI(withData cellData: FIRCellInputObj, hasPermission: Bool) {
         self.format()   
         guard let venue = cellData.venue else { return }
         self.venue = venue
@@ -59,7 +59,11 @@ class VenueCollectionViewCell: UICollectionViewCell, FIRObjectCell{
         venueNameLabel.attributedText = formatLabel(labelText: venue.name)
         
         formatProfilePicture(venue)
-        setFollowingButtonName()
+        if hasPermission {
+            setFollowingButtonName()
+        } else {
+            addFavoriteButtonOutlet.alpha = 0
+        }
     }
     
     fileprivate func formatLabel(labelText: String) -> NSAttributedString {

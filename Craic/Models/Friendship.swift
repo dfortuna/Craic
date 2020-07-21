@@ -102,4 +102,16 @@ struct Friendship: FIRObjectProtocol {
             } else { self.f2IsFavorite = false}
         }
     }
+    
+    func getFriend(fromLoggedUserID userID: String) -> User? {
+        if userID == f1Id {
+            return User(with: ["id": f2Id,
+                               "name": f2Name,
+                               "profileImage": f2ProfilePicture] as [String: AnyObject])
+        } else {
+            return User(with: ["id": f1Id,
+                               "name": f1Name,
+                               "profileImage": f1ProfilePicture] as [String: AnyObject])
+        }
+    }
 }

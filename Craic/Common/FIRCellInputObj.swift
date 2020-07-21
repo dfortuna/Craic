@@ -16,6 +16,8 @@ class FIRCellInputObj {
     var event: Event?
     var venue: Venue?
     var user: User?
+    var userFavorites: UserFavorites?
+    var userAgenda: UserAgenda?
     var distance: String?
     
     init?(withFIRObjectProtocol obj: FIRObjectProtocol) {
@@ -33,6 +35,20 @@ class FIRCellInputObj {
             self.event = formatAttendingEvent(event: e)
             self.distance = coreLocationService.userDistanceToCoordinate(latitudeStr: event?.latitude,
                                                                         longitudeStr: event?.longitude)
+            
+        //write something here dude...
+        case is UserAgenda:
+            self.userAgenda = obj as? UserAgenda
+            guard let ea = self.userAgenda else { return nil }
+            self.userAgenda = formatUserAgenda(userAgenda: ea)
+            self.distance = coreLocationService.userDistanceToCoordinate(latitudeStr: event?.latitude,
+                                                                        longitudeStr: event?.longitude)
+        //write something here dude...
+        case is UserFavorites:
+            self.userFavorites = obj as? UserFavorites
+            guard let uf = self.userFavorites else { return nil }
+            self.userFavorites = formatUserFavorites(userFavorite: uf)
+            
         case is User:
             self.user = obj as? User
             guard let u = self.user else { return nil }
@@ -73,4 +89,26 @@ class FIRCellInputObj {
         }
         return u
     }
+    
+    func formatUserFavorites(userFavorite: UserFavorites) -> UserFavorites {
+        var uf = userFavorite
+        if realmService.getDocument(PrimaryKey: uf.venueID, fromCollection: .favoriteVenue) != nil {
+            uf.isFavorite = true
+        } else {
+            uf.isFavorite = false
+        }
+        return uf
+    }
+    
+    func formatUserAgenda(userAgenda: UserAgenda) -> UserAgenda{
+        var ua = userAgenda
+        if realmService.getDocument(PrimaryKey: ua.eventId, fromCollection: .attendingEvent) != nil {
+            ua.isAttending = true
+        } else {
+            ua.isAttending = false
+        }
+        return ua
+    }
+    
+    
 }

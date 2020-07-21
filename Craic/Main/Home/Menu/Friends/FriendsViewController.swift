@@ -95,7 +95,7 @@ extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDel
         let friend = friends[indexPath.row]
         
         guard let obj = FIRCellInputObj(withFIRObjectProtocol: friend) else { return UICollectionViewCell()}
-        cell?.formatCellUI(withData: obj)
+        cell?.formatCellUI(withData: obj, hasPermission: true)
          return cell!
     }
     

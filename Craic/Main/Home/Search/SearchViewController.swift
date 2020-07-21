@@ -32,9 +32,11 @@ class SearchViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchResults()
-        activityIndicator.alpha = 1
-        activityIndicator.startAnimating()
+        if resultList.isEmpty {
+            fetchResults()
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -127,7 +129,7 @@ extension SearchViewController: UICollectionViewDataSource {
             guard let event = resultList[indexPath.row] as? Event else { return UICollectionViewCell() }
             cell.delegate = self
             guard let obj = FIRCellInputObj(withFIRObjectProtocol: event) else { return UICollectionViewCell()}
-            cell.formatCellUI(withData: obj)
+            cell.formatCellUI(withData: obj, hasPermission: true)
             return cell
             
         case .venues:
@@ -136,7 +138,7 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.delegate = self
             
             guard let obj = FIRCellInputObj(withFIRObjectProtocol: venue) else { return UICollectionViewCell()}
-            cell.formatCellUI(withData: obj)
+            cell.formatCellUI(withData: obj, hasPermission: true)
             return cell
         }
     }

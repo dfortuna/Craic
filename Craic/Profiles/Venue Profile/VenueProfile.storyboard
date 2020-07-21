@@ -40,8 +40,8 @@
                                                         <constraint firstAttribute="width" constant="130" id="fE0-za-J3h"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Edge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTJ-wa-zfM">
-                                                    <rect key="frame" x="160" y="190" width="239" height="65"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" text="D-Edge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTJ-wa-zfM">
+                                                    <rect key="frame" x="160" y="198" width="239" height="33.666666666666657"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -96,19 +96,19 @@
                                                 <constraint firstItem="HTJ-wa-zfM" firstAttribute="leading" secondItem="mbF-hm-XOu" secondAttribute="trailing" constant="15" id="4GT-Es-V5J"/>
                                                 <constraint firstItem="kPC-Se-Kaa" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leading" constant="20" id="60H-X0-R46"/>
                                                 <constraint firstAttribute="trailing" secondItem="E5z-k6-B7F" secondAttribute="trailing" constant="20" id="9dW-gB-5ds"/>
+                                                <constraint firstItem="HTJ-wa-zfM" firstAttribute="leading" secondItem="eSt-MX-8NH" secondAttribute="trailing" constant="-59" id="CWs-Et-gJg"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="T3b-Qe-8gI" secondAttribute="bottom" id="Ga9-9b-X0j"/>
                                                 <constraint firstItem="T3b-Qe-8gI" firstAttribute="trailing" secondItem="ERP-dC-xiy" secondAttribute="trailingMargin" id="H9R-x5-kyR"/>
                                                 <constraint firstItem="eSt-MX-8NH" firstAttribute="top" secondItem="mbF-hm-XOu" secondAttribute="bottom" constant="8" id="ISx-eK-kXd"/>
                                                 <constraint firstItem="nMK-w9-EXc" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leading" id="Ifa-VU-gTw"/>
                                                 <constraint firstItem="kPC-Se-Kaa" firstAttribute="centerY" secondItem="E5z-k6-B7F" secondAttribute="centerY" id="Poh-eM-PaY"/>
-                                                <constraint firstItem="HTJ-wa-zfM" firstAttribute="bottom" secondItem="mbF-hm-XOu" secondAttribute="bottom" id="Vch-Mz-am7"/>
                                                 <constraint firstItem="T3b-Qe-8gI" firstAttribute="top" secondItem="eSt-MX-8NH" secondAttribute="bottom" id="WeT-xn-BeZ"/>
                                                 <constraint firstItem="T3b-Qe-8gI" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leadingMargin" id="YoP-lU-m9N"/>
                                                 <constraint firstAttribute="trailing" secondItem="HTJ-wa-zfM" secondAttribute="trailing" constant="15" id="eUr-pc-nyJ"/>
                                                 <constraint firstItem="mbF-hm-XOu" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leading" constant="15" id="fsP-e2-Uvo"/>
                                                 <constraint firstItem="nMK-w9-EXc" firstAttribute="top" secondItem="ERP-dC-xiy" secondAttribute="top" constant="-30" id="oTh-og-xCp"/>
                                                 <constraint firstItem="E5z-k6-B7F" firstAttribute="top" secondItem="ERP-dC-xiy" secondAttribute="top" constant="50" id="qJ5-u0-Rep"/>
-                                                <constraint firstItem="HTJ-wa-zfM" firstAttribute="top" secondItem="nMK-w9-EXc" secondAttribute="bottom" id="sU4-wv-cwe"/>
+                                                <constraint firstItem="HTJ-wa-zfM" firstAttribute="top" secondItem="nMK-w9-EXc" secondAttribute="bottom" constant="8" id="sU4-wv-cwe"/>
                                                 <constraint firstAttribute="trailing" secondItem="nMK-w9-EXc" secondAttribute="trailing" id="vdX-df-Sjm"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -279,14 +279,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SegueToListTableViewCell" id="Abe-l9-Gtc" customClass="SegueToListTableViewCell" customModule="Craic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="745" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="745" width="414" height="49.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-l9-Gtc" id="Sl5-Sx-aYE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-ss-1cu">
-                                                    <rect key="frame" x="30" y="11.666666666666664" width="64.666666666666671" height="27"/>
+                                                    <rect key="frame" x="30" y="11.666666666666666" width="64.666666666666671" height="26.666666666666671"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
