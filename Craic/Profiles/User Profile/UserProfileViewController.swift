@@ -31,6 +31,14 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     @IBOutlet weak var fullNameAndAgeLabel: UILabel!
     @IBOutlet weak var userListsCollectionView: UICollectionView!
     
+    @IBOutlet weak var messageButtonOutlet: UIStackView!
+    @IBOutlet weak var FollowButtonOutlet: UIButton!
+    @IBOutlet weak var addFriendButtonOutlet: UIButton!
+    
+    @IBOutlet weak var followButtonLabel: UILabel!
+    @IBOutlet weak var addFriendButtonLabel: UILabel!
+    @IBOutlet weak var messageButtonLabel: UILabel!
+    
     @IBAction func dismissUserProfileButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -40,9 +48,9 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         guard let receiver = firObj as? User else { return }
         
         let newMessage = UIStoryboard(name: "Messages", bundle: nil).instantiateViewController(withIdentifier: "NewMessageViewController") as! NewMessageViewController
-        
+        newMessage.delegate = self
         self.navigationController?.present(newMessage, animated: true)
-        newMessage.configure(sender: sender, receiver: receiver, messageType: .shortMessage)
+        newMessage.configure(sender: sender, receiver: receiver, messageToReply: nil)
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -71,6 +79,15 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         guard let user = firObj as? User else { return }
+        guard let logUser = loggedUser as? User else { return }
+        if loggedUser?.id == user.id {
+            messageButtonOutlet.isUserInteractionEnabled = false
+            FollowButtonOutlet.isUserInteractionEnabled = false
+            addFriendButtonOutlet.isUserInteractionEnabled = false
+            followButtonLabel.textColor = .lightGray
+            addFriendButtonLabel.textColor = .lightGray
+            messageButtonLabel.textColor = .lightGray
+        }
         fetchResultsForCurrentSearchType(user: user)
     }
     
@@ -279,6 +296,16 @@ extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, 
             attendEvent(forEvent: event, user: loggedUser)
         } else {
             unattendedEvent(forEvent: event, user: loggedUser)
+        }
+    }
+}
+
+extension UserProfileViewController: NewMessageProtocol {
+    func messsageStatus(sentMessage: Message?, error: FirebaseError?) {
+        if sentMessage != nil && error == nil {
+            Alert.messageSent.call(onViewController: self)
+        } else {
+            Alert.somethingWentWrong.call(onViewController: self)
         }
     }
 }

@@ -18,10 +18,12 @@ class RealmService {
     func create<T: Object>(_ object: T) {
         do {
             try realm.write {
-                realm.add(object)
+                print("realm write")
+                realm.add(object, update: .all)
+                print("realm add")
             }
         } catch {
-            print()
+            print("create object error catched")
         }
     }
     
@@ -61,5 +63,25 @@ class RealmService {
     
     func getDocument(PrimaryKey id: String, fromCollection collType: RealmCollectionTypes) -> Object? {
         return realm.object(ofType: collType.path, forPrimaryKey: id)
+    }
+    
+    func query<T: Object>(collection: RealmCollectionTypes,
+                          attributes: [(field: String, operator: String, value: String)],
+                          sortedByFiled sortedBy: String,
+                          ascending: Bool,
+                          documentType: T.Type) -> [T] {
+        var predicate = ""
+        for (index, attribute) in attributes.enumerated() {
+            predicate += attribute.field + " " + attribute.operator + " " + "'" + attribute.value + "'"
+            if index < attributes.count - 1 {
+                predicate += " AND "
+            }
+        }
+        
+        let result = realm.objects(RealmCollectionTypes.localMessage.path)
+            .filter(predicate).sorted(byKeyPath: sortedBy, ascending: ascending)
+        
+//        let test1 =  Array(result) as! [T]
+        return  Array(result.compactMap{ $0 as? T })
     }
 }

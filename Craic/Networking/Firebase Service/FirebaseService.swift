@@ -66,7 +66,9 @@ class FirebaseService {
     
     func fetchDocumentsByKeyword<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference, returning objectType: T.Type, keyword: String, field: String, callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
-        collectionPath(ofReference: collectionReference).whereField(field, arrayContains: keyword).getDocuments { (querySnapshot, error) in
+        collectionPath(ofReference: collectionReference)
+            .whereField(field, arrayContains: keyword)
+            .getDocuments { (querySnapshot, error) in
             
             let result =  self.checkResults(querySnapshot: querySnapshot, error: error, errorMessage: .documentNotFound, objectType: objectType)
             callback(result)
@@ -76,8 +78,8 @@ class FirebaseService {
     func queryDocuments<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference,
                                              returning objectType: T.Type,
                                              operatorKeyValue: [(key: String, op: String, value: String)],
-                                             orderByField field: String,
-                                             descending: Bool,
+                                             orderByField field: String?,
+                                             descending: Bool?,
                                              callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
         var query: Query?
@@ -93,6 +95,11 @@ class FirebaseService {
             } else {
                 query = addQuery(path: path, operatorKeyValue: operatorKeyValue)
             }
+            
+            if let f = field, let d = descending {
+                query?.order(by: f, descending: d)
+            }
+            
             query?.getDocuments() { (querySnapshot, err) in
                 let results = self.checkResults(querySnapshot: querySnapshot, error: err, errorMessage: .documentNotFound, objectType: objectType)
                 callback(results)
@@ -226,5 +233,26 @@ class FirebaseService {
             let result = self.checkResults(querySnapshot: snapshot, error: error, errorMessage: .dataNotMerged, objectType: objectType)
             callback(result)
         })
+    }
+    
+    
+    func batchDelete<T:FIRObjectProtocol>(forDocuments documents: [T],
+                                           reference: FIRCollectionsReference,
+                                           callback: @escaping (Result<String, FirebaseError>) -> ()) {
+        
+        let batch = getDataBaseReference().batch()
+        
+        for document in documents {
+            let collectionReference = collectionPath(ofReference: reference).document(document.id)
+            batch.deleteDocument(collectionReference)
+        }
+        
+        batch.commit { (error) in
+            if error != nil {
+                callback(.failure(.documentNotDeleted))
+            } else {
+                callback(.success("000"))
+            }
+        }
     }
 }

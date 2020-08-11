@@ -261,13 +261,15 @@
 		3638F6C724C24C2B00A6961E /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */; };
 		3638F6C924C2888E00A6961E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6C824C2888E00A6961E /* Date+Extensions.swift */; };
 		3638F6CB24C57FD600A6961E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CA24C57FD600A6961E /* String+Extensions.swift */; };
-		3638F6CD24C5B0D300A6961E /* ReadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CC24C5B0D300A6961E /* ReadMessage.swift */; };
-		3638F6CF24C7910800A6961E /* ReplyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CE24C7910800A6961E /* ReplyMessage.swift */; };
+		3638F6CF24C7910800A6961E /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CE24C7910800A6961E /* LocalMessage.swift */; };
 		3675B6442495B457000049E3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6432495B457000049E3 /* Alert.swift */; };
 		3675B64624993EE3000049E3 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64524993EE3000049E3 /* SearchType.swift */; };
 		3675B6482499682E000049E3 /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6472499682E000049E3 /* GenericListViewController.swift */; };
 		3675B64A249A6E40000049E3 /* FIRCellInputObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B649249A6E40000049E3 /* FIRCellInputObj.swift */; };
 		3675B64C249AEE32000049E3 /* VenueEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */; };
+		36AC5EC924D1001D00053B3E /* MessagesDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC5EC824D1001C00053B3E /* MessagesDetailTableViewCell.swift */; };
+		36AC5ECB24D21DE200053B3E /* titleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC5ECA24D21DE100053B3E /* titleTableViewCell.swift */; };
+		36AC5ED024DCDAF200053B3E /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC5ECF24DCDAF100053B3E /* Thread.swift */; };
 		36E647DE249C58A400193A42 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DD249C58A400193A42 /* RealmService.swift */; };
 		36E647E0249CCF1400193A42 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DF249CCF1400193A42 /* FavoriteVenue.swift */; };
 		36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E2249CCF7600193A42 /* AttendingEvent.swift */; };
@@ -404,13 +406,15 @@
 		3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		3638F6C824C2888E00A6961E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		3638F6CA24C57FD600A6961E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		3638F6CC24C5B0D300A6961E /* ReadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMessage.swift; sourceTree = "<group>"; };
-		3638F6CE24C7910800A6961E /* ReplyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyMessage.swift; sourceTree = "<group>"; };
+		3638F6CE24C7910800A6961E /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 		3675B6432495B457000049E3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3675B64524993EE3000049E3 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
 		3675B6472499682E000049E3 /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
 		3675B649249A6E40000049E3 /* FIRCellInputObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCellInputObj.swift; sourceTree = "<group>"; };
 		3675B64B249AEE32000049E3 /* VenueEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueEventsViewController.swift; sourceTree = "<group>"; };
+		36AC5EC824D1001C00053B3E /* MessagesDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDetailTableViewCell.swift; sourceTree = "<group>"; };
+		36AC5ECA24D21DE100053B3E /* titleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleTableViewCell.swift; sourceTree = "<group>"; };
+		36AC5ECF24DCDAF100053B3E /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		36E647DD249C58A400193A42 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		36E647DF249CCF1400193A42 /* FavoriteVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
 		36E647E2249CCF7600193A42 /* AttendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingEvent.swift; sourceTree = "<group>"; };
@@ -667,10 +671,10 @@
 			isa = PBXGroup;
 			children = (
 				362449B92491D086003EA526 /* Messages.storyboard */,
-				362449BA2491D086003EA526 /* MessageDetailViewController.swift */,
-				362449BB2491D086003EA526 /* MessagesListTableViewController.swift */,
-				362449BC2491D086003EA526 /* MessagesTableViewCell.swift */,
-				3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */,
+				36AC5ECF24DCDAF100053B3E /* Thread.swift */,
+				3638F6D124C9DB4D00A6961E /* Messages Detail */,
+				3638F6D024C9DB2E00A6961E /* Messages List */,
+				3638F6D224C9DB7400A6961E /* New Message */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -888,12 +892,47 @@
 			path = "Custom Cells Protocol Extensions";
 			sourceTree = "<group>";
 		};
+		3638F6D024C9DB2E00A6961E /* Messages List */ = {
+			isa = PBXGroup;
+			children = (
+				362449BB2491D086003EA526 /* MessagesListTableViewController.swift */,
+				362449BC2491D086003EA526 /* MessagesTableViewCell.swift */,
+			);
+			path = "Messages List";
+			sourceTree = "<group>";
+		};
+		3638F6D124C9DB4D00A6961E /* Messages Detail */ = {
+			isa = PBXGroup;
+			children = (
+				362449BA2491D086003EA526 /* MessageDetailViewController.swift */,
+				36AC5ECC24D22D8E00053B3E /* Cells */,
+			);
+			path = "Messages Detail";
+			sourceTree = "<group>";
+		};
+		3638F6D224C9DB7400A6961E /* New Message */ = {
+			isa = PBXGroup;
+			children = (
+				3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */,
+			);
+			path = "New Message";
+			sourceTree = "<group>";
+		};
 		369375AA24C0423700267B83 /* Event Attendees */ = {
 			isa = PBXGroup;
 			children = (
 				3619523024AD68AC000544AC /* EventAttendees.swift */,
 			);
 			path = "Event Attendees";
+			sourceTree = "<group>";
+		};
+		36AC5ECC24D22D8E00053B3E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				36AC5EC824D1001C00053B3E /* MessagesDetailTableViewCell.swift */,
+				36AC5ECA24D21DE100053B3E /* titleTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		36E647E1249CCF4300193A42 /* DataBase */ = {
@@ -912,8 +951,7 @@
 				36E647DF249CCF1400193A42 /* FavoriteVenue.swift */,
 				36E647E2249CCF7600193A42 /* AttendingEvent.swift */,
 				36E647E4249CCFFF00193A42 /* FollowingUser.swift */,
-				3638F6CC24C5B0D300A6961E /* ReadMessage.swift */,
-				3638F6CE24C7910800A6961E /* ReplyMessage.swift */,
+				3638F6CE24C7910800A6961E /* LocalMessage.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -1252,6 +1290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3619523724BA61DF000544AC /* UserAgenda.swift in Sources */,
+				36AC5ED024DCDAF200053B3E /* Thread.swift in Sources */,
 				36244ADB2491D0F8003EA526 /* User.swift in Sources */,
 				3619523D24BF7631000544AC /* AgendaViewController.swift in Sources */,
 				362449D22491D087003EA526 /* LogoffTableViewCell.swift in Sources */,
@@ -1272,11 +1311,11 @@
 				36244A022491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				36244AC02491D0F8003EA526 /* EventProfileViewController.swift in Sources */,
 				36E647ED24A1113700193A42 /* VenueFollowersViewController .swift in Sources */,
-				3638F6CD24C5B0D300A6961E /* ReadMessage.swift in Sources */,
 				36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				362449DE2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
+				36AC5ECB24D21DE200053B3E /* titleTableViewCell.swift in Sources */,
 				36244AE12491D0F8003EA526 /* MessageType.swift in Sources */,
 				3619521E24A42ED6000544AC /* EventDescriptionTableViewCell.swift in Sources */,
 				36244AE72491D0F8003EA526 /* Feed.swift in Sources */,
@@ -1293,7 +1332,7 @@
 				36244AC32491D0F8003EA526 /* Metadata.swift in Sources */,
 				3638F6CB24C57FD600A6961E /* String+Extensions.swift in Sources */,
 				3675B6442495B457000049E3 /* Alert.swift in Sources */,
-				3638F6CF24C7910800A6961E /* ReplyMessage.swift in Sources */,
+				3638F6CF24C7910800A6961E /* LocalMessage.swift in Sources */,
 				362449EA2491D087003EA526 /* SearchFiltersViewController.swift in Sources */,
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
@@ -1307,6 +1346,7 @@
 				36244A322491D087003EA526 /* LoginViewController.swift in Sources */,
 				36E647EF24A17F9900193A42 /* UIView+Extensions.swift in Sources */,
 				36244A992491D0F8003EA526 /* FIRObjectProtocol.swift in Sources */,
+				36AC5EC924D1001D00053B3E /* MessagesDetailTableViewCell.swift in Sources */,
 				3619523124AD68AC000544AC /* EventAttendees.swift in Sources */,
 				36244B022491D0F8003EA526 /* Icons.swift in Sources */,
 				36244AAB2491D0F8003EA526 /* VenueMainTableViewCell.swift in Sources */,

@@ -55,12 +55,14 @@ class SearchViewController: UIViewController {
             getVenues(fromFormatedFilters: formatedFilters)
         }
     }
+    
+    
 
     func getEvents(fromFormatedFilters filters: [String: String]) {
         firestore.queryDocuments(from: .event,
                                  returning: Event.self,
                                  operatorKeyValue: [(key: "category", op: "==", value: "Musical")],
-                                 orderByField: "", descending: true) { (result) in
+                                 orderByField: "numericDate", descending: true) { (result) in
                                 switch result {
                                 case .success(let events):
                                     self.formatResult(forList: events)
@@ -77,7 +79,7 @@ class SearchViewController: UIViewController {
         firestore.queryDocuments(from: .venue,
                                  returning: Venue.self,
                                  operatorKeyValue: [(key: "category", op: "==", value: "Arts")],
-                                 orderByField: "", descending: true) { (result) in
+                                 orderByField: nil, descending: nil) { (result) in
                                 switch result {
                                 case .success(let venues):
                                     self.formatResult(forList: venues)

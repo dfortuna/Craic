@@ -193,7 +193,13 @@
                         <viewLayoutGuide key="safeArea" id="Kpd-Mg-BOL"/>
                     </view>
                     <connections>
+                        <outlet property="FollowButtonOutlet" destination="L4e-1S-oUv" id="ufz-bp-Ubp"/>
+                        <outlet property="addFriendButtonLabel" destination="BXB-J5-fEe" id="jdH-gs-rBE"/>
+                        <outlet property="addFriendButtonOutlet" destination="OFH-km-hyw" id="AX1-Qm-3Yy"/>
+                        <outlet property="followButtonLabel" destination="g2W-38-Ca8" id="wTB-9u-Dg2"/>
                         <outlet property="fullNameAndAgeLabel" destination="EQO-8w-7vn" id="rP4-Dd-yBl"/>
+                        <outlet property="messageButtonLabel" destination="Mhn-Gn-4PI" id="EPh-aL-GB0"/>
+                        <outlet property="messageButtonOutlet" destination="1rA-fR-0Qy" id="Gop-gN-Kgl"/>
                         <outlet property="profilePicImageView" destination="a2b-zG-a7F" id="gOR-5r-2Qf"/>
                         <outlet property="userListsCollectionView" destination="eSs-ZF-A4j" id="80I-3U-AVQ"/>
                     </connections>

@@ -13,25 +13,48 @@ class MessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var senderProfilePicture: UIImageView!
     @IBOutlet weak var senderName: UILabel!
     @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var messageDate: UILabel!
-    private var isRead = false
-    private var messageData: Message?
     
-    func setUI(messageData: Message, isRead: Bool){
-        self.messageData = messageData
-        self.isRead = isRead
+    @IBOutlet weak var messageDate: UILabel!
+    @IBOutlet weak var unreadMessagesLabel: UILabel!
+    
+    private var isRead = false
+    private var thread: Thread?
+    private var loggedUser: User?
+    
+    func setUI(thread: Thread, user: User){
+        self.thread = thread
+        self.loggedUser = user
         
-        guard let formatedDate = messageData.stringDate.convertToddMMMDateformat() else { return }
-        if isRead {
-            configureReadCell(name: messageData.senderName, date: formatedDate, text: messageData.text)
+        //find last received message in the thread
+        let receivedMessages = thread.replyList.compactMap{$0.value}
+        let lastRMessage = receivedMessages.max { $0.messageNumber > $1.messageNumber }
+        
+        guard let sName = lastRMessage?.senderName,
+            let pPicture = lastRMessage?.senderProfilePicture,
+            let mText = lastRMessage?.text else { return }
+        
+        let cellMessage = formatCellMessage(forThread: thread, andLoggedUser: user)
+        formatSenderPicture(forUrl: pPicture)
+        let formatedDate = thread.stringDateLastMessage.convertToddMMMDateformat() ?? ""
+        
+        if thread.numberOfUnreadMessages > 0 {
+            //configure unReadThread
+            unreadMessagesLabel.layer.cornerRadius = 13
+            unreadMessagesLabel.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            unreadMessagesLabel.layer.masksToBounds = true
+            unreadMessagesLabel.textColor = .white
+            unreadMessagesLabel.text =  String(thread.numberOfUnreadMessages)
+            
+            configureUnreadCell(name: sName, date: formatedDate, text: cellMessage)
         } else {
-            configureUnreadCell(name: messageData.senderName, date: formatedDate, text: messageData.text)
+            //configure read cell
+            unreadMessagesLabel.alpha = 0
+            configureReadCell(name: sName, date: formatedDate, text: cellMessage)
         }
-        formatSenderPicture(forUrl: messageData.senderProfilePicture)
     }
    
 // Read Cell - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    func configureReadCell(name: String, date: String, text: String){
+    private func configureReadCell(name: String, date: String, text: String){
         senderName.attributedText = formatReadString(text: name)
         messageDate.attributedText = formatReadString(text: date)
         message.attributedText = formatReadString(text: text)
@@ -49,9 +72,6 @@ class MessagesTableViewCell: UITableViewCell {
         senderName.attributedText = formatUnreadString(text: name)
         messageDate.attributedText = formatUnreadString(text: date)
         message.text = text
-        
-//        let regularFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
-//        message.attributedText = NSMutableAttributedString(string: text, attributes: regularFont)
     }
     
     private func formatUnreadString(text: String) -> NSMutableAttributedString {
@@ -60,6 +80,16 @@ class MessagesTableViewCell: UITableViewCell {
         return boldString
     }
 // - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
+    private func formatCellMessage(forThread thread: Thread, andLoggedUser user: User) -> String {
+        
+        let lastIndex = thread.replyList.compactMap{ $0.key }.max()
+        guard let lIndex = lastIndex,
+              let lastMessage = thread.replyList[lIndex] else { return String()}
+        
+        let cellMessage = lastMessage.senderID == user.id ? "You: \(lastMessage.text)" : lastMessage.text
+        return cellMessage
+    }
     
     private func formatSenderPicture(forUrl url: String) {
         senderProfilePicture.layer.cornerRadius = 20

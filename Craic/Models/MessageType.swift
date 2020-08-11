@@ -10,20 +10,17 @@ import Foundation
 
 enum MessageType: String {
     case eventInvitation = "eventInvitation" // segue to event profile
-    case shortMessage = "shortMessage" // does not segue to another View Controller
-    case advertising = "advertising" // segue to message detail
-    case inform = "inform"  // segue to message detail
+    case venueInvitation = "venueInvitation" // segue to venue profile
+    case chatMessage = "chatMessage" // segue to message detail
     
     static func getType(type: String) -> MessageType? {
         switch type {
         case "eventInvitation":
             return .eventInvitation
-        case "shortMessage":
-            return .shortMessage
-        case "advertising":
-            return .advertising
-        case "inform":
-            return .inform
+        case "venueInvitation":
+            return .eventInvitation
+        case "chatMessage":
+            return .chatMessage
         default:
             return nil
         }

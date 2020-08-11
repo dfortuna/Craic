@@ -30,6 +30,7 @@ struct Event: FIRObjectProtocol {
     var hostProfileImage: String
     var price: String
     var date: String
+    var numericDate: Int
     var time: String
     var attendees: Int
     
@@ -54,6 +55,7 @@ struct Event: FIRObjectProtocol {
             self.hostProfileImage = dictionary["hostProfileImage"] as? String ?? String()
             self.price = dictionary["price"] as? String ?? String()
             self.date = dictionary["date"] as? String ?? String()
+            self.numericDate = dictionary["numericDate"] as? Int ?? 0
             self.time = dictionary["time"] as? String ?? String()
             self.attendees = dictionary["attendees"] as? Int ?? Int()
             
