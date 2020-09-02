@@ -9,18 +9,21 @@
 import Foundation
 
 enum MessageType: String {
-    case eventInvitation = "eventInvitation" // segue to event profile
-    case venueInvitation = "venueInvitation" // segue to venue profile
-    case chatMessage = "chatMessage" // segue to message detail
+    case eventInvitation = "eventInvitation" // segue to event profile (invitation cell)
+    case venueInvitation = "venueInvitation" // segue to venue profile (invitation cell)
+    case chatMessage = "chatMessage" // segue to message detail (chat cell)
+    case friendshipRequest = "friendshipRequest" //segue to user profile (friendship request cell)
     
     static func getType(type: String) -> MessageType? {
         switch type {
         case "eventInvitation":
             return .eventInvitation
         case "venueInvitation":
-            return .eventInvitation
+            return .venueInvitation
         case "chatMessage":
             return .chatMessage
+        case "friendshipRequest":
+            return .friendshipRequest
         default:
             return nil
         }

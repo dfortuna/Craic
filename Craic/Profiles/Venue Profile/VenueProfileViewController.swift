@@ -166,6 +166,15 @@ extension VenueProfileViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension VenueProfileViewController: VenueProfileMainCellDelegate, FavoriteVenueProtocol {
+    func handleShareButton(sender: VenueMainTableViewCell) {
+        guard let user = loggedUser else { return }
+        guard let venue = sender.currentVenue else { return }
+        
+        let shareVC = UIStoryboard(name: "SelectFriends", bundle: nil).instantiateViewController(withIdentifier: "SelectFriendsViewController") as! SelectFriendsViewController
+        self.navigationController?.pushViewController(shareVC, animated: true)
+        shareVC.formatUI(forUser: user, andVenue: venue, orEvent: nil)
+    }
+    
     
     func handleIsFavoriteToggleButton(sender: VenueMainTableViewCell) {
         guard let venue = sender.currentVenue else { return }

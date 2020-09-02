@@ -10,9 +10,6 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
-
-    var testData = TestData.shared
-    
     var firebase = FirebaseService.shared
     var friends = [User]()
     var loggedUser: User?

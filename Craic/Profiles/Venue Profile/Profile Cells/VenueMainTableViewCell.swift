@@ -11,6 +11,7 @@ import UIKit
 protocol VenueProfileMainCellDelegate: class {
     func handleIsFavoriteToggleButton(sender: VenueMainTableViewCell)
     func handleBackButton(sender: VenueMainTableViewCell)
+    func handleShareButton(sender: VenueMainTableViewCell)
 }
 
 class VenueMainTableViewCell: UITableViewCell {
@@ -30,6 +31,10 @@ class VenueMainTableViewCell: UITableViewCell {
     @IBAction func favoriteButton(_ sender: UIButton) {
         delegate?.handleIsFavoriteToggleButton(sender: self)
         setFavoriteButtonImage(isFavoriteVenue)
+    }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        delegate?.handleShareButton(sender: self)
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

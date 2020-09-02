@@ -36,8 +36,10 @@ struct Message: FIRObjectProtocol {
     
     var messageType: String
     var eventID: String?
+    var eventName: String?
+    var eventHost: String?
     var venueID: String?
-    
+    var venueName: String?
     
     init?(with dictionary: [String : AnyObject]) {
         if let messageID = dictionary["id"] as? String, messageID != "",
@@ -72,6 +74,11 @@ struct Message: FIRObjectProtocol {
             self.messageNumber = mN
             self.messageType = mType
             
+            self.eventID = dictionary["eventID"] as? String
+            self.eventName = dictionary["eventName"] as? String
+            self.eventHost = dictionary["eventHost"] as? String
+            self.venueID = dictionary["venueID"] as? String
+            self.venueName = dictionary["venueName"] as? String
         } else {
             print("Message obj not created - id not valid")
             return nil

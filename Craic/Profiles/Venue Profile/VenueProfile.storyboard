@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -89,6 +89,18 @@
                                                         <action selector="backButtonAction:" destination="GVC-wZ-VZQ" eventType="touchUpInside" id="EwU-Qp-6IM"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqv-GX-5vO">
+                                                    <rect key="frame" x="354" y="148" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Egh-QK-jyj"/>
+                                                        <constraint firstAttribute="height" constant="40" id="dU3-e5-ZAX"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="MainColor"/>
+                                                    <state key="normal" image="share"/>
+                                                    <connections>
+                                                        <action selector="shareButton:" destination="GVC-wZ-VZQ" eventType="touchUpInside" id="9ko-0g-VAC"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mbF-hm-XOu" firstAttribute="bottom" secondItem="nMK-w9-EXc" secondAttribute="bottom" constant="65" id="1f4-e1-385"/>
@@ -102,12 +114,14 @@
                                                 <constraint firstItem="eSt-MX-8NH" firstAttribute="top" secondItem="mbF-hm-XOu" secondAttribute="bottom" constant="8" id="ISx-eK-kXd"/>
                                                 <constraint firstItem="nMK-w9-EXc" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leading" id="Ifa-VU-gTw"/>
                                                 <constraint firstItem="kPC-Se-Kaa" firstAttribute="centerY" secondItem="E5z-k6-B7F" secondAttribute="centerY" id="Poh-eM-PaY"/>
+                                                <constraint firstItem="jqv-GX-5vO" firstAttribute="trailing" secondItem="E5z-k6-B7F" secondAttribute="trailing" id="UGn-Iv-arF"/>
                                                 <constraint firstItem="T3b-Qe-8gI" firstAttribute="top" secondItem="eSt-MX-8NH" secondAttribute="bottom" id="WeT-xn-BeZ"/>
                                                 <constraint firstItem="T3b-Qe-8gI" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leadingMargin" id="YoP-lU-m9N"/>
                                                 <constraint firstAttribute="trailing" secondItem="HTJ-wa-zfM" secondAttribute="trailing" constant="15" id="eUr-pc-nyJ"/>
                                                 <constraint firstItem="mbF-hm-XOu" firstAttribute="leading" secondItem="ERP-dC-xiy" secondAttribute="leading" constant="15" id="fsP-e2-Uvo"/>
                                                 <constraint firstItem="nMK-w9-EXc" firstAttribute="top" secondItem="ERP-dC-xiy" secondAttribute="top" constant="-30" id="oTh-og-xCp"/>
                                                 <constraint firstItem="E5z-k6-B7F" firstAttribute="top" secondItem="ERP-dC-xiy" secondAttribute="top" constant="50" id="qJ5-u0-Rep"/>
+                                                <constraint firstItem="HTJ-wa-zfM" firstAttribute="top" secondItem="jqv-GX-5vO" secondAttribute="bottom" constant="10" id="s1P-4S-amd"/>
                                                 <constraint firstItem="HTJ-wa-zfM" firstAttribute="top" secondItem="nMK-w9-EXc" secondAttribute="bottom" constant="8" id="sU4-wv-cwe"/>
                                                 <constraint firstAttribute="trailing" secondItem="nMK-w9-EXc" secondAttribute="trailing" id="vdX-df-Sjm"/>
                                             </constraints>
@@ -279,14 +293,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SegueToListTableViewCell" id="Abe-l9-Gtc" customClass="SegueToListTableViewCell" customModule="Craic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="745" width="414" height="49.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="745" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-l9-Gtc" id="Sl5-Sx-aYE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-ss-1cu">
-                                                    <rect key="frame" x="30" y="11.666666666666666" width="64.666666666666671" height="26.666666666666671"/>
+                                                    <rect key="frame" x="30" y="11.666666666666664" width="64.666666666666671" height="27"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -372,11 +386,15 @@
     <resources>
         <image name="backArrow" width="24" height="24"/>
         <image name="favoriteButton2" width="24" height="24"/>
+        <image name="share" width="24" height="24"/>
         <namedColor name="CellLabelColor">
             <color red="0.37099999189376831" green="0.37099999189376831" blue="0.37099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkBackgroundColor">
             <color red="0.57400000095367432" green="0.57400000095367432" blue="0.57400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.47499999403953552" green="0.81199997663497925" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

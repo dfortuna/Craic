@@ -1,5 +1,5 @@
 //
-//  MessagesTableViewCell.swift
+//  ChatMessageTableViewCell.swift
 //  Project4
 //
 //  Created by Denis Fortuna on 6/11/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesTableViewCell: UITableViewCell {
+class ChatMessageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var senderProfilePicture: UIImageView!
     @IBOutlet weak var senderName: UILabel!
@@ -51,6 +51,7 @@ class MessagesTableViewCell: UITableViewCell {
             unreadMessagesLabel.alpha = 0
             configureReadCell(name: sName, date: formatedDate, text: cellMessage)
         }
+        message.dynamicHeight()
     }
    
 // Read Cell - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

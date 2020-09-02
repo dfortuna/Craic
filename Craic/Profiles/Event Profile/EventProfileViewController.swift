@@ -16,9 +16,8 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
     private let firebaseService = FirebaseService.shared
     let realmService = RealmService.shared
     let loggedUser = UserSettings().getLoggedUser()
-    var cellIds = ["eventProfilePictures",
-                   "EventDateNameTableViewCell"]
-
+    var cellIds = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventDataTableView.contentInset = UIEdgeInsets(top: -UIApplication.shared.statusBarFrame.size.height,
@@ -30,6 +29,7 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        cellIds = [""]
         if let event = firObj as? Event {
             listData(forEvent: event)
         } else if eventId != nil {
@@ -39,23 +39,21 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
         }
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        cellIds = ["eventProfilePictures", "EventDateNameTableViewCell"]
     }
     
     @IBOutlet weak var eventDataTableView: UITableView!
     
     private func addRows(forEvent event: Event) {
         guard let event = firObj as? Event else { return }
+        cellIds = ["eventProfilePictures", "EventDateNameTableViewCell"]
         if !event.description.isEmpty{
             cellIds.append("EventDescriptionTableViewCell")
         }
         if ((event.address != nil) && (event.address != "")) || (!event.price.isEmpty) {
             cellIds.append("EventInfoTableViewCell")
         }
-        
         let attendingEvent = realmService.getDocument(PrimaryKey: event.id, fromCollection: .attendingEvent)
         if event.attendees > 0 || (attendingEvent != nil) {
             cellIds.append("Attendees")
@@ -124,6 +122,7 @@ extension EventProfileViewController: UITableViewDelegate, UITableViewDataSource
         switch cellId {
         case "eventProfilePictures":
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventProfilePicturesTableViewCell", for: indexPath) as? EventProfilePicturesTableViewCell
+            cell?.delegate = self
             cell?.formatUI(pictures: event.images)
             return cell!
             
@@ -186,3 +185,14 @@ extension EventProfileViewController: eventProfileNameCellProtocol {
     }
 }
 
+extension EventProfileViewController: EventProfilePicturesTableViewCellProtocol {
+    func handleShare(sender: EventProfilePicturesTableViewCell) {
+
+        guard let user = loggedUser else { return }
+        guard let event = firObj as? Event else { return }
+        
+        let shareVC = UIStoryboard(name: "SelectFriends", bundle: nil).instantiateViewController(withIdentifier: "SelectFriendsViewController") as! SelectFriendsViewController
+        self.navigationController?.pushViewController(shareVC, animated: true)
+        shareVC.formatUI(forUser: user, andVenue: nil, orEvent: event)
+    }
+}

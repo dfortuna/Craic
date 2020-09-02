@@ -67,4 +67,9 @@ struct Icons {
     
     //Nothing Found
     static let woops = #imageLiteral(resourceName: "Woops")
+    
+    //Sharing Events and Venue with Friends
+    static let shareButton = #imageLiteral(resourceName: "share")
+    static let notSelected = #imageLiteral(resourceName: "notSelected")
+    static let selected = #imageLiteral(resourceName: "selected")
 }

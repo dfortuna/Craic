@@ -8,17 +8,23 @@
 
 import UIKit
 
+protocol EventProfilePicturesTableViewCellProtocol: class {
+    func handleShare(sender: EventProfilePicturesTableViewCell)
+}
+
 class EventProfilePicturesTableViewCell: UITableViewCell {
     
     private var picturesCollectionView: UICollectionView!
     private var pageControl: UIPageControl!
     private var pictures = [String]()
+    weak var delegate: EventProfilePicturesTableViewCellProtocol?
     
     func formatUI(pictures: [String: String]){
         self.backgroundColor = .orange
         self.pictures = Array(pictures.values)
         configureCollectionView()
         configurePageControl()
+        configureShareButton()
     }
     
     func configureCollectionView() {
@@ -38,6 +44,24 @@ class EventProfilePicturesTableViewCell: UITableViewCell {
         picturesCollectionView.showsHorizontalScrollIndicator = false
         picturesCollectionView.isPagingEnabled = true
         picturesCollectionView.register(HorizontalDisplayCollectionViewCell.self, forCellWithReuseIdentifier: "HorizontalDisplayCollectionViewCell")
+    }
+    
+    func configureShareButton() {
+        let shareButton = UIButton()
+        shareButton.setImage(Icons.shareButton, for: .normal)
+        shareButton.tintColor = Colors.mainColor
+        shareButton.addTarget(self, action: #selector(shareEvent), for: .touchUpInside)
+        self.addSubview(shareButton)
+        shareButton.anchorSizes(sizeWidth: 40, sizeHeight: 40)
+        shareButton.anchorEdges(top: nil,
+                                left: nil,
+                                right: self.rightAnchor,
+                                bottom: self.bottomAnchor,
+                                padding: .init(top: 0, left: 0, bottom: -10, right: -10))
+    }
+    
+    @objc private func shareEvent() {
+        delegate?.handleShare(sender: self)
     }
     
     func configurePageControl() {

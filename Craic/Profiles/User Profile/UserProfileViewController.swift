@@ -11,7 +11,6 @@ import UIKit
 class UserProfileViewController: UIViewController, FIRObjectViewController {
     var firObj: FIRObjectProtocol?
     
-    
     //MARK: - Variables
     private enum SearchType {
         case friends

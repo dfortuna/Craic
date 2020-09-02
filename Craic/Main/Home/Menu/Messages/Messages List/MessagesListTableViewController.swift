@@ -41,18 +41,25 @@ class MessagesListTableViewController: UITableViewController {
                                         //TODO! = add sort by threadID
                                             switch result {
                                             case .success(let messages):
-                                                self.groupThreads(messages: messages)
+                                                self.groupThreads(messages: messages, userID: userID)
                                             case .failure(_):
                                                 print("deu rum em achar as msgs")
                                             }
         }
     }
     
-    private func groupThreads(messages: [Message]) {
+    private func groupThreads(messages: [Message], userID: String) {
         
         if !messages.isEmpty {
-        //sort messages by threadID
-            let sortedMessages = messages.sorted { $0.threadID < $1.threadID }
+            
+            //filter out invitation messages sent by user
+            let filteredMessages = messages.filter{
+                ($0.messageType == MessageType.chatMessage.rawValue) ||
+                ($0.messageType != MessageType.chatMessage.rawValue && $0.receiverID == userID)
+            }
+            
+            //sort messages by threadID
+            let sortedMessages = filteredMessages.sorted { $0.threadID < $1.threadID }
             
             var threadMessagesSequence = [Int: Message]()
         
@@ -119,11 +126,28 @@ class MessagesListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesTableViewCell", for: indexPath) as! MessagesTableViewCell
-        let thread = threadss[indexPath.row]
+
         guard let user = loggedUser else { return UITableViewCell() }
-        cell.setUI(thread: thread, user: user)
-        return cell
+        let thread = threadss[indexPath.row]
+        
+        //all messages on a thread must have the same messageType
+        guard let firstMessage = thread.replyList[0] else { return UITableViewCell() }
+        guard let mType = MessageType.getType(type: firstMessage.messageType) else { return UITableViewCell() }
+        
+        switch mType {
+        case .chatMessage:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageTableViewCell", for: indexPath) as! ChatMessageTableViewCell
+            cell.setUI(thread: thread, user: user)
+            return cell
+        case .eventInvitation, .venueInvitation:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InvitationMessageTableViewCell", for: indexPath) as! InvitationMessageTableViewCell
+            cell.setUI(thread: thread)
+            return cell
+        case .friendshipRequest :
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendRequestMessageTableViewCell", for: indexPath) as! FriendRequestMessageTableViewCell
+            cell.formatUI(forMessage: firstMessage)
+            return cell
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,7 +191,18 @@ class MessagesListTableViewController: UITableViewController {
             self.navigationController?.pushViewController(messageDetail, animated: true)
             guard let user = loggedUser else { return }
             messageDetail.setupUI(thread: thread, user: user)
+            
+        case .friendshipRequest:
+            //present MessageDetailViewController
+            let messageDetail = UIStoryboard(name: "UserProfile", bundle: nil)
+            .instantiateViewController(withIdentifier: "MessageDetailViewController")
+                as! MessageDetailViewController
+            self.navigationController?.pushViewController(messageDetail, animated: true)
+            guard let user = loggedUser else { return }
+            messageDetail.setupUI(thread: thread, user: user)
+            
         }
+    
     }
     
     private func addReadMessagesToLocalDB(forThread thread: Thread) {

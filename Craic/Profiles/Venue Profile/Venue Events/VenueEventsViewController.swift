@@ -15,8 +15,7 @@ class VenueEventsViewController: GenericListViewController<Event, EventCollectio
         firebaseService.queryDocuments(from: .event,
                                        returning: Event.self,
                                        operatorKeyValue: [(key:"hostID", op:"==", value: venueID)],
-                                       orderByField: "",
-                                       descending: false) { (result) in
+                                       orderByField: nil, descending: nil) { (result) in
                                         switch result {
                                         case .success(let events):
                                             self.formatResult(forList: events)
