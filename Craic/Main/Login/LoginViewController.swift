@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     let firebaseAuth = FirebaseAuthService.shared
     let firestore = FirebaseService.shared
+    let realm = RealmService.shared
     let facebookService = FacebookService.shared
     var userSettings = UserSettings()
     
@@ -88,6 +89,8 @@ class LoginViewController: UIViewController {
             print("Unable to set friendship ", user.id, " ", friend[""] as Any)
             return
         }
+        let localFriend = FriendshipReuq
+        realm.create(<#T##object: T##T#>)
         setFriendship(friendship: friendship)
     }
     

@@ -109,6 +109,4 @@ class FIRCellInputObj {
         }
         return ua
     }
-    
-    
 }

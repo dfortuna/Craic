@@ -30,7 +30,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     @IBOutlet weak var fullNameAndAgeLabel: UILabel!
     @IBOutlet weak var userListsCollectionView: UICollectionView!
     
-    @IBOutlet weak var messageButtonOutlet: UIStackView!
+    @IBOutlet weak var messageButtonOutlet: UIButton!
     @IBOutlet weak var FollowButtonOutlet: UIButton!
     @IBOutlet weak var addFriendButtonOutlet: UIButton!
     
@@ -50,6 +50,19 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         newMessage.delegate = self
         self.navigationController?.present(newMessage, animated: true)
         newMessage.configure(sender: sender, receiver: receiver, messageToReply: nil)
+    }
+    
+    
+    @IBAction func followUserButton(_ sender: UIButton) {
+        //check if logged user is friend with profile's user and if this has enable new followers
+        //them add logged user as follower
+    }
+    
+    @IBAction func addFriendButton(_ sender: UIButton) {
+        //Send a friend request message
+        guard let sender = loggedUser else { return }
+        guard let receiver = firObj as? User else { return }
+        
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {

@@ -80,6 +80,9 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="CellLabelColor"/>
                                                                 <state key="normal" backgroundImage="addFriBlank"/>
+                                                                <connections>
+                                                                    <action selector="addFriendButton:" destination="2me-6k-mpR" eventType="touchUpInside" id="PHR-XZ-9p8"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXB-J5-fEe">
                                                                 <rect key="frame" x="2" y="44" width="39.5" height="12"/>
@@ -100,6 +103,9 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="CellLabelColor"/>
                                                                 <state key="normal" backgroundImage="runFilled"/>
+                                                                <connections>
+                                                                    <action selector="followUserButton:" destination="2me-6k-mpR" eventType="touchUpInside" id="ptG-IC-T6e"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="follow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2W-38-Ca8">
                                                                 <rect key="frame" x="5" y="44" width="33" height="12"/>
@@ -199,7 +205,7 @@
                         <outlet property="followButtonLabel" destination="g2W-38-Ca8" id="wTB-9u-Dg2"/>
                         <outlet property="fullNameAndAgeLabel" destination="EQO-8w-7vn" id="rP4-Dd-yBl"/>
                         <outlet property="messageButtonLabel" destination="Mhn-Gn-4PI" id="EPh-aL-GB0"/>
-                        <outlet property="messageButtonOutlet" destination="1rA-fR-0Qy" id="Gop-gN-Kgl"/>
+                        <outlet property="messageButtonOutlet" destination="nYM-hs-qBI" id="RZl-2C-gLZ"/>
                         <outlet property="profilePicImageView" destination="a2b-zG-a7F" id="gOR-5r-2Qf"/>
                         <outlet property="userListsCollectionView" destination="eSs-ZF-A4j" id="80I-3U-AVQ"/>
                     </connections>
