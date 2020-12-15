@@ -14,35 +14,35 @@
 import Foundation
 import RealmSwift
 
-enum FriendshipStatus: String {
-    case friendAndFollowing
-    case friendButNotFollowing
-    case notFriendButFollowing
-    case requestSentAndFollowing
-    case requestSentButNotFollowing
-    case requestReceivedAndFollowing
-    case requestReceivedButNotFollowing
-}
+//enum FriendshipStatus: String {
+//    case friendAndFollowing    ///
+//    case friendButNotFollowing  ///
+//    case notFriendButFollowing
+//    case requestSentAndFollowing
+//    case requestSentButNotFollowing
+//    case requestReceivedAndFollowing
+//    case requestReceivedButNotFollowing
+//}
     
-@objcMembers class Networking: Object {
-    dynamic var userID: String = ""
-    dynamic var userName: String = ""
-    dynamic var userProfilePicture: String = ""
-    private dynamic var privateStatus = FriendshipStatus.friendAndFollowing.rawValue
-    var status: FriendshipStatus {
-        get { return FriendshipStatus(rawValue: privateStatus)!}
-        set { privateStatus = newValue.rawValue }
-    }
-    
-    override class func primaryKey() -> String? {
-        "userID"
-    }
-    
-    convenience init(userID: String, userName: String, userProfilePicture: String, status: FriendshipStatus){
-        self.init()
-        self.userID = userID
-        self.userName = userName
-        self.userProfilePicture = userProfilePicture
-        self.status = status
-    }
-}
+//@objcMembers class Networking: Object {
+//    dynamic var userID: String = ""
+//    dynamic var userName: String = ""
+//    dynamic var userProfilePicture: String = ""
+//    private dynamic var privateStatus = FriendshipStatus.friendAndFollowing.rawValue
+//    var status: FriendshipStatus {
+//        get { return FriendshipStatus(rawValue: privateStatus)!}
+//        set { privateStatus = newValue.rawValue }
+//    }
+//
+//    override class func primaryKey() -> String? {
+//        "userID"
+//    }
+//
+//    convenience init(userID: String, userName: String, userProfilePicture: String, status: FriendshipStatus){
+//        self.init()
+//        self.userID = userID
+//        self.userName = userName
+//        self.userProfilePicture = userProfilePicture
+//        self.status = status
+//    }
+//}

@@ -78,7 +78,7 @@ class RealmService {
             }
         }
         
-        let result = realm.objects(RealmCollectionTypes.localMessage.path)
+        let result = realm.objects(RealmCollectionTypes.dBMessage.path)
             .filter(predicate).sorted(byKeyPath: sortedBy, ascending: ascending)
         
 //        let test1 =  Array(result) as! [T]

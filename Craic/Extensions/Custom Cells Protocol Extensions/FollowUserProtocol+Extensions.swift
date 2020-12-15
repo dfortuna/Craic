@@ -43,8 +43,16 @@ extension FollowUserProtocol {
     }
     
     private func addUserAsFollowerOnLocalDatabase(forFriend friend : User) {
-        let realmEvent = FollowingUser(userID: friend.id, friendName: friend.name, friendProfilePicture: friend.profileImage)
-        realm.create(realmEvent)
+        if let localUser = realm.getDocument(PrimaryKey: friend.id, fromCollection: .dBUser) {
+            realm.update(localUser, with: ["isFollowing": true])
+        } else {
+            let realmEvent = DBUser(id: friend.id,
+                                    name: friend.name,
+                                    profilePicture: friend.profileImage,
+                                    isFollowing: true,
+                                    friendshipStatus: .notFriend)
+            realm.create(realmEvent)
+        }
     }
     
     func unfollowUser(forFriend friend: User, loggedUser: User){
@@ -64,7 +72,7 @@ extension FollowUserProtocol {
     }
     
     private func deleteUserAsFollowerOnLocalDatabase(forFriend user: User, loggedUser: User) {
-        realm.deleteObject(ofPrimaryKey: user.id, fromCollection: .followingUser)
+        realm.deleteObject(ofPrimaryKey: user.id, fromCollection: .dBUser)
     }
     
 }

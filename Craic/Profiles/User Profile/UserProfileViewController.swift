@@ -10,6 +10,7 @@ import UIKit
 
 class UserProfileViewController: UIViewController, FIRObjectViewController {
     var firObj: FIRObjectProtocol?
+    var dbUser: DBUser? = nil
     
     //MARK: - Variables
     private enum SearchType {
@@ -21,6 +22,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     private var currentSearchType = SearchType.events
     private let firebaseService = FirebaseService.shared
     private let coreLocationService = CoreLocationService.shared
+    private let realmService = RealmService.shared
     private var resultList = [FIRObjectProtocol]()
     private var profileImage = UIImage()
     private let loggedUser = UserSettings().getLoggedUser()
@@ -53,16 +55,44 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     
+    private func checkLocalUser() {
+        guard let user = firObj as? User else { return }
+        if let dbUser = realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser {
+            self.dbUser = dbUser
+            addFriendButtonLabel.text = dbUser.friendshipStatus
+            followButtonLabel.text = dbUser.isFollowing ? "following" : "follow"
+        } else {
+            addFriendButtonLabel.text = FriendshipStatus.notFriend.rawValue
+            followButtonLabel.text = "follow"
+        }
+    }
+    
     @IBAction func followUserButton(_ sender: UIButton) {
-        //check if logged user is friend with profile's user and if this has enable new followers
-        //them add logged user as follower
+        guard let user = firObj as? User else { return }
+        guard let sender = loggedUser else { return }
+        if let isFollowing = dbUser?.isFollowing, isFollowing {
+            unfollowUser(forFriend: user, loggedUser: sender)
+            followButtonLabel.text = "follow"
+        } else {
+            followUser(forFriend: user, loggedUser: sender)
+            followButtonLabel.text = "following"
+        }
     }
     
     @IBAction func addFriendButton(_ sender: UIButton) {
         //Send a friend request message
+        guard let user = firObj as? User else { return }
         guard let sender = loggedUser else { return }
-        guard let receiver = firObj as? User else { return }
-        
+        if let friendshipStatus = dbUser?.friendshipStatus {
+            switch FriendshipStatus.getCase(friendshipStatus) {
+            case .friend:
+                addFriendButtonLabel.text = "friend"
+            case .notFriend:
+                addFriendButtonLabel.text = "+friend"
+            case .pendingInvitationSent, .pendingInvitationReceived:
+                addFriendButtonLabel.text = "Pending"
+            }
+        }
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -90,20 +120,29 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        guard let user = firObj as? User else { return }
-        guard let logUser = loggedUser as? User else { return }
-        if loggedUser?.id == user.id {
+        guard let userToDisplay = validateUser() else { return }
+        fetchResultsForCurrentSearchType(user: userToDisplay)
+    }
+    
+    private func validateUser() -> User? {
+        guard let user = firObj as? User else { return nil }
+        guard let loggedUser = loggedUser else { return nil }
+        if loggedUser.id == user.id {
             messageButtonOutlet.isUserInteractionEnabled = false
             FollowButtonOutlet.isUserInteractionEnabled = false
             addFriendButtonOutlet.isUserInteractionEnabled = false
-            followButtonLabel.textColor = .lightGray
-            addFriendButtonLabel.textColor = .lightGray
-            messageButtonLabel.textColor = .lightGray
+            messageButtonOutlet.tintColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+            FollowButtonOutlet.tintColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+            addFriendButtonOutlet.tintColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+            followButtonLabel.textColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+            addFriendButtonLabel.textColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+            messageButtonLabel.textColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
         }
-        fetchResultsForCurrentSearchType(user: user)
+        return user
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -124,6 +163,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     private func formatUI(forUser user: User) {
         fullNameAndAgeLabel.text = user.name
         formatProfilePicture(forUser: user)
+        checkLocalUser()
     }
     
     private func formatResult<T: FIRObjectProtocol>(forList list: [T]) {

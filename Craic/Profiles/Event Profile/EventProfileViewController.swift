@@ -54,7 +54,7 @@ class EventProfileViewController: UIViewController, FIRObjectViewController {
         if ((event.address != nil) && (event.address != "")) || (!event.price.isEmpty) {
             cellIds.append("EventInfoTableViewCell")
         }
-        let attendingEvent = realmService.getDocument(PrimaryKey: event.id, fromCollection: .attendingEvent)
+        let attendingEvent = realmService.getDocument(PrimaryKey: event.id, fromCollection: .dBEvent)
         if event.attendees > 0 || (attendingEvent != nil) {
             cellIds.append("Attendees")
         }

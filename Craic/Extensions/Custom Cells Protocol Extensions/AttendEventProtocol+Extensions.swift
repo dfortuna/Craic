@@ -52,10 +52,9 @@ extension AttendEventProtocol {
     
     private func addEventToAgendaOnLocalDatabase(forUserAgenda aEvent: UserAgenda) {
         //VER REALM EVENT
-        let realmEvent = AttendingEvent(id: aEvent.id,
-                                        eventID: aEvent.eventId,
-                                        eventName: aEvent.eventName,
-                                        eventProfilePicture: aEvent.eventProfilePicture)
+        let realmEvent = DBEvent(id: aEvent.id,
+                                 name: aEvent.eventName,
+                                 profilePicture: aEvent.eventProfilePicture)
         realm.create(realmEvent)
     }
     
@@ -64,7 +63,7 @@ extension AttendEventProtocol {
     func unattendedEvent(forEvent event: Event, user: User){
         
         //look for AttendingEvent on local DB to retrive id created on remote DB
-        guard let agendaEvent = realm.getDocument(PrimaryKey: event.id, fromCollection: .attendingEvent) as? AttendingEvent else { return }
+        guard let agendaEvent = realm.getDocument(PrimaryKey: event.id, fromCollection: .dBEvent) as? DBEvent else { return }
         
         //used id retrived above to delete event from User/UserAgenda
         deleteEventFromAgendaOnRemoteDatabase(forAgendaEventId: agendaEvent.id, userId: user.id)
@@ -91,7 +90,7 @@ extension AttendEventProtocol {
         }
     }
     
-    private func deleteEventFromAgendaOnLocalDatabase(event: AttendingEvent) {
+    private func deleteEventFromAgendaOnLocalDatabase(event: DBEvent) {
         realm.delete(event)
     }
 }

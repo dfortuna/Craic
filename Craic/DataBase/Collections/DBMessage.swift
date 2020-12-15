@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 //For messages saved locally: Sent messages and read messages.
-@objcMembers class LocalMessage: Object {
+@objcMembers class DBMessage: Object {
     dynamic var messageID: String = ""
     
     override class func primaryKey() -> String? {

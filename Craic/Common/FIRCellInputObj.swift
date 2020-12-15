@@ -62,7 +62,7 @@ class FIRCellInputObj {
         //Check if any events coming from Firebase had been added to the local Database already (by ATTENDING button)
         //if events is found, sets True to isAttending attribute before sending it to CellForItem
         var e = event
-        if realmService.getDocument(PrimaryKey: e.id, fromCollection: .attendingEvent) != nil {
+        if realmService.getDocument(PrimaryKey: e.id, fromCollection: .dBEvent) != nil {
             e.isAttending = true
         } else {
             e.isAttending = false
@@ -72,7 +72,7 @@ class FIRCellInputObj {
     
     func formatFollowingVenue(venue: Venue) -> Venue {
         var v = venue
-        if realmService.getDocument(PrimaryKey: v.id, fromCollection: .favoriteVenue) != nil {
+        if realmService.getDocument(PrimaryKey: v.id, fromCollection: .dBVenue) != nil {
             v.isFollowing = true
         } else {
             v.isFollowing = false
@@ -82,7 +82,7 @@ class FIRCellInputObj {
     
     func formatFollowingUser(user: User) -> User {
         var u = user
-        if realmService.getDocument(PrimaryKey: u.id, fromCollection: .followingUser) != nil {
+        if realmService.getDocument(PrimaryKey: u.id, fromCollection: .dBUser) != nil {
             u.isFollowing = true
         } else {
             u.isFollowing = false
@@ -92,7 +92,7 @@ class FIRCellInputObj {
     
     func formatUserFavorites(userFavorite: UserFavorites) -> UserFavorites {
         var uf = userFavorite
-        if realmService.getDocument(PrimaryKey: uf.venueID, fromCollection: .favoriteVenue) != nil {
+        if realmService.getDocument(PrimaryKey: uf.venueID, fromCollection: .dBVenue) != nil {
             uf.isFavorite = true
         } else {
             uf.isFavorite = false
@@ -102,7 +102,7 @@ class FIRCellInputObj {
     
     func formatUserAgenda(userAgenda: UserAgenda) -> UserAgenda{
         var ua = userAgenda
-        if realmService.getDocument(PrimaryKey: ua.eventId, fromCollection: .attendingEvent) != nil {
+        if realmService.getDocument(PrimaryKey: ua.eventId, fromCollection: .dBEvent) != nil {
             ua.isAttending = true
         } else {
             ua.isAttending = false

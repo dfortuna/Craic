@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         facebookService.login(fromViewController: self) { (result) in
             switch result {
             case .failure(let error):
-                print(error)
+                print("FACEBOOK LOGIN ERROR: ", error)
             case .success(let token):
                 self.authenticateFacebookUSer(withToken: token)
             }
@@ -89,9 +89,10 @@ class LoginViewController: UIViewController {
             print("Unable to set friendship ", user.id, " ", friend[""] as Any)
             return
         }
-        let localFriend = FriendshipReuq
-        realm.create(<#T##object: T##T#>)
-        setFriendship(friendship: friendship)
+        //TODO: Test this!!
+//        let localFriend = FriendshipReuq
+//        realm.create(<#T##object: T##T#>)
+//        setFriendship(friendship: friendship)
     }
     
     func setFriendship(friendship: Friendship) {

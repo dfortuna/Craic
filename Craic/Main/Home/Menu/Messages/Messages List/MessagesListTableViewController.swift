@@ -92,7 +92,7 @@ class MessagesListTableViewController: UITableViewController {
         // count how many unread messages for threadCell label
         var count = 0
         for tmessage in threadMessages {
-            if (realmService.getDocument(PrimaryKey: tmessage.id, fromCollection: .localMessage) == nil){
+            if (realmService.getDocument(PrimaryKey: tmessage.id, fromCollection: .dBMessage) == nil){
                 count += 1
             }
         }
@@ -208,7 +208,7 @@ class MessagesListTableViewController: UITableViewController {
     private func addReadMessagesToLocalDB(forThread thread: Thread) {
         let messages = thread.replyList.compactMap{ $0.value }
         for message in messages {
-            let sentMessage = LocalMessage(messageID: message.id)
+            let sentMessage = DBMessage(messageID: message.id)
             realmService.create(sentMessage)
         }
     }
@@ -242,7 +242,7 @@ class MessagesListTableViewController: UITableViewController {
     private func deleteLocalMessages(messages: [Message]) {
         //Delete every message from local Datatabase
         for message in messages {
-            let localMessage = LocalMessage(messageID: message.id)
+            let localMessage = DBMessage(messageID: message.id)
             realmService.delete(localMessage)
         }
     }

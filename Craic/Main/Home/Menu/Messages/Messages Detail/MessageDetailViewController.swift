@@ -102,8 +102,8 @@ extension MessageDetailViewController: MessageDetailProtocol {
     }
     
     fileprivate func deleteMessageOnLocalDatabase(message: Message) {
-        let localMessage = LocalMessage(messageID: message.id)
-        realmService.deleteObject(ofPrimaryKey: localMessage.messageID, fromCollection: .localMessage)
+        let localMessage = DBMessage(messageID: message.id)
+        realmService.deleteObject(ofPrimaryKey: localMessage.messageID, fromCollection: .dBMessage)
         updateTableView(message)
     }
     

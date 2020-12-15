@@ -261,7 +261,7 @@
 		3638F6C724C24C2B00A6961E /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */; };
 		3638F6C924C2888E00A6961E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6C824C2888E00A6961E /* Date+Extensions.swift */; };
 		3638F6CB24C57FD600A6961E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CA24C57FD600A6961E /* String+Extensions.swift */; };
-		3638F6CF24C7910800A6961E /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CE24C7910800A6961E /* LocalMessage.swift */; };
+		3638F6CF24C7910800A6961E /* DBMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F6CE24C7910800A6961E /* DBMessage.swift */; };
 		366648CC24F428BD00DF8003 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366648CB24F428BD00DF8003 /* UILabel+Extensions.swift */; };
 		366648CE24FF333800DF8003 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366648CD24FF333700DF8003 /* Networking.swift */; };
 		3675B6442495B457000049E3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675B6432495B457000049E3 /* Alert.swift */; };
@@ -278,9 +278,9 @@
 		36AC5EDC24E82D9F00053B3E /* InvitationMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC5EDB24E82D9F00053B3E /* InvitationMessageTableViewCell.swift */; };
 		36AC5EDE24E82E1F00053B3E /* FriendRequestMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC5EDD24E82E1F00053B3E /* FriendRequestMessageTableViewCell.swift */; };
 		36E647DE249C58A400193A42 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DD249C58A400193A42 /* RealmService.swift */; };
-		36E647E0249CCF1400193A42 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DF249CCF1400193A42 /* FavoriteVenue.swift */; };
-		36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E2249CCF7600193A42 /* AttendingEvent.swift */; };
-		36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E4249CCFFF00193A42 /* FollowingUser.swift */; };
+		36E647E0249CCF1400193A42 /* DBVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647DF249CCF1400193A42 /* DBVenue.swift */; };
+		36E647E3249CCF7600193A42 /* DBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E2249CCF7600193A42 /* DBEvent.swift */; };
+		36E647E5249CCFFF00193A42 /* DBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E4249CCFFF00193A42 /* DBUser.swift */; };
 		36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */; };
 		36E647ED24A1113700193A42 /* VenueFollowersViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647EC24A1113700193A42 /* VenueFollowersViewController .swift */; };
 		36E647EF24A17F9900193A42 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E647EE24A17F9900193A42 /* UIView+Extensions.swift */; };
@@ -413,7 +413,7 @@
 		3638F6C624C24C2B00A6961E /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		3638F6C824C2888E00A6961E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		3638F6CA24C57FD600A6961E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		3638F6CE24C7910800A6961E /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
+		3638F6CE24C7910800A6961E /* DBMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMessage.swift; sourceTree = "<group>"; };
 		366648CB24F428BD00DF8003 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		366648CD24FF333700DF8003 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		3675B6432495B457000049E3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -430,9 +430,9 @@
 		36AC5EDB24E82D9F00053B3E /* InvitationMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationMessageTableViewCell.swift; sourceTree = "<group>"; };
 		36AC5EDD24E82E1F00053B3E /* FriendRequestMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestMessageTableViewCell.swift; sourceTree = "<group>"; };
 		36E647DD249C58A400193A42 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
-		36E647DF249CCF1400193A42 /* FavoriteVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
-		36E647E2249CCF7600193A42 /* AttendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingEvent.swift; sourceTree = "<group>"; };
-		36E647E4249CCFFF00193A42 /* FollowingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUser.swift; sourceTree = "<group>"; };
+		36E647DF249CCF1400193A42 /* DBVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBVenue.swift; sourceTree = "<group>"; };
+		36E647E2249CCF7600193A42 /* DBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEvent.swift; sourceTree = "<group>"; };
+		36E647E4249CCFFF00193A42 /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
 		36E647E7249EB0D300193A42 /* RealmCollectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCollectionTypes.swift; sourceTree = "<group>"; };
 		36E647EC24A1113700193A42 /* VenueFollowersViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VenueFollowersViewController .swift"; sourceTree = "<group>"; };
 		36E647EE24A17F9900193A42 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -984,10 +984,10 @@
 		36E647E6249CD00F00193A42 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				36E647DF249CCF1400193A42 /* FavoriteVenue.swift */,
-				36E647E2249CCF7600193A42 /* AttendingEvent.swift */,
-				36E647E4249CCFFF00193A42 /* FollowingUser.swift */,
-				3638F6CE24C7910800A6961E /* LocalMessage.swift */,
+				36E647DF249CCF1400193A42 /* DBVenue.swift */,
+				36E647E2249CCF7600193A42 /* DBEvent.swift */,
+				36E647E4249CCFFF00193A42 /* DBUser.swift */,
+				3638F6CE24C7910800A6961E /* DBMessage.swift */,
 				366648CD24FF333700DF8003 /* Networking.swift */,
 			);
 			path = Collections;
@@ -1373,7 +1373,7 @@
 				36244AC32491D0F8003EA526 /* Metadata.swift in Sources */,
 				3638F6CB24C57FD600A6961E /* String+Extensions.swift in Sources */,
 				3675B6442495B457000049E3 /* Alert.swift in Sources */,
-				3638F6CF24C7910800A6961E /* LocalMessage.swift in Sources */,
+				3638F6CF24C7910800A6961E /* DBMessage.swift in Sources */,
 				362449EA2491D087003EA526 /* SearchFiltersViewController.swift in Sources */,
 				36244B1D2491D0F8003EA526 /* UIButton+Extensions.swift in Sources */,
 				36244ADE2491D0F8003EA526 /* UserSettings.swift in Sources */,
@@ -1396,11 +1396,11 @@
 				36AC5EDC24E82D9F00053B3E /* InvitationMessageTableViewCell.swift in Sources */,
 				36244AB12491D0F8003EA526 /* VenueOpeningHoursTableViewCell.swift in Sources */,
 				36244AF62491D0F8003EA526 /* EventCollectionViewCell.swift in Sources */,
-				36E647E3249CCF7600193A42 /* AttendingEvent.swift in Sources */,
+				36E647E3249CCF7600193A42 /* DBEvent.swift in Sources */,
 				36244A112491D087003EA526 /* MenuTableViewCell.swift in Sources */,
 				36244AA22491D0F8003EA526 /* UserProfileViewController.swift in Sources */,
 				36244B292491D0F9003EA526 /* AttendEventProtocol+Extensions.swift in Sources */,
-				36E647E0249CCF1400193A42 /* FavoriteVenue.swift in Sources */,
+				36E647E0249CCF1400193A42 /* DBVenue.swift in Sources */,
 				362449E42491D087003EA526 /* GenericTableViewCell.swift in Sources */,
 				3619523B24BF6BAC000544AC /* FriendsViewController2.swift in Sources */,
 				36244A052491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
@@ -1417,7 +1417,7 @@
 				36E647E8249EB0D300193A42 /* RealmCollectionTypes.swift in Sources */,
 				362449E72491D087003EA526 /* EventCategoryTableViewCell.swift in Sources */,
 				3619523324B57884000544AC /* TestData.swift in Sources */,
-				36E647E5249CCFFF00193A42 /* FollowingUser.swift in Sources */,
+				36E647E5249CCFFF00193A42 /* DBUser.swift in Sources */,
 				366648CC24F428BD00DF8003 /* UILabel+Extensions.swift in Sources */,
 				362449CF2491D087003EA526 /* SettingsTableViewController.swift in Sources */,
 				36244A8A2491D0F8003EA526 /* FacebookUser.swift in Sources */,

@@ -60,7 +60,7 @@ class VenueProfileViewController: UIViewController, FIRObjectViewController {
             currentCellIds.append("Events")
         }
 
-        let favoriteVenue = realmService.getDocument(PrimaryKey: venue.id, fromCollection: .favoriteVenue)
+        let favoriteVenue = realmService.getDocument(PrimaryKey: venue.id, fromCollection: .dBVenue)
         if (venue.followers > 0 ) || (favoriteVenue != nil) {
             currentCellIds.append("Followers")
         }

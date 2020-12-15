@@ -10,21 +10,21 @@ import Foundation
 import RealmSwift
 
 enum RealmCollectionTypes {
-    case favoriteVenue
-    case attendingEvent
-    case followingUser
-    case localMessage
+    case dBVenue
+    case dBEvent
+    case dBUser
+    case dBMessage
     
     var path: Object.Type{
         switch self {
-        case .favoriteVenue:
-            return FavoriteVenue.self
-        case .attendingEvent:
-            return AttendingEvent.self
-        case .followingUser:
-            return FollowingUser.self
-        case .localMessage:
-            return LocalMessage.self
+        case .dBVenue:
+            return DBVenue.self
+        case .dBEvent:
+            return DBEvent.self
+        case .dBUser:
+            return DBUser.self
+        case .dBMessage:
+            return DBMessage.self
         }
     }
 }

@@ -159,7 +159,7 @@ class NewMessageViewController: UIViewController {
     private func writeMessageToDB(message: Message) {
 //        guard let numericDate = Date().getNumericDate() else { return }
 //        let stringDate = Date().getStringDate()
-        let replyingMessage = LocalMessage(messageID: messageID)
+        let replyingMessage = DBMessage(messageID: messageID)
         realmService.create(replyingMessage)
     }
     

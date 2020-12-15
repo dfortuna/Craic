@@ -49,10 +49,10 @@ extension FavoriteVenueProtocol {
     }
     
     private func addVenueAsFavoriteOnLocalDatabase(forUserFavorite fVenue: UserFavorites) {
-        let realmEvent = FavoriteVenue(id: fVenue.id,
-                                       venueID: fVenue.venueID,
-                                       venueName: fVenue.venueName,
-                                       venueProfilePicture: fVenue.venueProfilePicture)
+        let realmEvent = DBVenue(id: fVenue.id,
+                                 name: fVenue.venueName,
+                                 profilePicture: fVenue.venueProfilePicture)
+
         realm.create(realmEvent)
     }
     
@@ -61,7 +61,7 @@ extension FavoriteVenueProtocol {
     func unfollowVenue(forVenue venue: Venue, user: User){
         
         //look for FavoriteVenue on local DB to retrive id created on remote DB
-        guard let favoriteVenue = realm.getDocument(PrimaryKey: venue.id, fromCollection: .favoriteVenue) as? FavoriteVenue else { return }
+        guard let favoriteVenue = realm.getDocument(PrimaryKey: venue.id, fromCollection: .dBVenue) as? DBVenue else { return }
         
         //used id retrived above to delete event from User/UserFavorites
         deleteVenueAsFavoriteOnRemoteDatabase(forFavoriteVenueId: favoriteVenue.id, userId: user.id)
@@ -89,7 +89,7 @@ extension FavoriteVenueProtocol {
         }
     }
         
-    private func deleteVenueAsFavoriteOnLocalDatabase(venue: FavoriteVenue) {
+    private func deleteVenueAsFavoriteOnLocalDatabase(venue: DBVenue) {
         realm.delete(venue)
     }
     
