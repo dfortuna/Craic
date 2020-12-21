@@ -9,16 +9,15 @@
 import UIKit
 
 class UserProfileViewController: UIViewController, FIRObjectViewController {
-    var firObj: FIRObjectProtocol?
-    var dbUser: DBUser? = nil
-    
+
     //MARK: - Variables
     private enum SearchType {
         case friends
         case events
         case favoriteVenues
     }
-    
+    var firObj: FIRObjectProtocol?
+    var dbUser: DBUser? = nil
     private var currentSearchType = SearchType.events
     private let firebaseService = FirebaseService.shared
     private let coreLocationService = CoreLocationService.shared
@@ -54,19 +53,6 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         newMessage.configure(sender: sender, receiver: receiver, messageToReply: nil)
     }
     
-    
-    private func checkLocalUser() {
-        guard let user = firObj as? User else { return }
-        if let dbUser = realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser {
-            self.dbUser = dbUser
-            addFriendButtonLabel.text = dbUser.friendshipStatus
-            followButtonLabel.text = dbUser.isFollowing ? "following" : "follow"
-        } else {
-            addFriendButtonLabel.text = FriendshipStatus.notFriend.rawValue
-            followButtonLabel.text = "follow"
-        }
-    }
-    
     @IBAction func followUserButton(_ sender: UIButton) {
         guard let user = firObj as? User else { return }
         guard let sender = loggedUser else { return }
@@ -80,19 +66,27 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     @IBAction func addFriendButton(_ sender: UIButton) {
-        //Send a friend request message
         guard let user = firObj as? User else { return }
-        guard let sender = loggedUser else { return }
-        if let friendshipStatus = dbUser?.friendshipStatus {
-            switch FriendshipStatus.getCase(friendshipStatus) {
-            case .friend:
-                addFriendButtonLabel.text = "friend"
-            case .notFriend:
-                addFriendButtonLabel.text = "+friend"
-            case .pendingInvitationSent, .pendingInvitationReceived:
-                addFriendButtonLabel.text = "Pending"
-            }
+        guard let loggedUser = loggedUser else { return }
+        if let userID = loggedUser.receivedFriendshipInvitationIds.filter({ $0 == user.id }).first {
+            acceptRequest(sender: loggedUser, receiver: user)
+        } else {
+            sendRequest(sender: loggedUser, receiver: user)
         }
+    }
+    
+    private func sendRequest(sender: User, receiver: User) {
+        do {
+             try sendFriendshipInvitation(sender: sender, receiver: receiver)
+        } catch FriendshipError.cantResendIvitation {
+            //TODO:
+        } catch {
+            //TODO:
+        }
+    }
+    
+    private func acceptRequest(sender: User, receiver: User) {
+        acceptFriendshipInvitation(friendship: <#T##Friendship#>, receiver: receiver, senderID: sender.id)
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -146,7 +140,15 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    //MARK: - Logic
+    
+    //MARK: - Format UI
+    private func formatUI(forUser user: User) {
+        fullNameAndAgeLabel.text = user.name
+        formatProfilePicture(forUser: user)
+        formatAddFriendButtonLabel(user: user, loggedUser: <#T##User#>)
+        formatFollowFriendButtonLabel(user: user, loggedUser: <#T##User#>)
+    }
+    
     private func formatProfilePicture(forUser user: User) {
         if let profilePictureURL = URL(string: user.profileImage) {
             DispatchQueue.global().async {
@@ -160,17 +162,35 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         }
     }
     
-    private func formatUI(forUser user: User) {
-        fullNameAndAgeLabel.text = user.name
-        formatProfilePicture(forUser: user)
-        checkLocalUser()
+    private func formatAddFriendButtonLabel(user: User, loggedUser: User) {
+        if user.sentFriendshipInvitationIds.filter({ $0 == user.id }).first != nil {
+            addFriendButtonLabel.text = "Accept request"
+        } else if user.receivedFriendshipInvitationIds.filter({ $0 == user.id }).first != nil {
+            addFriendButtonLabel.text = "Request sent"
+        } else {
+            addFriendButtonLabel.text = "Add friend"
+        }
     }
     
-    private func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
-        resultList.removeAll()
-        resultList = list
-        DispatchQueue.main.async {
-            self.userListsCollectionView.reloadData()
+    private func formatFollowFriendButtonLabel(user: User, loggedUser: User) {
+        if let dbUser = realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser {
+            self.dbUser = dbUser
+            followButtonLabel.text = dbUser.isFollowing ? "following" : "follow"
+        } else {
+            followButtonLabel.text = "follow"
+        }
+    }
+    
+    //MARK: - Fetch Data
+    
+    private func fetchResultsForCurrentSearchType(user: User ) {
+        switch currentSearchType {
+        case .events:
+            getEvents(forUserId: user.id)
+        case .favoriteVenues:
+            getFavoritesVenues(forUserId: user.id)
+        case .friends:
+            getFriends(forUserId: user.id)
         }
     }
  
@@ -208,19 +228,19 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
                                             case .failure(let error):
                                                 print(error) //TODO! MESSAGE
                                             case .success(let friendships):
-                                                self.formatResult(forList: friendships)
+                                                let filteredFriends = friendships.filter{ $0.pendingOfApprovalId == nil }
+                                                self.formatResult(forList: filteredFriends)
                                             }
         }
     }
     
-    private func fetchResultsForCurrentSearchType(user: User ) {
-        switch currentSearchType {
-        case .events:
-            getEvents(forUserId: user.id)
-        case .favoriteVenues:
-            getFavoritesVenues(forUserId: user.id)
-        case .friends:
-            getFriends(forUserId: user.id)
+    //MARK: - Format Result
+    
+    private func formatResult<T: FIRObjectProtocol>(forList list: [T]) {
+        resultList.removeAll()
+        resultList = list
+        DispatchQueue.main.async {
+            self.userListsCollectionView.reloadData()
         }
     }
 }
@@ -317,7 +337,12 @@ extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: - Cell Delegates
 extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    func handleAcceptButton(sender: FIRObjectCell) { }
+    
+    func handleDeclineButton(sender: FIRObjectCell) { }
+    
     func didTapFavoriteVenueButton(sender: FIRObjectCell) {
         guard let loggedUser = firObj as? User else { return }
         guard let venueCell = sender as? VenueCollectionViewCell else { return }
@@ -352,6 +377,7 @@ extension UserProfileViewController: FIRCellButtonProtocol, FollowUserProtocol, 
     }
 }
 
+//MARK: - Message Delegate
 extension UserProfileViewController: NewMessageProtocol {
     func messsageStatus(sentMessage: Message?, error: FirebaseError?) {
         if sentMessage != nil && error == nil {
@@ -361,3 +387,6 @@ extension UserProfileViewController: NewMessageProtocol {
         }
     }
 }
+
+//MARK: - Friendship Protocol
+extension UserProfileViewController: FriendshipProtocol { }

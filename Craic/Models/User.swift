@@ -9,15 +9,20 @@
 import Foundation
 
 struct User: FIRObjectProtocol {
-    var id: String           ////
-    var email: String        ////
-    var name: String         ////
-    var gender: String       ////
-    var firstName: String    ////
-    var lastName: String     ////
-    var profileImage = String()  ////
+    var id: String
+    var email: String
+    var name: String
+    var gender: String
+    var firstName: String
+    var lastName: String
+    var profileImage = String() 
     var isFollowing: Bool?
-//    var isFriend: Bool?
+    
+    // list of userIds with friendship invitations sent to the user but pending of approval
+    var receivedFriendshipInvitationIds: [String]
+    
+    // list of userIds with friendship invitations sent by the user but pending of approval
+    var sentFriendshipInvitationIds: [String]
     
     init?(with dictionary: [String: AnyObject]) {
         if let userId = dictionary["id"] as? String, userId != "" {
@@ -39,6 +44,7 @@ struct User: FIRObjectProtocol {
             print("Message obj not created - id not valid")
             return nil
         }
+        receivedFriendshipInvitationIds = [""]
     }
     
     init?(friendship: Friendship, userID: String) {
@@ -57,5 +63,6 @@ struct User: FIRObjectProtocol {
         self.gender = ""
         self.firstName = ""
         self.lastName = ""
+        receivedFriendshipInvitationIds = [""]
     }
 }

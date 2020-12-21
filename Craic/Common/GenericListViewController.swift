@@ -13,6 +13,8 @@ protocol FIRCellButtonProtocol: class {
     func didTapFavoriteVenueButton(sender: FIRObjectCell)
     func didTapFollowUserButton(sender: FIRObjectCell)
     func didTapAttendEventButton(sender:FIRObjectCell)
+    func handleAcceptButton(sender: FIRObjectCell)
+    func handleDeclineButton(sender: FIRObjectCell)
 }
 
 protocol FIRObjectCell where Self: UICollectionViewCell {
@@ -168,6 +170,14 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
 }
 
 extension GenericListViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    func handleAcceptButton(sender: FIRObjectCell) {
+        
+    }
+    
+    func handleDeclineButton(sender: FIRObjectCell) {
+        
+    }
+    
     func didTapFavoriteVenueButton(sender: FIRObjectCell) {
         guard let venueCell = sender as? VenueCollectionViewCell else { return }
         guard let venue = venueCell.venue else { return }

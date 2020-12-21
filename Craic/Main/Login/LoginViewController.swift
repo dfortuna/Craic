@@ -89,10 +89,7 @@ class LoginViewController: UIViewController {
             print("Unable to set friendship ", user.id, " ", friend[""] as Any)
             return
         }
-        //TODO: Test this!!
-//        let localFriend = FriendshipReuq
-//        realm.create(<#T##object: T##T#>)
-//        setFriendship(friendship: friendship)
+        setFriendship(friendship: friendship)
     }
     
     func setFriendship(friendship: Friendship) {

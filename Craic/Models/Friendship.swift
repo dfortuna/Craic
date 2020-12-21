@@ -12,6 +12,7 @@ struct Friendship: FIRObjectProtocol {
 
     var friends: [String]
     var id: String
+    var pendingOfApprovalId: String? = nil
     
     //Data from user with smallest id (Friend 1)
     var f1Id: String
@@ -24,6 +25,37 @@ struct Friendship: FIRObjectProtocol {
     var f2Name: String
     var f2ProfilePicture: String
     var f2IsFavorite: Bool
+    
+    init(friend1: User, friend2: User, pendingOfApprovalId: String?) {
+        self.pendingOfApprovalId = pendingOfApprovalId
+        friends = [friend1.id, friend2.id]
+        if friend1.id < friend2.id {
+            self.id = "\(friend1.id)_\(friend2.id)"
+            
+            self.f1Id = friend1.id
+            self.f1Name = friend1.name
+            self.f1ProfilePicture = friend1.profileImage
+            self.f1IsFavorite = false
+            
+            self.f2Id = friend2.id
+            self.f2Name = friend2.name
+            self.f2ProfilePicture = friend2.profileImage
+            self.f2IsFavorite = false
+        } else {
+            self.id = "\(friend2.id)_\(friend1.id)"
+            
+            self.f1Id = friend2.id
+            self.f1Name = friend2.name
+            self.f1ProfilePicture = friend2.profileImage
+            self.f1IsFavorite = false
+            
+            self.f2Id = friend1.id
+            self.f2Name = friend1.name
+            self.f2ProfilePicture = friend1.profileImage
+            self.f2IsFavorite = false
+        }
+    }
+    
 
     init?(with dictionary: [String: AnyObject]) {
         

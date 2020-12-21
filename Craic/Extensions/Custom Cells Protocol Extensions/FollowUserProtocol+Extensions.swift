@@ -49,8 +49,7 @@ extension FollowUserProtocol {
             let realmEvent = DBUser(id: friend.id,
                                     name: friend.name,
                                     profilePicture: friend.profileImage,
-                                    isFollowing: true,
-                                    friendshipStatus: .notFriend)
+                                    isFollowing: true)
             realm.create(realmEvent)
         }
     }

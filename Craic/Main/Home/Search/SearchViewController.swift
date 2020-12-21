@@ -177,6 +177,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
     
 extension SearchViewController: FIRCellButtonProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+    func handleAcceptButton(sender: FIRObjectCell) { }
+    
+    func handleDeclineButton(sender: FIRObjectCell) { }
     
     func didTapFollowUserButton(sender: FIRObjectCell) {}
     

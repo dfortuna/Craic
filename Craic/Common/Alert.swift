@@ -17,6 +17,7 @@ enum Alert {
     case unableToReachServer
     case facebokConnectionError
     case messageSent
+    case friendshipRequestSent
     
     func call(onViewController vc: UIViewController) {
         switch self {
@@ -34,6 +35,8 @@ enum Alert {
             showMessageAlert(on: vc, with: "Oops, Facebook out of reach", message: "Please, check you internet connection or try again later.")
         case .messageSent:
             showMessageAlert(on: vc, with: "", message: "Your message was sent.")
+        case .friendshipRequestSent:
+            showMessageAlert(on: vc, with: "", message: "Friendship request has been sent already.")
         }
     }
     
