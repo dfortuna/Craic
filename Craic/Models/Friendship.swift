@@ -146,4 +146,12 @@ struct Friendship: FIRObjectProtocol {
                                "profileImage": f1ProfilePicture] as [String: AnyObject])
         }
     }
+    
+    static func getFriendshipID(forUserID1 user1: String, andUserID2 user2: String) -> String {
+        if user1 < user2 {
+            return "\(user1)_\(user2)"
+        } else {
+            return "\(user2)_\(user1)"
+        }
+    }
 }

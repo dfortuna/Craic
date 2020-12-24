@@ -39,8 +39,8 @@ extension FriendshipProtocol {
     func sendFriendshipInvitation(sender: User, receiver: User) throws {
         try checkIfDoubleInvitation(sender: sender, receiver: receiver)
         addFriendshipToRemoteDataBase(sender: sender, receiver: receiver)
-        addUserIDToReceiverPendingListOnRemoteDatabase(sender: sender, receiver: receiver)
-        addReceiverIDToUserPendingListOnRemoteDatabase(sender: sender, receiver: receiver)
+        addUserIDToReceiverPendingListOnRemoteDatabase(senderID: sender.id, receiverID: receiver.id)
+        addReceiverIDToUserPendingListOnRemoteDatabase(senderID: sender.id, receiverID: receiver.id)
     }
     
     private func checkIfDoubleInvitation(sender: User, receiver: User) throws {
@@ -63,45 +63,31 @@ extension FriendshipProtocol {
         }
     }
     
-    private func addUserIDToReceiverPendingListOnRemoteDatabase(sender: User, receiver: User) {
-        var pendingList = receiver.receivedFriendshipInvitationIds
-        pendingList.append(sender.id)
-        firestore.update(objectID: receiver.id,
-                         in: .user,
-                         dataToUpdate: ["pendingFriendshipUserIds": pendingList as AnyObject]) { (result) in
-                            switch result {
-                            case .failure(let error):
-                                print(error)
-                            case .success(_):
-                                print("UserID added")
-                            }
-        }
+    private func addUserIDToReceiverPendingListOnRemoteDatabase(senderID: String, receiverID: String) {
+        firestore.updateFieldArrayUnion(objectID: receiverID,
+                                         in: .user,
+                                         fieldName: "pendingFriendshipUserIds",
+                                         fieldValue: senderID)
     }
     
-    private func addReceiverIDToUserPendingListOnRemoteDatabase(sender: User, receiver: User) {
-        var pendingList = receiver.sentFriendshipInvitationIds
-        pendingList.append(receiver.id)
-        firestore.update(objectID: receiver.id,
-                         in: .user,
-                         dataToUpdate: ["sentFriendshipInvitationIds": pendingList as AnyObject]) { (result) in
-                            switch result {
-                            case .failure(let error):
-                                print(error)
-                            case .success(_):
-                                print("ReceiverID added")
-                            }
-        }
+    private func addReceiverIDToUserPendingListOnRemoteDatabase(senderID: String, receiverID: String) {
+        firestore.updateFieldArrayUnion(objectID: senderID,
+                                         in: .user,
+                                         fieldName: "sentFriendshipInvitationIds",
+                                         fieldValue: receiverID)
     }
 
     
     //MARK: - DECLINE FRIENDSHIP
-    func declineFriendshipInvitation(friendship: Friendship, receiver: User, senderID: String) {
-        removeFriendshipFromRemoteDataBase(friendship: friendship)
-        removeIDFromPendingFriendshipListOnRemoteDatabase(senderID: senderID, receiver: receiver)
+    func declineFriendshipInvitation(receiverID: String, senderID: String) {
+        removeFriendshipFromRemoteDataBase(receiverID: receiverID, senderID: senderID)
+        removeUserIDFromReceiverPendingListOnRemoteDatabase(senderID: senderID, receiverID: receiverID)
+        removeReceiverIDFromUserPendingListOnRemoteDatabase(senderID: senderID, receiverID: receiverID)
     }
     
-    private func removeFriendshipFromRemoteDataBase(friendship: Friendship) {
-        firestore.delete(documentID: friendship.id, in: .friendship) { (result) in
+    private func removeFriendshipFromRemoteDataBase(receiverID: String, senderID: String) {
+        let friendshipID = Friendship.getFriendshipID(forUserID1: receiverID, andUserID2: senderID)
+        firestore.delete(documentID: friendshipID, in: .friendship) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -111,30 +97,34 @@ extension FriendshipProtocol {
         }
     }
     
-    private func removeIDFromPendingFriendshipListOnRemoteDatabase(senderID: String,  receiver: User) {
-        let filteredList = receiver.receivedFriendshipInvitationIds.filter {$0 != senderID }
-        firestore.update(objectID: receiver.id,
-                         in: .user,
-                         dataToUpdate: ["pendingFriendshipUserIds": filteredList as AnyObject]) { (result) in
-                            switch result {
-                            case .failure(let error):
-                                print(error)
-                            case .success(_):
-                                print("Pending friendship list updated")
-                            }
-        }
+    private func removeUserIDFromReceiverPendingListOnRemoteDatabase(senderID: String, receiverID: String) {
+        firestore.updateFieldArrayRemove(objectID: receiverID,
+                                         in: .user,
+                                         fieldName: "receivedFriendshipInvitationIds",
+                                         fieldValue: senderID)
+    }
+    
+    private func removeReceiverIDFromUserPendingListOnRemoteDatabase(senderID: String, receiverID: String) {
+        firestore.updateFieldArrayRemove(objectID: senderID,
+                                         in: .user,
+                                         fieldName: "sentFriendshipInvitationIds",
+                                         fieldValue: receiverID)
+    
     }
 
     //MARK: - ACCEPT FRIENDSHIP
     
-    func acceptFriendshipInvitation(friendship: Friendship, receiver: User, senderID: String) {
-        updateFriendshipOnRemoteDataBase(friendship: friendship)
-        removeIDFromPendingFriendshipListOnRemoteDatabase(senderID: senderID, receiver: receiver)
+    func acceptFriendshipInvitation(receiver: User, senderID: String) {
+        updateFriendshipOnRemoteDataBase(receiver: receiver.id, senderID: senderID)
+        addUserAsFriendToLocalDB(receiver: receiver)
+        removeUserIDFromReceiverPendingListOnRemoteDatabase(senderID: senderID, receiverID: receiver.id)
+        removeReceiverIDFromUserPendingListOnRemoteDatabase(senderID: senderID, receiverID: receiver.id)
     }
     
-    private func updateFriendshipOnRemoteDataBase(friendship: Friendship) {
+    private func updateFriendshipOnRemoteDataBase(receiver: String, senderID: String) {
+        let friendshipID = Friendship.getFriendshipID(forUserID1: receiver, andUserID2: senderID)
         let approval: String? = nil
-        firestore.update(objectID: friendship.id,
+        firestore.update(objectID: friendshipID,
                          in: .friendship,
                          dataToUpdate: ["pendingOfApprovalId": approval as AnyObject]) { (result) in
                             switch result {

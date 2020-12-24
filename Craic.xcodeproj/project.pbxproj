@@ -21,7 +21,7 @@
 		3619523524B949B5000544AC /* UserFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523424B949B4000544AC /* UserFavorites.swift */; };
 		3619523724BA61DF000544AC /* UserAgenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523624BA61DF000544AC /* UserAgenda.swift */; };
 		3619523924BF56DA000544AC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523824BF56D7000544AC /* FavoritesViewController.swift */; };
-		3619523B24BF6BAC000544AC /* FriendsViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523A24BF6BAC000544AC /* FriendsViewController2.swift */; };
+		3619523B24BF6BAC000544AC /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523A24BF6BAC000544AC /* FriendsViewController.swift */; };
 		3619523D24BF7631000544AC /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619523C24BF7631000544AC /* AgendaViewController.swift */; };
 		361D9B5224918C4800351CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D9B5124918C4800351CFD /* AppDelegate.swift */; };
 		361D9B5E24918C4B00351CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361D9B5C24918C4B00351CFD /* LaunchScreen.storyboard */; };
@@ -96,9 +96,6 @@
 		36244A142491D087003EA526 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C12491D086003EA526 /* Menu.storyboard */; };
 		36244A152491D087003EA526 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C12491D086003EA526 /* Menu.storyboard */; };
 		36244A162491D087003EA526 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C12491D086003EA526 /* Menu.storyboard */; };
-		36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
-		36244A1E2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
-		36244A1F2491D087003EA526 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362449C62491D086003EA526 /* FriendsViewController.swift */; };
 		36244A232491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
 		36244A242491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
 		36244A252491D087003EA526 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362449C82491D086003EA526 /* Friends.storyboard */; };
@@ -326,7 +323,7 @@
 		3619523424B949B4000544AC /* UserFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavorites.swift; sourceTree = "<group>"; };
 		3619523624BA61DF000544AC /* UserAgenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgenda.swift; sourceTree = "<group>"; };
 		3619523824BF56D7000544AC /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		3619523A24BF6BAC000544AC /* FriendsViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController2.swift; sourceTree = "<group>"; };
+		3619523A24BF6BAC000544AC /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		3619523C24BF7631000544AC /* AgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
 		361D9B4E24918C4800351CFD /* Craic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Craic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361D9B5124918C4800351CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -361,7 +358,6 @@
 		362449BF2491D086003EA526 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
 		362449C02491D086003EA526 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		362449C12491D086003EA526 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
-		362449C62491D086003EA526 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		362449C82491D086003EA526 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		362449C92491D086003EA526 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		362449CA2491D086003EA526 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -713,9 +709,8 @@
 		362449C52491D086003EA526 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				362449C62491D086003EA526 /* FriendsViewController.swift */,
 				362449C82491D086003EA526 /* Friends.storyboard */,
-				3619523A24BF6BAC000544AC /* FriendsViewController2.swift */,
+				3619523A24BF6BAC000544AC /* FriendsViewController.swift */,
 				36C4F3AD2589E5E500C015C6 /* FriendshipRequestCollectionViewCell.swift */,
 				36C4F3AE2589E5E500C015C6 /* FriendshipRequestCollectionViewCell.xib */,
 			);
@@ -1365,7 +1360,6 @@
 				36244A022491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				36244AC02491D0F8003EA526 /* EventProfileViewController.swift in Sources */,
 				36E647ED24A1113700193A42 /* VenueFollowersViewController .swift in Sources */,
-				36244A1D2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				362449DE2491D087003EA526 /* OkButtonTableViewControllerCell.swift in Sources */,
 				362449F32491D087003EA526 /* SearchModel.swift in Sources */,
 				36244A8D2491D0F8003EA526 /* Extensions.swift in Sources */,
@@ -1416,7 +1410,7 @@
 				36244B292491D0F9003EA526 /* AttendEventProtocol+Extensions.swift in Sources */,
 				36E647E0249CCF1400193A42 /* DBVenue.swift in Sources */,
 				362449E42491D087003EA526 /* GenericTableViewCell.swift in Sources */,
-				3619523B24BF6BAC000544AC /* FriendsViewController2.swift in Sources */,
+				3619523B24BF6BAC000544AC /* FriendsViewController.swift in Sources */,
 				36244A052491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
 				36244A962491D0F8003EA526 /* FirebaseAuthService.swift in Sources */,
 				3619522424A88F1B000544AC /* CallendarView.swift in Sources */,
@@ -1492,7 +1486,6 @@
 				36244A062491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
 				36244B062491D0F8003EA526 /* Colors.swift in Sources */,
 				36244A122491D087003EA526 /* MenuTableViewCell.swift in Sources */,
-				36244A1E2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				36244B2D2491D0F9003EA526 /* FavoriteVenueProtocol+Extensions.swift in Sources */,
 				36244A032491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				362449FD2491D087003EA526 /* FeedViewController.swift in Sources */,
@@ -1559,7 +1552,6 @@
 				36244A072491D087003EA526 /* MessagesListTableViewController.swift in Sources */,
 				36244B072491D0F8003EA526 /* Colors.swift in Sources */,
 				36244A132491D087003EA526 /* MenuTableViewCell.swift in Sources */,
-				36244A1F2491D087003EA526 /* FriendsViewController.swift in Sources */,
 				36244B2E2491D0F9003EA526 /* FavoriteVenueProtocol+Extensions.swift in Sources */,
 				36244A042491D087003EA526 /* MessageDetailViewController.swift in Sources */,
 				362449FE2491D087003EA526 /* FeedViewController.swift in Sources */,

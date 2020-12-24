@@ -28,6 +28,8 @@ class FirebaseService {
         return db.collection(collectionReference.path)
     }
     
+    //MARK: - Write
+    
     func create<T: FIRObjectProtocol>(for encodableObject: T, in collectionReference: FIRCollectionsReference, callback: @escaping (Result<String, FirebaseError>) -> ()) {
         do {
             let json = try encodableObject.toJson(excluding: ["id"])
@@ -57,14 +59,18 @@ class FirebaseService {
                                                 callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
         let listener = collectionPath(ofReference: collectionReference).addSnapshotListener { (querySnapshot, error) in
-            
             let result =  self.checkResults(querySnapshot: querySnapshot, error: error, errorMessage: .documentNotFound, objectType: objectType)
             callback(result)
         }
         listeners[collectionPath(ofReference: collectionReference).path] = listener
     }
     
-    func fetchDocumentsByKeyword<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference, returning objectType: T.Type, keyword: String, field: String, callback: @escaping (Result<[T], FirebaseError>) -> ()) {
+    
+    func fetchDocumentsByKeyword<T:FIRObjectProtocol>(from collectionReference: FIRCollectionsReference,
+                                                      returning objectType: T.Type,
+                                                      keyword: String,
+                                                      field: String,
+                                                      callback: @escaping (Result<[T], FirebaseError>) -> ()) {
         
         collectionPath(ofReference: collectionReference)
             .whereField(field, arrayContains: keyword)
@@ -197,6 +203,24 @@ class FirebaseService {
                 callback(.success("Data Merged!"))
             }
         }
+    }
+    
+    func updateFieldArrayUnion(objectID: String,
+                               in collectionReference: FIRCollectionsReference,
+                               fieldName: String,
+                               fieldValue: String ) {
+        collectionPath(ofReference: collectionReference).document(objectID).updateData([
+            fieldName: FieldValue.arrayUnion([fieldValue])
+        ])
+    }
+    
+    func updateFieldArrayRemove(objectID: String,
+                               in collectionReference: FIRCollectionsReference,
+                               fieldName: String,
+                               fieldValue: String ) {
+        collectionPath(ofReference: collectionReference).document(objectID).updateData([
+            fieldName: FieldValue.arrayRemove([fieldValue])
+        ])
     }
     
     func delete(documentID: String, in collectionReference: FIRCollectionsReference, callback: @escaping (Result<String, FirebaseError>) -> ()) {

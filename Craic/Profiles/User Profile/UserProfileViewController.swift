@@ -86,7 +86,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     private func acceptRequest(sender: User, receiver: User) {
-        acceptFriendshipInvitation(friendship: <#T##Friendship#>, receiver: receiver, senderID: sender.id)
+        acceptRequest(sender: sender, receiver: receiver)
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -143,10 +143,11 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     
     //MARK: - Format UI
     private func formatUI(forUser user: User) {
+        guard let loggedUser = loggedUser else { return }
         fullNameAndAgeLabel.text = user.name
         formatProfilePicture(forUser: user)
-        formatAddFriendButtonLabel(user: user, loggedUser: <#T##User#>)
-        formatFollowFriendButtonLabel(user: user, loggedUser: <#T##User#>)
+        formatAddFriendButtonLabel(user: user, loggedUser: loggedUser)
+        formatFollowFriendButtonLabel(user: user, loggedUser: loggedUser)
     }
     
     private func formatProfilePicture(forUser user: User) {

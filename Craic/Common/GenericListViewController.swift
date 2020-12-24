@@ -169,13 +169,17 @@ class GenericListViewController<OBJ:FIRObjectProtocol, CELL:FIRObjectCell, VC:FI
     }
 }
 
-extension GenericListViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol{
+extension GenericListViewController: FIRCellButtonProtocol, FollowUserProtocol, AttendEventProtocol, FavoriteVenueProtocol, FriendshipProtocol {
     func handleAcceptButton(sender: FIRObjectCell) {
-        
+        guard let userCell = sender as? UserCollectionViewCell else { return }
+        guard let user = userCell.user else { return }
+        acceptFriendshipInvitation(receiver: loggedUser, senderID: user.id)
     }
     
     func handleDeclineButton(sender: FIRObjectCell) {
-        
+        guard let userCell = sender as? UserCollectionViewCell else { return }
+        guard let user = userCell.user else { return }
+        declineFriendshipInvitation(receiverID: loggedUser.id, senderID: user.id)
     }
     
     func didTapFavoriteVenueButton(sender: FIRObjectCell) {

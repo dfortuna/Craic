@@ -25,6 +25,7 @@ struct User: FIRObjectProtocol {
     var sentFriendshipInvitationIds: [String]
     
     init?(with dictionary: [String: AnyObject]) {
+        
         if let userId = dictionary["id"] as? String, userId != "" {
             self.id = userId
             self.email = dictionary["email"] as? String ?? String()
@@ -45,6 +46,7 @@ struct User: FIRObjectProtocol {
             return nil
         }
         receivedFriendshipInvitationIds = [""]
+        sentFriendshipInvitationIds = [""]
     }
     
     init?(friendship: Friendship, userID: String) {
@@ -64,5 +66,6 @@ struct User: FIRObjectProtocol {
         self.firstName = ""
         self.lastName = ""
         receivedFriendshipInvitationIds = [""]
+        sentFriendshipInvitationIds = [""]
     }
 }

@@ -85,7 +85,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cellID = indexPath.row
         switch cellID {
         case 0:            
-            let geneircListVC = FriendsViewController2()
+            let geneircListVC = FriendsViewController()
             geneircListVC.setData(isASortedList: false,
                                    viewForCollsTopConstraint: nil,
                                    loggedUser: user,

@@ -1,142 +1,41 @@
-////
-////  FriendsViewController.swift
-////  Project4
-////
-////  Created by Denis Fortuna on 29/4/20.
-////  Copyright © 2020 Denis Fortuna. All rights reserved.
-////
 //
-//import UIKit
+//  FriendsViewController.swift
+//  Craic
 //
-//class FriendsViewController: UIViewController {
-//    
-//    var firebase = FirebaseService.shared
-//    var friends = [User]()
-//    var loggedUser: User?
+//  Created by Denis Fortuna on 15/7/20.
+//  Copyright © 2020 Denis Fortuna. All rights reserved.
 //
-//    @IBOutlet weak var friendsCollectionView: UICollectionView!
-//    
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.title = "Friends"
-//        friendsCollectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "UserCollectionViewCell")
-//        self.navigationController?.isNavigationBarHidden = false
-//    }
-//    
-//    override func viewWillAppear(_ animated: Bool) {
-//        guard let userID = loggedUser?.id else { return }
-//        getFriendsList(userId: userID)
-//        activityIndicator.startAnimating()
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        firebase.removeListener(from: FIRCollectionsReference.user)
-//        friends.removeAll()
-//    }
-//    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
-//    
-//    func getFriendsList(userId: String) {
-//        
-//        firebase.fetchDocumentsByKeyword(from: .friendship,
-//                                         returning: Friendship.self,
-//                                         keyword: userId,
-//                                         field: "friends") { (result) in
-//                                            switch result {
-//                                            case .failure(let error):
-//                                                //TODO! -  Message view (no friends to show)
-//                                                print(error)
-//                                            case .success(let friendships):
-//                                                self.formatFriends(from: friendships, userID: userId)
-//                                            }
-//        }
-//    }
-//
-//    func formatFriends(from friendships: [Friendship], userID: String){
-//        for friendship in friendships {
-//            if let friend = User(friendship: friendship, userID: userID) {
-//                friends.append(friend)
-//            }
-//        }
-//        formatList()
-//    }
-//    
-//    fileprivate func formatList() {
-//        DispatchQueue.main.async {
-//            self.friendsCollectionView.reloadData()
-//            self.activityIndicator.stopAnimating()
-//            self.activityIndicator.alpha = 0 
-//        }
-//    }
-//}
-//
-//extension FriendsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-//    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return friends.count
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as? UserCollectionViewCell
-//        cell?.delegate = self
-//        let friend = friends[indexPath.row]
-//        
-//        guard let obj = FIRCellInputObj(withFIRObjectProtocol: friend) else { return UICollectionViewCell()}
-//        cell?.formatCellUI(withData: obj, hasPermission: true)
-//         return cell!
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        if let friendCell = collectionView.cellForItem(at: indexPath) as? UserCollectionViewCell {
-//            let friend = friends[indexPath.row]
-//            var friendImage = Icons.userPictureNotFound
-//            if let friendProfileImage = friendCell.userProfilePictureImageView.image {
-//                friendImage = friendProfileImage
-//            }
-//            let userProfile = UIStoryboard(name: "UserProfile", bundle: nil)
-//                .instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
-//            self.navigationController?.pushViewController(userProfile, animated: true)
-//            userProfile.firObj = friend
-//        }
-//    }
-//}
-//
-//extension FriendsViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = friendsCollectionView.frame.width - 12
-//        return CGSize(width: width , height: 120)
-//    }
-//}
-//
-//extension FriendsViewController: FIRCellButtonProtocol, FollowUserProtocol{
-//    func handleAcceptButton(sender: FIRObjectCell) { }
-//    
-//    func handleDeclineButton(sender: FIRObjectCell) { }
-//
-//    func didTapFavoriteVenueButton(sender: FIRObjectCell) {}
-//    
-//    func didTapAttendEventButton(sender: FIRObjectCell) {}
-//    
-//    func didTapFollowUserButton(sender: FIRObjectCell) {
-//        guard let userCell = sender as? UserCollectionViewCell else { return }
-//        guard let user = userCell.user else { return }
-//        guard let loggedUser = loggedUser else { return }
-//        if userCell.isFavorite {
-//            followUser(forFriend: user, loggedUser: loggedUser)
-//        } else {
-//            unfollowUser(forFriend: user, loggedUser: loggedUser)
-//        }
-//    }
-//}
+
+import Foundation
+
+class FriendsViewController: GenericListViewController<User, UserCollectionViewCell, UserProfileViewController> {
+
+    override func fetchData() {
+        guard let userID = objID else { return }
+        firebaseService.fetchDocumentsByKeyword(from: .friendship,
+                                                returning: Friendship.self,
+                                                keyword: userID,
+                                                field: "friends") { (result) in
+                                                switch result {
+                                                    case .success(let friendships):
+                                                        self.formatFriendships(friendships: friendships, userID: userID)
+                                                    case .failure(_):
+                                                        Alert.somethingWentWrong.call(onViewController: self)
+                                                    }
+        }
+    }
+    
+    private func formatFriendships(friendships: [Friendship], userID: String) {
+        var users = [User]()
+        for friendship in friendships {
+            guard let user = friendship.getFriend(fromLoggedUserID: userID) else { return }
+            users.append(user)
+            inspectFriendship(friendship: friendship, loggedUserID: userID)
+        }
+        self.formatResult(forList: users)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        firebaseService.removeListener(from: .friendship)
+    }
+}
