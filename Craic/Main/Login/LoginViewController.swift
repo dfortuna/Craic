@@ -20,11 +20,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         addLoginButton()
     }
+    
     func addLoginButton() {
-//        var button = facebookService.getLogginButton()
-////        button.bounds = CGRect(x: 0, y: 0, width: 200, height: 60)
-//        button.center = self.view.center
-//        view.addSubview(button)
         let button = UIButton()
         self.view.addSubview(button)
         button.center = view.center
@@ -42,6 +39,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - FORMATING FB USER
     func authenticateFacebookUSer(withToken token: String) {
         firebaseAuth.authenticateFacebookUser(withToken: token) { (result) in
             switch result {
@@ -65,6 +63,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - SETTING USER FRIENDSHIPS
     func formatFacebookUser(fbUser: [String: AnyObject]) {
         guard let user = User(with: fbUser) else { return }
         self.getFriendsForFriendshipCollection(fbUser: fbUser, user: user)
@@ -103,22 +102,65 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - SETTING FIREBASE USER
     func addUser(user: User) {
         firestore.create(for: user, in: .user) { (result) in
             switch result {
             case .failure(let error):
                 print(error) //TODO! - Alert???????????
                 Alert.unableToReachServer.call(onViewController: self)
-            case .success( _):
-                self.userSettings.setLoggedUser(forUser: user)
-                self.instantiateRootViewController()
+            case .success(_):
+                self.handleUserInsertSuccess(user: user)
             }
         }
     }
     
-    func instantiateRootViewController() {
+    private func handleUserInsertSuccess(user: User) {
+        userSettings.setLoggedUser(forUser: user)
+        syncRemoteAndLocalDBFollowingUsers(user)
+        instantiateRootViewController()
+    }
+    
+    fileprivate func syncRemoteAndLocalDBFollowingUsers(_ user: User) {
+        let followingUsers = realm.query(collection: .dBUser,
+                                         attributes: [(field: "isFollowing", operator: "==", value: "true")],
+                                         sortedByFiled: "id",
+                                         ascending: true,
+                                         documentType: DBUser.self)
+        if followingUsers.isEmpty {
+            fetchFollowingUsers(loggedUserID: user.id)
+        }
+    }
+    
+    private func instantiateRootViewController() {
         let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.window?.rootViewController = viewController
+    }
+    
+    // MARK: - SETTING FIREBASE USER
+    private func fetchFollowingUsers(loggedUserID: String) {
+        firestore.collectionGroupQuery(collectionID: "UserFollowers",
+                                             field: "id",
+                                             queryOperator: "==",
+                                             value: loggedUserID,
+                                             returning: User.self) { (result) in
+                                                switch result {
+                                                case .success(let users):
+                                                    self.addFollowingUsersToLocalDataBase(users: users)
+                                                case .failure(_):
+                                                    Alert.somethingWentWrong.call(onViewController: self)
+                                                }
+        }
+    }
+    
+    private func addFollowingUsersToLocalDataBase(users: [User]) {
+        for user in users {
+            let dbUser = DBUser(id: user.id,
+                                name: user.id,
+                                profilePicture: user.profileImage,
+                                isFollowing: user.isFollowing ?? false)
+            realm.create(dbUser)
+        }
     }
 }

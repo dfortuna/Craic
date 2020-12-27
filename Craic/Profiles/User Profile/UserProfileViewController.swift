@@ -68,10 +68,24 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     @IBAction func addFriendButton(_ sender: UIButton) {
         guard let user = firObj as? User else { return }
         guard let loggedUser = loggedUser else { return }
-        if let userID = loggedUser.receivedFriendshipInvitationIds.filter({ $0 == user.id }).first {
-            acceptRequest(sender: loggedUser, receiver: user)
+        
+        if realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser != nil {
+            unfriend(sender: loggedUser, receiver: user)
         } else {
-            sendRequest(sender: loggedUser, receiver: user)
+            if loggedUser.receivedFriendshipInvitationIds.filter({ $0 == user.id }).first != nil {
+                acceptRequest(sender: loggedUser, receiver: user)
+            } else {
+                sendRequest(sender: loggedUser, receiver: user)
+            }
+        }
+    }
+    
+    private func unfriend(sender: User, receiver: User) {
+        Alert.cancelFriendship(friendName: receiver.name).call(onViewController: self) { buttonLabel in
+            if buttonLabel == "Ok" {
+                self.deleteFriendship(receiverID: receiver.id, senderID: sender.id)
+                self.addFriendButtonLabel.text = "Add friend"
+            }
         }
     }
     
@@ -86,7 +100,7 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
     }
     
     private func acceptRequest(sender: User, receiver: User) {
-        acceptRequest(sender: sender, receiver: receiver)
+        acceptFriendshipInvitation(receiver: receiver, senderID: sender.id)
     }
     
     @IBAction func toggleUserLists(_ sender: UISegmentedControl) {
@@ -140,14 +154,16 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    
     //MARK: - Format UI
     private func formatUI(forUser user: User) {
         guard let loggedUser = loggedUser else { return }
         fullNameAndAgeLabel.text = user.name
+        
+        //Load Profile Picture
         formatProfilePicture(forUser: user)
-        formatAddFriendButtonLabel(user: user, loggedUser: loggedUser)
-        formatFollowFriendButtonLabel(user: user, loggedUser: loggedUser)
+        
+        //Format AddFriendButton and FollowButton labels according to friendship status
+        validadateUser(user: user, loggedUser: loggedUser)
     }
     
     private func formatProfilePicture(forUser user: User) {
@@ -163,6 +179,22 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
         }
     }
     
+    private func validadateUser(user: User, loggedUser: User) {
+        if let dbUser = realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser {
+            self.dbUser = dbUser
+            
+            // if user is already a friend, format FriendButtonLabel
+            addFriendButtonLabel.text = "Friends"
+            //and Following Button Label
+            followButtonLabel.text = dbUser.isFollowing ? "following" : "follow"
+        } else {
+            
+            //If user is not a friend, validate freindshipstatus
+            followButtonLabel.text = "follow"
+            formatAddFriendButtonLabel(user: user, loggedUser: loggedUser)
+        }
+    }
+    
     private func formatAddFriendButtonLabel(user: User, loggedUser: User) {
         if user.sentFriendshipInvitationIds.filter({ $0 == user.id }).first != nil {
             addFriendButtonLabel.text = "Accept request"
@@ -170,15 +202,6 @@ class UserProfileViewController: UIViewController, FIRObjectViewController {
             addFriendButtonLabel.text = "Request sent"
         } else {
             addFriendButtonLabel.text = "Add friend"
-        }
-    }
-    
-    private func formatFollowFriendButtonLabel(user: User, loggedUser: User) {
-        if let dbUser = realmService.getDocument(PrimaryKey: user.id, fromCollection: .dBUser) as? DBUser {
-            self.dbUser = dbUser
-            followButtonLabel.text = dbUser.isFollowing ? "following" : "follow"
-        } else {
-            followButtonLabel.text = "follow"
         }
     }
     

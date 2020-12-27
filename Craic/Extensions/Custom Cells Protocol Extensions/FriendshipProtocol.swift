@@ -157,4 +157,16 @@ extension FriendshipProtocol {
             realm.create(dbUser)
         }
     }
+    
+    //MARK: - UNFRIEND
+    func deleteFriendship(receiverID: String, senderID: String) {
+        removeFriendshipFromRemoteDataBase(receiverID: receiverID, senderID: senderID)
+        removeFriendFromLocalDataBase(userID: receiverID)
+    }
+    
+    private func removeFriendFromLocalDataBase(userID: String) {
+        realm.deleteObject(ofPrimaryKey: userID, fromCollection: .dBUser)
+    }
 }
+
+

@@ -18,6 +18,7 @@ enum Alert {
     case facebokConnectionError
     case messageSent
     case friendshipRequestSent
+    case cancelFriendship(friendName: String)
     
     func call(onViewController vc: UIViewController) {
         switch self {
@@ -37,12 +38,50 @@ enum Alert {
             showMessageAlert(on: vc, with: "", message: "Your message was sent.")
         case .friendshipRequestSent:
             showMessageAlert(on: vc, with: "", message: "Friendship request has been sent already.")
+        default:
+            break
         }
     }
     
     private func showMessageAlert(on vc: UIViewController, with title: String?, message: String?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        DispatchQueue.main.async {
+            vc.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func call(onViewController vc: UIViewController, callback: @escaping (String) -> Void) {
+        switch self {
+        case .cancelFriendship(let friendName):
+            showOkCancelAlert(on: vc,
+                              with: "",
+                              message: "Are you sure you want to remove \(friendName) as your friend?") { name in
+                                callback(name)
+            }
+        default:
+            break
+        }
+    }
+        
+    private func showOkCancelAlert(on vc: UIViewController,
+                                   with title: String?,
+                                   message: String?,
+                                   callback: @escaping (String) -> Void) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            callback("Ok")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+            UIAlertAction in
+            callback("Cancel")
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
         DispatchQueue.main.async {
             vc.present(alert, animated: true, completion: nil)
         }
